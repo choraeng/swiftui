@@ -1,0 +1,622 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1BCBAB689DBF5692E48E8458B455CBD4 /* DDPerspectiveTransformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0967EF776DC0D9FB509BBE0655C95293 /* DDPerspectiveTransformViewController.swift */; };
+		27FAFA594B155238BF6F326A9D05BBDF /* DDPerspectiveTransform-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFD50DD8C6323BF0F6A03B8E6F47C88 /* DDPerspectiveTransform-dummy.m */; };
+		30305BAF0795CDA61E11C53E034B3D02 /* DDPerspectiveTransform-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E41458F65706BE0A779B066015CC71 /* DDPerspectiveTransform-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A2065AD6989586D5A9A2F3FF581D10C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+		B0AED3AE9B247C7BEC8512878DA61C84 /* Pods-perspective_dd-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BDE7858E589AB41BE13D01E4B39837A /* Pods-perspective_dd-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2BC56E12E898AC2AFE6A938896DA34A /* Pods-perspective_dd-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F43B388CC9BDBEA55DF507C33F0C39 /* Pods-perspective_dd-dummy.m */; };
+		DDB56489B4A1C609C79A14D61E4F6172 /* DDPerspectiveTransformImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571D256D3940AAFD9F47BAB276BC99CF /* DDPerspectiveTransformImageView.swift */; };
+		E4C19E2A24446CAFA54ECA6B1446C150 /* DDPerspectiveTransformPointView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8816CE3706F105462C8913B6FB45FA76 /* DDPerspectiveTransformPointView.swift */; };
+		E588B45C6E26403B9B7F70598698E73C /* DDPerspectiveTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9D94ADAA9AD101B9D414C23B93BFE8 /* DDPerspectiveTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F2FB2A66367168E6F0364B9FAB8204 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
+		F4298BB93A47C08EBBE541B5C71F1820 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9D37A615E0EDCB5498067DC70767B89C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE985B6155B851ED0A7FF6A6C3549D85;
+			remoteInfo = DDPerspectiveTransform;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0922BC23531690F6AD47F31F10757FDC /* Pods-perspective_dd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-perspective_dd.debug.xcconfig"; sourceTree = "<group>"; };
+		0967EF776DC0D9FB509BBE0655C95293 /* DDPerspectiveTransformViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DDPerspectiveTransformViewController.swift; path = DDPerspectiveTransform/DDPerspectiveTransformViewController.swift; sourceTree = "<group>"; };
+		0BDE7858E589AB41BE13D01E4B39837A /* Pods-perspective_dd-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-perspective_dd-umbrella.h"; sourceTree = "<group>"; };
+		1A45A4173666DEC3ACFDC2F2DD056673 /* Pods-perspective_dd-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-perspective_dd-acknowledgements.plist"; sourceTree = "<group>"; };
+		20E41458F65706BE0A779B066015CC71 /* DDPerspectiveTransform-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DDPerspectiveTransform-umbrella.h"; sourceTree = "<group>"; };
+		2B1C5AD85535F23C247F398FB1C8B164 /* Pods-perspective_dd-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-perspective_dd-Info.plist"; sourceTree = "<group>"; };
+		304CA83AE04A86B9AA424AD878231AC5 /* DDPerspectiveTransform-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DDPerspectiveTransform-prefix.pch"; sourceTree = "<group>"; };
+		42E6C5BDAA7C3DFBACCE554A8AE6D3C1 /* DDPerspectiveTransform.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DDPerspectiveTransform.modulemap; sourceTree = "<group>"; };
+		4393ADF56BAEE4919524E26A3C6E8D4E /* Pods-perspective_dd.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-perspective_dd.modulemap"; sourceTree = "<group>"; };
+		55A9E6B739E5D5068C5FF0B36AEFD0BB /* Pods-perspective_dd-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-perspective_dd-acknowledgements.markdown"; sourceTree = "<group>"; };
+		571D256D3940AAFD9F47BAB276BC99CF /* DDPerspectiveTransformImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DDPerspectiveTransformImageView.swift; path = DDPerspectiveTransform/DDPerspectiveTransformImageView.swift; sourceTree = "<group>"; };
+		8816CE3706F105462C8913B6FB45FA76 /* DDPerspectiveTransformPointView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DDPerspectiveTransformPointView.swift; path = DDPerspectiveTransform/DDPerspectiveTransformPointView.swift; sourceTree = "<group>"; };
+		9278EE2AB945E1529B83528303736F0B /* Pods_perspective_dd.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_perspective_dd.framework; path = "Pods-perspective_dd.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		98852D26A4C75D20772F970B9E17B390 /* DDPerspectiveTransform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DDPerspectiveTransform.debug.xcconfig; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AEFD50DD8C6323BF0F6A03B8E6F47C88 /* DDPerspectiveTransform-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DDPerspectiveTransform-dummy.m"; sourceTree = "<group>"; };
+		BA9D94ADAA9AD101B9D414C23B93BFE8 /* DDPerspectiveTransform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDPerspectiveTransform.h; path = DDPerspectiveTransform/DDPerspectiveTransform.h; sourceTree = "<group>"; };
+		BB0B4A2C70EF925E1F80208723C0C361 /* DDPerspectiveTransform-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DDPerspectiveTransform-Info.plist"; sourceTree = "<group>"; };
+		C81402A193A4E6150348786FF8113262 /* DDPerspectiveTransform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DDPerspectiveTransform.release.xcconfig; sourceTree = "<group>"; };
+		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		E2554E5DE0379ACEE76AD7EB6F0371AA /* Pods-perspective_dd-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-perspective_dd-frameworks.sh"; sourceTree = "<group>"; };
+		E9F43B388CC9BDBEA55DF507C33F0C39 /* Pods-perspective_dd-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-perspective_dd-dummy.m"; sourceTree = "<group>"; };
+		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		F2A849064D9885897F4D1BFA7678D4C4 /* DDPerspectiveTransform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DDPerspectiveTransform.framework; path = DDPerspectiveTransform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F738B5B50C89BC817EAEDD4B41CFE17C /* Pods-perspective_dd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-perspective_dd.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		249F19A41512EF46B47FEBD4D3152F02 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A2065AD6989586D5A9A2F3FF581D10C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0955EA1CB2C661ADDBAC6322961E195 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F4298BB93A47C08EBBE541B5C71F1820 /* Foundation.framework in Frameworks */,
+				E7F2FB2A66367168E6F0364B9FAB8204 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4B221DBA76802B3B17B214A960B55598 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2A849064D9885897F4D1BFA7678D4C4 /* DDPerspectiveTransform.framework */,
+				9278EE2AB945E1529B83528303736F0B /* Pods_perspective_dd.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		59DA5C1F72E1D5BABC43EACBA672C3BA /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */,
+				D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		6F18FA3884D4ADBA2A7547F3A2F071FE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				968132E835642A18A3107B908136C4CB /* DDPerspectiveTransform */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		828519D5A0DF17A8855AB0B4BB2E97D5 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				42E6C5BDAA7C3DFBACCE554A8AE6D3C1 /* DDPerspectiveTransform.modulemap */,
+				AEFD50DD8C6323BF0F6A03B8E6F47C88 /* DDPerspectiveTransform-dummy.m */,
+				BB0B4A2C70EF925E1F80208723C0C361 /* DDPerspectiveTransform-Info.plist */,
+				304CA83AE04A86B9AA424AD878231AC5 /* DDPerspectiveTransform-prefix.pch */,
+				20E41458F65706BE0A779B066015CC71 /* DDPerspectiveTransform-umbrella.h */,
+				98852D26A4C75D20772F970B9E17B390 /* DDPerspectiveTransform.debug.xcconfig */,
+				C81402A193A4E6150348786FF8113262 /* DDPerspectiveTransform.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/DDPerspectiveTransform";
+			sourceTree = "<group>";
+		};
+		968132E835642A18A3107B908136C4CB /* DDPerspectiveTransform */ = {
+			isa = PBXGroup;
+			children = (
+				BA9D94ADAA9AD101B9D414C23B93BFE8 /* DDPerspectiveTransform.h */,
+				571D256D3940AAFD9F47BAB276BC99CF /* DDPerspectiveTransformImageView.swift */,
+				8816CE3706F105462C8913B6FB45FA76 /* DDPerspectiveTransformPointView.swift */,
+				0967EF776DC0D9FB509BBE0655C95293 /* DDPerspectiveTransformViewController.swift */,
+				828519D5A0DF17A8855AB0B4BB2E97D5 /* Support Files */,
+			);
+			name = DDPerspectiveTransform;
+			path = DDPerspectiveTransform;
+			sourceTree = "<group>";
+		};
+		A6FADFAC659063D9FFB26A91B17832CA /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E0AC2959986F9E2BE7C1109B5D1B07F9 /* Pods-perspective_dd */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				6F18FA3884D4ADBA2A7547F3A2F071FE /* Pods */,
+				4B221DBA76802B3B17B214A960B55598 /* Products */,
+				A6FADFAC659063D9FFB26A91B17832CA /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		E0AC2959986F9E2BE7C1109B5D1B07F9 /* Pods-perspective_dd */ = {
+			isa = PBXGroup;
+			children = (
+				4393ADF56BAEE4919524E26A3C6E8D4E /* Pods-perspective_dd.modulemap */,
+				55A9E6B739E5D5068C5FF0B36AEFD0BB /* Pods-perspective_dd-acknowledgements.markdown */,
+				1A45A4173666DEC3ACFDC2F2DD056673 /* Pods-perspective_dd-acknowledgements.plist */,
+				E9F43B388CC9BDBEA55DF507C33F0C39 /* Pods-perspective_dd-dummy.m */,
+				E2554E5DE0379ACEE76AD7EB6F0371AA /* Pods-perspective_dd-frameworks.sh */,
+				2B1C5AD85535F23C247F398FB1C8B164 /* Pods-perspective_dd-Info.plist */,
+				0BDE7858E589AB41BE13D01E4B39837A /* Pods-perspective_dd-umbrella.h */,
+				0922BC23531690F6AD47F31F10757FDC /* Pods-perspective_dd.debug.xcconfig */,
+				F738B5B50C89BC817EAEDD4B41CFE17C /* Pods-perspective_dd.release.xcconfig */,
+			);
+			name = "Pods-perspective_dd";
+			path = "Target Support Files/Pods-perspective_dd";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		7B3B3D83F98395FBDC2AF18EA208D692 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AED3AE9B247C7BEC8512878DA61C84 /* Pods-perspective_dd-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		897D0F0FB2B0E31358129F617A870DE2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E588B45C6E26403B9B7F70598698E73C /* DDPerspectiveTransform.h in Headers */,
+				30305BAF0795CDA61E11C53E034B3D02 /* DDPerspectiveTransform-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		132A43BE32C2031917CA27B5209C569A /* Pods-perspective_dd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F9FB01F9D8FD11CF978E7915EDE6F4B /* Build configuration list for PBXNativeTarget "Pods-perspective_dd" */;
+			buildPhases = (
+				7B3B3D83F98395FBDC2AF18EA208D692 /* Headers */,
+				766B492F58670E248584B9F627ED7040 /* Sources */,
+				249F19A41512EF46B47FEBD4D3152F02 /* Frameworks */,
+				786CFDB3CA2D711EFF34193CA95B5F0B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9C4A639D71C85F8DF59E83CF1EE22CF7 /* PBXTargetDependency */,
+			);
+			name = "Pods-perspective_dd";
+			productName = "Pods-perspective_dd";
+			productReference = 9278EE2AB945E1529B83528303736F0B /* Pods_perspective_dd.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		AE985B6155B851ED0A7FF6A6C3549D85 /* DDPerspectiveTransform */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 50C6E74878CA19D413339C0B4E2CAF6D /* Build configuration list for PBXNativeTarget "DDPerspectiveTransform" */;
+			buildPhases = (
+				897D0F0FB2B0E31358129F617A870DE2 /* Headers */,
+				BC385BDB81CCA2F6FBF38A4CAE1AAA30 /* Sources */,
+				B0955EA1CB2C661ADDBAC6322961E195 /* Frameworks */,
+				3AB0BCB2F6EEA2A0D705730D789CE3A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DDPerspectiveTransform;
+			productName = DDPerspectiveTransform;
+			productReference = F2A849064D9885897F4D1BFA7678D4C4 /* DDPerspectiveTransform.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 4B221DBA76802B3B17B214A960B55598 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE985B6155B851ED0A7FF6A6C3549D85 /* DDPerspectiveTransform */,
+				132A43BE32C2031917CA27B5209C569A /* Pods-perspective_dd */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AB0BCB2F6EEA2A0D705730D789CE3A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		786CFDB3CA2D711EFF34193CA95B5F0B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		766B492F58670E248584B9F627ED7040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2BC56E12E898AC2AFE6A938896DA34A /* Pods-perspective_dd-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC385BDB81CCA2F6FBF38A4CAE1AAA30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27FAFA594B155238BF6F326A9D05BBDF /* DDPerspectiveTransform-dummy.m in Sources */,
+				DDB56489B4A1C609C79A14D61E4F6172 /* DDPerspectiveTransformImageView.swift in Sources */,
+				E4C19E2A24446CAFA54ECA6B1446C150 /* DDPerspectiveTransformPointView.swift in Sources */,
+				1BCBAB689DBF5692E48E8458B455CBD4 /* DDPerspectiveTransformViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9C4A639D71C85F8DF59E83CF1EE22CF7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DDPerspectiveTransform;
+			target = AE985B6155B851ED0A7FF6A6C3549D85 /* DDPerspectiveTransform */;
+			targetProxy = 9D37A615E0EDCB5498067DC70767B89C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1EAD56621123FF762775A3CB7D05AF64 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C81402A193A4E6150348786FF8113262 /* DDPerspectiveTransform.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform.modulemap";
+				PRODUCT_MODULE_NAME = DDPerspectiveTransform;
+				PRODUCT_NAME = DDPerspectiveTransform;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4AAA976EB5490B9B3042BA502CBC8F3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 98852D26A4C75D20772F970B9E17B390 /* DDPerspectiveTransform.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DDPerspectiveTransform/DDPerspectiveTransform.modulemap";
+				PRODUCT_MODULE_NAME = DDPerspectiveTransform;
+				PRODUCT_NAME = DDPerspectiveTransform;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4BC7450F9457737EE3E637BA155B56F7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		8410728F2DE40B48ECB75CD36D4AE7BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F738B5B50C89BC817EAEDD4B41CFE17C /* Pods-perspective_dd.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-perspective_dd/Pods-perspective_dd-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-perspective_dd/Pods-perspective_dd.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		8D4DC4D7A9F6DA5C1A550348A393F834 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0922BC23531690F6AD47F31F10757FDC /* Pods-perspective_dd.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-perspective_dd/Pods-perspective_dd-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-perspective_dd/Pods-perspective_dd.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F9FB01F9D8FD11CF978E7915EDE6F4B /* Build configuration list for PBXNativeTarget "Pods-perspective_dd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D4DC4D7A9F6DA5C1A550348A393F834 /* Debug */,
+				8410728F2DE40B48ECB75CD36D4AE7BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BC7450F9457737EE3E637BA155B56F7 /* Debug */,
+				8B5A46FF8D3C1289CDEE3BAFACABCD2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		50C6E74878CA19D413339C0B4E2CAF6D /* Build configuration list for PBXNativeTarget "DDPerspectiveTransform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4AAA976EB5490B9B3042BA502CBC8F3C /* Debug */,
+				1EAD56621123FF762775A3CB7D05AF64 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

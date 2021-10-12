@@ -1,0 +1,6 @@
+framework module Pods_perspective_dd {
+  umbrella header "Pods-perspective_dd-umbrella.h"
+
+  export *
+  module * { export * }
+}
