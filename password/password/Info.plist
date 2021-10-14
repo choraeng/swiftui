@@ -40,7 +40,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSFaceIDUsageDescription</key>
-	<string>$(PRODUCT_NAME) need Touch Id or Face ID permission for app lock</string>
+	<string>This app was designed to support Touch ID. It has been updated for Face ID.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

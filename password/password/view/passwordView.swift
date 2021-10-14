@@ -10,26 +10,50 @@ import Foundation
 import AlertToast
 
 struct passwordView: View {
-//    @AppStorage("isPassword") var isPassword: Bool = UserDefaults.standard.bool(forKey: "isPassword")
+    // view 관련
+    var titles: [String] = ["Enter a passcode", "Verify your new passcode"]
+    
+    // 넘겨 받는
     @Binding var isPassword: Bool
-    @Environment(\.presentationMode) var presentationMode
+    @Binding var isShowingSheet: Bool
+    @Binding var password: String
+    
+    enum PasswordOption {
+        case digit_4
+        case digit_6
+        case string
+    }
     
 
-    @State var passwordOption: Int = 0 // 0 -> 4자리, 1 -> 6자리, 2 -> string
+    @State var passwordOption: PasswordOption = PasswordOption.digit_4
     @State var passwordOpetionSheet: Bool = false
-    
     @State var currentState: Int = 0 // 0 -> start, 1 -> verify
     
-    // 테스트
-    @State var save = false // 저장 유무
-    
     var body: some View {
+        NavigationView {
         VStack {
-            if passwordOption == 0 || passwordOption == 1 {
-                numberView(currentState: $currentState, pwMaxLen: 4 + 2*passwordOption,
-                isPassword: $isPassword)
-            }else {
-                stringView(currentState: $currentState,
+            Text(titles[currentState])
+                .font(.system(size: 21))
+                .padding([.leading, .trailing], 16)
+                .padding(.bottom, 50)
+            
+            switch passwordOption {
+            case .digit_4:
+                numberView(isShowingSheet: $isShowingSheet,
+                           currentState: $currentState,
+                           password: $password,
+                           isPassword: $isPassword,
+                           pwMaxLen: 4)
+            case .digit_6:
+                numberView(isShowingSheet: $isShowingSheet,
+                           currentState: $currentState,
+                           password: $password,
+                           isPassword: $isPassword,
+                           pwMaxLen: 6)
+            case .string:
+                stringView(isShowingSheet: $isShowingSheet,
+                           currentState: $currentState,
+                           password: $password,
                            isPassword: $isPassword)
             }
             
@@ -37,24 +61,24 @@ struct passwordView: View {
             
             if currentState == 0 {
                 Button("Password Option"){
-    //                pwInputType += 1
-    //                pwInputType %= 3
                     passwordOpetionSheet.toggle()
                 }
                 .padding(.bottom, 24)
-                .padding(.trailing, 123)
-                .padding(.leading, 123)
+                .padding([.trailing, .leading], 123)
                 .actionSheet(isPresented: $passwordOpetionSheet) {
                     ActionSheet(title: Text("Password Option"), message: Text("select password type"),
                                 buttons: [
                                     .default(Text("Custom Alphanumeric Code")){
-                                        passwordOption = 2
+                                        passwordOption = .string
+                                        password = ""
                                     },
                                     .default(Text("4-Digit Numeric Code")){
-                                        passwordOption = 0
+                                        passwordOption = .digit_4
+                                        password = ""
                                     },
                                     .default(Text("6-Digit Numeric Code")){
-                                        passwordOption = 1
+                                        passwordOption = .digit_6
+                                        password = ""
                                     },
                                     .cancel(Text("Cancel"))])
                 }
@@ -64,8 +88,8 @@ struct passwordView: View {
             AlertToast(type: .complete(Color.green), title: "Done")
         }, completion: {
             isPassword = true
-            
-            presentationMode.wrappedValue.dismiss()
+            isShowingSheet = false
         })
+    }
     }
 }
