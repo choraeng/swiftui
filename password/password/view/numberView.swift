@@ -23,18 +23,21 @@ struct numberView: View {
     // 패스워드 관련
     var pwMaxLen: Int
 //    @State var pwInput: String = "" // 사용자 입력 패스워드
+    
+//    @FocusState private var passwordIsFocus: Bool -> ios 15부터 ㅜㅜ
 
     var body: some View {
-         
             VStack {
-                pwInputFiled
+                ZStack {
+                    pinDots
+                    backgroundTF
+                }
                 
                 if verifyFail {
                     Text("Passcode does not match")
                         .foregroundColor(Color.red)
                         .font(.system(size: 16))
                 }
-                Spacer()
             }
             .navigationTitle("")
             .toolbar {
@@ -54,15 +57,8 @@ struct numberView: View {
                     }
                 }
             }
-        
     }
     
-    var pwInputFiled: some View {
-        ZStack {
-            pinDots
-            backgroundTF
-        }
-    }
     
     var pinDots: some View {
         HStack {
@@ -87,10 +83,11 @@ struct numberView: View {
     }
     
     var backgroundTF: some View { // text filed
-        SecureField("", text: $input_password)
-            .accentColor(.clear)
-            .foregroundColor(.clear)
-            .keyboardType(.numberPad)
+        CustomTextField(text: $input_password, isFirstResponder: true)
+//            .accentColor(.clear)
+//            .foregroundColor(.clear)
+            .frame(height: 16.0)
+//            .keyboardType(.numberPad)
             .onChange(of: input_password) { newValue in
                 if verifyFail == true {
                     verifyFail.toggle()
@@ -120,5 +117,74 @@ struct numberView: View {
                     }
                 }
             }
+//            .disableAutocorrection(true)
+    }
+}
+
+struct CustomTextField: UIViewRepresentable {
+
+    class Coordinator: NSObject, UITextFieldDelegate {
+
+        @Binding var text: String
+        var didBecomeFirstResponder = false
+
+        init(text: Binding<String>) {
+            _text = text
+        }
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = textField.text ?? ""
+        }
+
+    }
+
+    @Binding var text: String
+    var isFirstResponder: Bool = false
+
+    func makeUIView(context: UIViewRepresentableContext<CustomTextField>) -> UITextField {
+        let textField = CustomUITextField(frame: .zero)
+        textField.delegate = context.coordinator
+        
+        textField.isSecureTextEntry = true
+        textField.isHidden = true
+        textField.keyboardType = .numberPad
+        textField.tintColor = .clear
+        textField.textColor = .clear
+        return textField
+    }
+
+    func makeCoordinator() -> CustomTextField.Coordinator {
+        return Coordinator(text: $text)
+    }
+
+    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomTextField>) {
+        uiView.text = text
+        if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        }
+    }
+    
+    class CustomUITextField: UITextField {
+        override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+            switch action {
+                    case #selector(UIResponderStandardEditActions.paste(_:)),
+                         #selector(UIResponderStandardEditActions.select(_:)),
+                         #selector(UIResponderStandardEditActions.selectAll(_:)),
+                         #selector(UIResponderStandardEditActions.copy(_:)),
+                         #selector(UIResponderStandardEditActions.cut(_:)),
+                        #selector(UIResponderStandardEditActions.delete(_:)) :
+                        
+                            return false
+                    default:
+                        //return true : this is not correct
+                        return super.canPerformAction(action, withSender: sender)
+                    }
+//
+//                if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+//                    return false
+//                }
+//                return super.canPerformAction(action, withSender: sender)
+           }
     }
 }

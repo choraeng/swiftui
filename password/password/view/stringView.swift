@@ -47,13 +47,15 @@ struct stringView: View {
     var body: some View {
             VStack {
                 ZStack(alignment: .trailing) {
-                    SecureField("", text: $input_password, onCommit: {
-                        if currentState == 0{
-                            next_state()
-                        }else{
-                            check_password()
-                        }
-                    })
+                    CustomStringTextField(text: $input_password, isFirstResponder: true)
+//                onCommit: {
+//                        if currentState == 0{
+//                            next_state()
+//                        }else{
+//                            check_password()
+//                        }
+//                    })
+                    .frame(height: 16.0)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(borderColor, lineWidth: 1)
@@ -129,3 +131,70 @@ struct stringView: View {
 //        stringView()
 //    }
 //}
+struct CustomStringTextField: UIViewRepresentable {
+
+    class Coordinator: NSObject, UITextFieldDelegate {
+
+        @Binding var text: String
+        var didBecomeFirstResponder = false
+
+        init(text: Binding<String>) {
+            _text = text
+        }
+
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            text = textField.text ?? ""
+        }
+
+    }
+
+    @Binding var text: String
+    var isFirstResponder: Bool = false
+
+    func makeUIView(context: UIViewRepresentableContext<CustomStringTextField>) -> UITextField {
+        let textField = CustomUITextField(frame: .zero)
+        textField.delegate = context.coordinator
+        
+        textField.isSecureTextEntry = true
+//        textField.isHidden = true
+//        textField.keyboardType = .numberPad
+//        textField.tintColor = .clear
+//        textField.textColor = .clear
+        return textField
+    }
+
+    func makeCoordinator() -> CustomStringTextField.Coordinator {
+        return Coordinator(text: $text)
+    }
+
+    func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomStringTextField>) {
+        uiView.text = text
+        if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
+            uiView.becomeFirstResponder()
+            context.coordinator.didBecomeFirstResponder = true
+        }
+    }
+    
+    class CustomUITextField: UITextField {
+        override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+            switch action {
+                    case #selector(UIResponderStandardEditActions.paste(_:)),
+                         #selector(UIResponderStandardEditActions.select(_:)),
+                         #selector(UIResponderStandardEditActions.selectAll(_:)),
+                         #selector(UIResponderStandardEditActions.copy(_:)),
+                         #selector(UIResponderStandardEditActions.cut(_:)),
+                        #selector(UIResponderStandardEditActions.delete(_:)) :
+                        
+                            return false
+                    default:
+                        //return true : this is not correct
+                        return super.canPerformAction(action, withSender: sender)
+                    }
+//
+//                if action == #selector(UIResponderStandardEditActions.paste(_:)) {
+//                    return false
+//                }
+//                return super.canPerformAction(action, withSender: sender)
+           }
+    }
+}

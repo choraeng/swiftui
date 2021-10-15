@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA071B81270F00DF00FBA69F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DA071B80270F00DF00FBA69F /* AlertToast */; };
+		DA0E183B27182CE4000B53FB /* customTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183A27182CE4000B53FB /* customTextField.swift */; };
 		DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */; };
 		DA1A35042705666800146994 /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A35032705666800146994 /* AppLockView.swift */; };
 		DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED10F2700B2C500ACACD6 /* passwordApp.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA0E183A27182CE4000B53FB /* customTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTextField.swift; sourceTree = "<group>"; };
 		DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		DA1A35032705666800146994 /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
 		DA2ED10C2700B2C500ACACD6 /* password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = password.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				DABC0170270DDED6004B61EF /* numberView.swift */,
 				DABC0172270DDEE4004B61EF /* stringView.swift */,
 				DABC016D270830DB004B61EF /* passwordView.swift */,
+				DA0E183A27182CE4000B53FB /* customTextField.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 			files = (
 				DA1A35042705666800146994 /* AppLockView.swift in Sources */,
 				DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */,
+				DA0E183B27182CE4000B53FB /* customTextField.swift in Sources */,
 				DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */,
 				DABC016E270830DB004B61EF /* passwordView.swift in Sources */,
 				DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */,
