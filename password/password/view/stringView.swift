@@ -28,7 +28,7 @@ struct stringView: View {
             isPassword = true
             password = input_password
         }else {
-            borderColor = Color.red
+            borderColor = GlobalValue.false_color
             verifyFail = true
             
             let impactMed = UIImpactFeedbackGenerator(style: .heavy)
@@ -86,7 +86,7 @@ struct stringView: View {
                 }
                 if verifyFail {
                     Text("Passcode does not match")
-                        .foregroundColor(Color.red)
+                        .foregroundColor(GlobalValue.false_color)
                         .font(.system(size: 16))
                         .padding(.leading, 35)
                         .frame(maxWidth: .infinity, alignment: .leading)

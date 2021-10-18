@@ -31,6 +31,9 @@ struct ContentView: View {
                          isShowingSheet: $isShowingSheet,
                          password: $password)
         }
+        Button ("re-set Password") {
+            
+        }
     }
     
     func didDismiss() {

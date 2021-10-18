@@ -1,17 +1,17 @@
 //
-//  passwordView.swift
+//  resetpasswordView.swift
 //  password
 //
-//  Created by 조영훈 on 2021/10/02.
+//  Created by 조영훈 on 2021/10/18.
 //
 
 import SwiftUI
 import Foundation
 import AlertToast
 
-struct passwordView: View {
+struct resetpasswordView: View {
     // view 관련
-    var titles: [String] = ["Enter a passcode", "Verify your new passcode"]
+    var titles: [String] = ["Enter old passcode", "Verify your new passcode"]
     
     // 넘겨 받는
     @Binding var isPassword: Bool

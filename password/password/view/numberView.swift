@@ -35,7 +35,7 @@ struct numberView: View {
                 
                 if verifyFail {
                     Text("Passcode does not match")
-                        .foregroundColor(Color.red)
+                        .foregroundColor(GlobalValue.false_color)
                         .font(.system(size: 16))
                 }
             }
@@ -43,10 +43,12 @@ struct numberView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     if currentState == 0 {
-                        Button("Cancel"){
+                        Button(action: {
                         isShowingSheet = false
 //                            isCancel = true
-                        }
+                        }, label: {
+                            Text("Cancel")
+                        })
                     }else if currentState == 1{
                         Button("Cancel"){
                             currentState = 0
@@ -109,7 +111,7 @@ struct numberView: View {
                             password = input_password
                         }else {
                             verifyFail = true
-                            circleColor = Color.red
+                            circleColor = GlobalValue.false_color
                             
                             let impactMed = UIImpactFeedbackGenerator(style: .heavy)
                             impactMed.impactOccurred()
