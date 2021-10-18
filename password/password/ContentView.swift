@@ -27,7 +27,7 @@ struct ContentView: View {
 //            passwordView(nowPosition: $nowPosition)
         }
         .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
-            passwordView(isPassword: $isPassword,
+            SetPasswordView(isPassword: $isPassword,
                          isShowingSheet: $isShowingSheet,
                          password: $password)
         }

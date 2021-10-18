@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		DA071B81270F00DF00FBA69F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DA071B80270F00DF00FBA69F /* AlertToast */; };
-		DA0E183B27182CE4000B53FB /* customTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183A27182CE4000B53FB /* customTextField.swift */; };
 		DA0E183D271D78CD000B53FB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183C271D78CD000B53FB /* Setting.swift */; };
-		DA0E183F271D80E1000B53FB /* resetpasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183E271D80E1000B53FB /* resetpasswordView.swift */; };
+		DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */; };
 		DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */; };
 		DA1A35042705666800146994 /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A35032705666800146994 /* AppLockView.swift */; };
 		DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED10F2700B2C500ACACD6 /* passwordApp.swift */; };
@@ -19,15 +18,14 @@
 		DA2ED1172700B2C700ACACD6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED1162700B2C700ACACD6 /* Preview Assets.xcassets */; };
 		DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED1182700B2C700ACACD6 /* Persistence.swift */; };
 		DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED11A2700B2C700ACACD6 /* password.xcdatamodeld */; };
-		DABC016E270830DB004B61EF /* passwordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC016D270830DB004B61EF /* passwordView.swift */; };
-		DABC0171270DDED6004B61EF /* numberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0170270DDED6004B61EF /* numberView.swift */; };
-		DABC0173270DDEE4004B61EF /* stringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0172270DDEE4004B61EF /* stringView.swift */; };
+		DABC016E270830DB004B61EF /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC016D270830DB004B61EF /* SetPasswordView.swift */; };
+		DABC0171270DDED6004B61EF /* PasswordNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0170270DDED6004B61EF /* PasswordNumberView.swift */; };
+		DABC0173270DDEE4004B61EF /* PasswordStringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0172270DDEE4004B61EF /* PasswordStringView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA0E183A27182CE4000B53FB /* customTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customTextField.swift; sourceTree = "<group>"; };
 		DA0E183C271D78CD000B53FB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
-		DA0E183E271D80E1000B53FB /* resetpasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = resetpasswordView.swift; sourceTree = "<group>"; };
+		DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		DA1A35032705666800146994 /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
 		DA2ED10C2700B2C500ACACD6 /* password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = password.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,9 +36,9 @@
 		DA2ED1182700B2C700ACACD6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA2ED11B2700B2C700ACACD6 /* password.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = password.xcdatamodel; sourceTree = "<group>"; };
 		DA2ED11D2700B2C700ACACD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DABC016D270830DB004B61EF /* passwordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordView.swift; sourceTree = "<group>"; };
-		DABC0170270DDED6004B61EF /* numberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = numberView.swift; sourceTree = "<group>"; };
-		DABC0172270DDEE4004B61EF /* stringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stringView.swift; sourceTree = "<group>"; };
+		DABC016D270830DB004B61EF /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
+		DABC0170270DDED6004B61EF /* PasswordNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordNumberView.swift; sourceTree = "<group>"; };
+		DABC0172270DDEE4004B61EF /* PasswordStringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordStringView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +58,7 @@
 			children = (
 				DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */,
 				DA0E183C271D78CD000B53FB /* Setting.swift */,
+				DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -108,11 +107,9 @@
 			isa = PBXGroup;
 			children = (
 				DA1A35032705666800146994 /* AppLockView.swift */,
-				DABC0170270DDED6004B61EF /* numberView.swift */,
-				DABC0172270DDEE4004B61EF /* stringView.swift */,
-				DABC016D270830DB004B61EF /* passwordView.swift */,
-				DA0E183A27182CE4000B53FB /* customTextField.swift */,
-				DA0E183E271D80E1000B53FB /* resetpasswordView.swift */,
+				DABC0170270DDED6004B61EF /* PasswordNumberView.swift */,
+				DABC0172270DDEE4004B61EF /* PasswordStringView.swift */,
+				DABC016D270830DB004B61EF /* SetPasswordView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -194,16 +191,15 @@
 			files = (
 				DA1A35042705666800146994 /* AppLockView.swift in Sources */,
 				DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */,
-				DA0E183B27182CE4000B53FB /* customTextField.swift in Sources */,
 				DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */,
-				DABC016E270830DB004B61EF /* passwordView.swift in Sources */,
+				DABC016E270830DB004B61EF /* SetPasswordView.swift in Sources */,
 				DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */,
 				DA0E183D271D78CD000B53FB /* Setting.swift in Sources */,
 				DA2ED1122700B2C500ACACD6 /* ContentView.swift in Sources */,
-				DABC0173270DDEE4004B61EF /* stringView.swift in Sources */,
+				DABC0173270DDEE4004B61EF /* PasswordStringView.swift in Sources */,
 				DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */,
-				DABC0171270DDED6004B61EF /* numberView.swift in Sources */,
-				DA0E183F271D80E1000B53FB /* resetpasswordView.swift in Sources */,
+				DABC0171270DDED6004B61EF /* PasswordNumberView.swift in Sources */,
+				DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

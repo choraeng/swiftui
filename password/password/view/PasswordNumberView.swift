@@ -7,58 +7,39 @@
 
 import SwiftUI
 
-struct numberView: View {
+struct PasswordNumberView: View {
     // 상태 관련
     @Binding var isShowingSheet: Bool
+    
+    
     @Binding var currentState: Int // 0 -> start, 1 -> verify
     @Binding var password: String
     @Binding var isPassword: Bool
     
-    @State var verifyFail: Bool = false
-    
     @State var first_password: String = ""
     @State var input_password: String = ""
-    @State var circleColor: Color = Color.black
+    @State var verifyFail: Bool = false
     
+    @State var circleColor: Color = Color.black
+    @State var pwmodel: PasswordModel
     // 패스워드 관련
     var pwMaxLen: Int
-//    @State var pwInput: String = "" // 사용자 입력 패스워드
     
 //    @FocusState private var passwordIsFocus: Bool -> ios 15부터 ㅜㅜ
 
     var body: some View {
-            VStack {
-                ZStack {
-                    pinDots
-                    backgroundTF
-                }
-                
-                if verifyFail {
-                    Text("Passcode does not match")
-                        .foregroundColor(GlobalValue.false_color)
-                        .font(.system(size: 16))
-                }
+        VStack {
+            ZStack {
+                pinDots
+                backgroundTF
             }
-            .navigationTitle("")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    if currentState == 0 {
-                        Button(action: {
-                        isShowingSheet = false
-//                            isCancel = true
-                        }, label: {
-                            Text("Cancel")
-                        })
-                    }else if currentState == 1{
-                        Button("Cancel"){
-                            currentState = 0
-                            input_password = ""
-                            circleColor = Color.black
-                            verifyFail = false
-                        }
-                    }
-                }
+            
+            if verifyFail {
+                Text("Passcode does not match")
+                    .foregroundColor(GlobalValue.false_color)
+                    .font(.system(size: 16))
             }
+        }
     }
     
     
