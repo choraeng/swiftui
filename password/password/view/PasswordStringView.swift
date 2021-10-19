@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct PasswordStringView: View {
-    // 상태 관련
-    @Binding var isShowingSheet: Bool
-    @Binding var currentState: Int // 0 -> start, 1 -> verify
-    @Binding var password: String
-    @Binding var isPassword: Bool
-    
-    @State var verifyFail: Bool = false
-    
-    @State var first_password: String = ""
-    @State var input_password: String = ""
+    @ObservedObject var pwmodel: PasswordModel
+
     @State var borderColor: Color = Color.gray
+    
+    // 패스워드 관련
+    var pwMaxLen: Int
     
     // 패스워드 관련
     //    var pwMaxLen: Int

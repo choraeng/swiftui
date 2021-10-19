@@ -10,6 +10,7 @@
 		DA071B81270F00DF00FBA69F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DA071B80270F00DF00FBA69F /* AlertToast */; };
 		DA0E183D271D78CD000B53FB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183C271D78CD000B53FB /* Setting.swift */; };
 		DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */; };
+		DA0E63F4271DA48F003682D5 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63F3271DA48F003682D5 /* KeyboardView.swift */; };
 		DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */; };
 		DA1A35042705666800146994 /* AppLockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A35032705666800146994 /* AppLockView.swift */; };
 		DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED10F2700B2C500ACACD6 /* passwordApp.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		DA0E183C271D78CD000B53FB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
+		DA0E63F3271DA48F003682D5 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
 		DA1A35032705666800146994 /* AppLockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockView.swift; sourceTree = "<group>"; };
 		DA2ED10C2700B2C500ACACD6 /* password.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = password.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +112,7 @@
 				DABC0170270DDED6004B61EF /* PasswordNumberView.swift */,
 				DABC0172270DDEE4004B61EF /* PasswordStringView.swift */,
 				DABC016D270830DB004B61EF /* SetPasswordView.swift */,
+				DA0E63F3271DA48F003682D5 /* KeyboardView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				DA2ED1122700B2C500ACACD6 /* ContentView.swift in Sources */,
 				DABC0173270DDEE4004B61EF /* PasswordStringView.swift in Sources */,
 				DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */,
+				DA0E63F4271DA48F003682D5 /* KeyboardView.swift in Sources */,
 				DABC0171270DDED6004B61EF /* PasswordNumberView.swift in Sources */,
 				DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */,
 			);

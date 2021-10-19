@@ -14,4 +14,13 @@ class PasswordModel: ObservableObject {
     
     @Published var done: Bool = false
     @Published var Sheet: Bool = false
+    @Published var fail: Bool = false
+    
+    func reset() {
+        state = 0
+        password = ""
+        done = false
+        Sheet = false
+        fail = false
+    }
 }

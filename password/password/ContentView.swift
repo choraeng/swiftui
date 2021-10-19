@@ -21,6 +21,7 @@ struct ContentView: View {
     @State var password: String = ""
     
     var body: some View {
+//        KeyboardView()
         Button ("set Password") {
             isPassword = false
             isShowingSheet.toggle()
@@ -28,12 +29,13 @@ struct ContentView: View {
         }
         .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
             SetPasswordView(isPassword: $isPassword,
-                         isShowingSheet: $isShowingSheet,
-                         password: $password)
+                         isShowingSheet: $isShowingSheet)
         }
+        .padding()
         Button ("re-set Password") {
-            
+
         }
+        .padding()
     }
     
     func didDismiss() {

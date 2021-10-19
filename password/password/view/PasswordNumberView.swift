@@ -8,20 +8,10 @@
 import SwiftUI
 
 struct PasswordNumberView: View {
-    // 상태 관련
-    @Binding var isShowingSheet: Bool
-    
-    
-    @Binding var currentState: Int // 0 -> start, 1 -> verify
-    @Binding var password: String
-    @Binding var isPassword: Bool
-    
-    @State var first_password: String = ""
-    @State var input_password: String = ""
-    @State var verifyFail: Bool = false
-    
+    @ObservedObject var pwmodel: PasswordModel
+
     @State var circleColor: Color = Color.black
-    @State var pwmodel: PasswordModel
+    
     // 패스워드 관련
     var pwMaxLen: Int
     
@@ -34,7 +24,7 @@ struct PasswordNumberView: View {
                 backgroundTF
             }
             
-            if verifyFail {
+            if pwmodel.fail {
                 Text("Passcode does not match")
                     .foregroundColor(GlobalValue.false_color)
                     .font(.system(size: 16))
@@ -45,15 +35,15 @@ struct PasswordNumberView: View {
     
     var pinDots: some View {
         HStack {
-            ForEach(Array(input_password), id: \.self) {_ in
+            ForEach(Array(pwmodel.password), id: \.self) {_ in
                 Image(systemName: "circle.fill")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 16.0, height: 16.0)
                     .foregroundColor(circleColor)
             }
-            if input_password.count <= pwMaxLen {
-                ForEach(0..<pwMaxLen-input_password.count, id: \.self) {_ in
+            if pwmodel.password.count <= pwMaxLen {
+                ForEach(0..<pwMaxLen-pwmodel.password.count, id: \.self) {_ in
                     Image(systemName: "circle")
                         .resizable()
                         .scaledToFit()
@@ -66,41 +56,20 @@ struct PasswordNumberView: View {
     }
     
     var backgroundTF: some View { // text filed
-        CustomTextField(text: $input_password, isFirstResponder: true)
+        CustomTextField(text: $pwmodel.password, isFirstResponder: true)
 //            .accentColor(.clear)
 //            .foregroundColor(.clear)
             .frame(height: 16.0)
 //            .keyboardType(.numberPad)
-            .onChange(of: input_password) { newValue in
-                if verifyFail == true {
-                    verifyFail.toggle()
+            .onChange(of: pwmodel.fail) { newValue in
+                if newValue {
+                    circleColor = GlobalValue.false_color
+                }else {
                     circleColor = Color.black
-                }
-                
-                if input_password.count > pwMaxLen{
-                    input_password = ""
-                }
-                
-                if input_password.count == pwMaxLen {
-                    if currentState == 0{
-                        first_password = input_password
-                        input_password = ""
-                        currentState = 1
-                    }else {
-                        if first_password == input_password {
-                            isPassword = true
-                            password = input_password
-                        }else {
-                            verifyFail = true
-                            circleColor = GlobalValue.false_color
-                            
-                            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                            impactMed.impactOccurred()
-                        }
-                    }
+//                    let temp: String =
+                    pwmodel.password = String(pwmodel.password.last!)
                 }
             }
-//            .disableAutocorrection(true)
     }
 }
 
