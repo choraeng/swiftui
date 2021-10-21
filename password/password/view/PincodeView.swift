@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PasswordNumberView: View {
+struct PincodeView: View {
     @ObservedObject var pwmodel: PasswordModel
 
     @State var circleColor: Color = Color.black

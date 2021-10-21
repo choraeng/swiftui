@@ -7,79 +7,55 @@
 
 import SwiftUI
 
-struct PasswordStringView: View {
+struct StringView: View {
     @ObservedObject var pwmodel: PasswordModel
 
     @State var borderColor: Color = Color.gray
+    @Binding var commit: Bool
     
     // 패스워드 관련
     var pwMaxLen: Int
-    
-    // 패스워드 관련
-    //    var pwMaxLen: Int
-    
-    func check_password() {
-        if first_password == input_password {
-            isPassword = true
-            password = input_password
-        }else {
-            borderColor = GlobalValue.false_color
-            verifyFail = true
-            
-            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-            impactMed.impactOccurred()
-        }
-        
-    }
-    
-    func next_state() {
-        first_password = input_password
-        input_password = ""
-        currentState = 1
-        borderColor = Color.gray
-    }
-    
+
     var body: some View {
         VStack {
             ZStack(alignment: .trailing) {
-                CustomStringTextField(text: $input_password, isFirstResponder: true)
-                //                onCommit: {
-                //                        if currentState == 0{
-                //                            next_state()
-                //                        }else{
-                //                            check_password()
-                //                        }
-                //                    })
+                CustomStringTextField(text: $pwmodel.password, isFirstResponder: true, commit: $commit)
                     .frame(height: 16.0)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(borderColor, lineWidth: 1)
                     )
                     .padding()
-                    .onChange(of: input_password) { newValue in
-                        if verifyFail {
-                            verifyFail = false
+                    .onChange(of: pwmodel.fail) { newValue in
+                        if newValue {
+                            borderColor = GlobalValue.false_color
                         }
-                        if input_password.count == 0 {
+                    }
+                    .onChange(of: pwmodel.password) { newValue in
+                        if pwmodel.fail == true {
+                            pwmodel.fail.toggle()
+                        }
+                        
+                        if newValue.count == 0 {
                             borderColor = Color.gray
-                        }else {
+                        } else {
                             borderColor = Color.blue
                         }
                     }
                 
-                if input_password != "" {
+                if pwmodel.password != "" {
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.medium)
                         .foregroundColor(Color(.systemGray3))
                         .padding(.trailing, 35)
                         .onTapGesture {
                             withAnimation {
-                                input_password = ""
+                                pwmodel.password = ""
                             }
                         }
                 }
             }
-            if verifyFail {
+            if pwmodel.fail {
                 Text("Passcode does not match")
                     .foregroundColor(GlobalValue.false_color)
                     .font(.system(size: 16))
@@ -88,78 +64,48 @@ struct PasswordStringView: View {
             }
             Spacer()
         }
-        .navigationTitle("")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                if currentState == 0 {
-                    Button("Cancel"){
-                        isShowingSheet = false
-                    }
-                }else if currentState == 1{
-                    Button("Cancel"){
-                        currentState = 0
-                        input_password = ""
-                        borderColor = Color.gray
-                        verifyFail = false
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if currentState == 0 {
-                    Button("Next"){
-                        next_state()
-                    }
-                    .disabled(input_password.count == 0)
-                }else if currentState == 1{
-                    Button("Done"){
-                        check_password()
-                    }
-                    .disabled(input_password.count == 0)
-                }
-            }
-        }
     }
 }
-//
-//struct stringView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        stringView()
-//    }
-//}
+
 struct CustomStringTextField: UIViewRepresentable {
     
     class Coordinator: NSObject, UITextFieldDelegate {
         
         @Binding var text: String
+        @Binding var commit: Bool
         var didBecomeFirstResponder = false
         
-        init(text: Binding<String>) {
+        init(text: Binding<String>, commit: Binding<Bool>) {
             _text = text
+            _commit = commit
         }
+
         
         func textFieldDidChangeSelection(_ textField: UITextField) {
             text = textField.text ?? ""
         }
         
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            commit.toggle()
+            return true
+          }
+        
     }
     
     @Binding var text: String
     var isFirstResponder: Bool = false
+    @Binding var commit: Bool
     
     func makeUIView(context: UIViewRepresentableContext<CustomStringTextField>) -> UITextField {
         let textField = CustomUITextField(frame: .zero)
         textField.delegate = context.coordinator
         
         textField.isSecureTextEntry = true
-        //        textField.isHidden = true
-        //        textField.keyboardType = .numberPad
-        //        textField.tintColor = .clear
-        //        textField.textColor = .clear
         return textField
     }
     
     func makeCoordinator() -> CustomStringTextField.Coordinator {
-        return Coordinator(text: $text)
+        return Coordinator(text: $text, commit: $commit)
     }
     
     func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<CustomStringTextField>) {
@@ -182,14 +128,8 @@ struct CustomStringTextField: UIViewRepresentable {
                 
                 return false
             default:
-                //return true : this is not correct
                 return super.canPerformAction(action, withSender: sender)
             }
-            //
-            //                if action == #selector(UIResponderStandardEditActions.paste(_:)) {
-            //                    return false
-            //                }
-            //                return super.canPerformAction(action, withSender: sender)
         }
     }
 }

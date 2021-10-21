@@ -28,9 +28,12 @@ struct SetPasswordView: View {
     
     @State var passwordOption: PasswordOption = PasswordOption.digit_4
     @State var passwordOpetionSheet: Bool = false
+    
+    @State var isEnter: Bool = false
 //    @State var currentState: Int = 0 // 0 -> start, 1 -> verify
     
     @ObservedObject var pwmodel: PasswordModel = PasswordModel()
+    
     
     var body: some View {
         NavigationView {
@@ -42,59 +45,28 @@ struct SetPasswordView: View {
                 
                 switch passwordOption {
                 case .digit_4:
-                    PasswordNumberView(pwmodel:pwmodel, pwMaxLen:4)
-                        .onChange(of: pwmodel.password) { _ in
-                                if pwmodel.fail == true {
-                                    pwmodel.fail.toggle()
-                                }
-                
-                                if pwmodel.password.count == 4 {
-                                    if pwmodel.state == 0{
-                                        temp_password = pwmodel.password
-                                        pwmodel.password = ""
-                                        pwmodel.state = 1
-                                    }else {
-                                        if temp_password == pwmodel.password {
-                                            pwmodel.done = true
-                                        }else {
-                                            pwmodel.fail = true
-                
-                                            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                            impactMed.impactOccurred()
-                                        }
-                                    }
-                                }
-                            }
+                    NumberView(_len: 4, pwmodel: pwmodel)
                 case .digit_6:
-                    PasswordNumberView(pwmodel:pwmodel, pwMaxLen:6)
-                        .onChange(of: pwmodel.password) { _ in
-                                if pwmodel.fail == true {
-                                    pwmodel.fail.toggle()
-                                }
-                
-                                if pwmodel.password.count == 6 {
-                                    if pwmodel.state == 0{
-                                        temp_password = pwmodel.password
-                                        pwmodel.password = ""
-                                        pwmodel.state = 1
-                                    }else {
-                                        if temp_password == pwmodel.password {
-                                            pwmodel.done = true
-                                        }else {
-                                            pwmodel.fail = true
-                
-                                            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                            impactMed.impactOccurred()
-                                        }
-                                    }
+                    NumberView(_len: 6, pwmodel: pwmodel)
+                case .string:
+                    StringView(pwmodel:pwmodel, commit: $isEnter, pwMaxLen:20)
+                        .onChange(of: isEnter) { newValue in
+                            if pwmodel.state == 0 {
+                                temp_password = pwmodel.password
+                                pwmodel.password = ""
+                                pwmodel.state = 1
+                            } else {
+                                if temp_password == pwmodel.password {
+                                    pwmodel.done = true
+                                }else {
+                                    pwmodel.fail = true
+                                    let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+                                    impactMed.impactOccurred()
                                 }
                             }
-                case .string:
-                    Text("asdf")
-//                    PasswordStringView(isShowingSheet: $isShowingSheet,
-//                               currentState: $currentState,
-//                               password: $password,
-//                               isPassword: $isPassword)
+                        }
+//                        .onChange(of: pwmodel.password) { newValue in
+//                        }
                 }
                 
                 Spacer()
@@ -135,9 +107,59 @@ struct SetPasswordView: View {
                 isShowingSheet = false
                 isPassword = true
             })
+            .accentColor(GlobalValue.navigation_color)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if passwordOption == .string {
+                        if pwmodel.state == 0 {
+                            Button("Cancel") {
+                                isShowingSheet = false
+                            }
+                        }else {
+                            Button("Cancel") {
+                                pwmodel.state = 0
+                                pwmodel.password = ""
+                            }
+                        }
+                    }
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    if passwordOption == .digit_4 || passwordOption == .digit_6 {
+                        if pwmodel.state == 0 {
+                            Button("Cancel") {
+                                isShowingSheet = false
+                            }
+                        }else {
+                            Button("Cancel") {
+                                pwmodel.state = 0
+                                pwmodel.password = ""
+                            }
+                        }
+                    } else {
+                        if pwmodel.state == 0 {
+                            Button("Next") {
+                                temp_password = pwmodel.password
+                                pwmodel.password = ""
+                                pwmodel.state = 1
+                            }
+                            .disabled(pwmodel.password.count == 0)
+                        }else {
+                            Button("Done") {
+                                if temp_password == pwmodel.password {
+                                    pwmodel.done = true
+                                }else {
+                                    pwmodel.fail = true
+                                    let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+                                    impactMed.impactOccurred()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
-        .accentColor(GlobalValue.navigation_color)
         
-        //        .blur(radius: 0.5)
     }
 }
