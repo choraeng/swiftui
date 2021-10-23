@@ -22,9 +22,12 @@ struct keyView: View {
         Button(action: {
             password += key
         }) {
-                Color.white
-                .overlay(Rectangle().fill(Color.white))
-                .overlay(Text(key).font(.system(size: 25)).accentColor(Color.black))
+                Color.clear
+                    .overlay(Rectangle()
+                            .fill(.clear))
+                    .overlay(Text(key)
+                            .font(.system(size: 25))
+                            .accentColor(.primary))
                 }
         .frame(height: 48)
     }
@@ -46,6 +49,8 @@ struct keyrowView: View {
 }
 
 struct KeyboardView: View {
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
+    
     @Binding var password: String
     @State var keys: [String] = []
     
@@ -68,9 +73,12 @@ struct KeyboardView: View {
             }
             HStack{
                 Button(action: { keys.shuffle() }) {
-                        Color.white
-                        .overlay(Rectangle().fill(Color.white))
-                        .overlay(Image("reload").accentColor(Color.black))
+                    Color.clear
+                        .overlay(Rectangle()
+                                    .fill(.clear))
+                        .overlay(Image("reload")
+                                    .renderingMode(.template)
+                                    .accentColor(.primary))
                         }
                 .frame(height: 48)
                 
@@ -85,9 +93,12 @@ struct KeyboardView: View {
                         let _ = password.popLast()
                     }
                 }) {
-                        Color.white
-                        .overlay(Rectangle().fill(Color.white))
-                        .overlay(Image("backspace.left").accentColor(Color.black))
+                    Color.clear
+                        .overlay(Rectangle()
+                                    .fill(.clear))
+                        .overlay(Image("backspace.left")
+                                    .renderingMode(.template)
+                                    .accentColor(.primary))
                         }
                 .frame(height: 48)
                 

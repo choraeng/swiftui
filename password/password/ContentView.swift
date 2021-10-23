@@ -13,16 +13,13 @@ struct ContentView: View {
     @AppStorage("isPassword") var isPassword: Bool = UserDefaults.standard.bool(forKey: "isPassword")
     @AppStorage("AppPassword") var AppPassword = UserDefaults.standard.string(forKey: "password") ?? "" // 저장된 패스워드
     
+    @Environment(\.colorScheme) var colorScheme: ColorScheme
     
     @EnvironmentObject var appLockVM: AppLockViewModel
     
     @State private var isShowingSheet = false
     @State var ispwInputTypeDisable = false // 패스워드 입력 설정 액션시트
     @State var password: String = ""
-    
-    init() {
-        window
-    }
     
     var body: some View {
 //        KeyboardView()
