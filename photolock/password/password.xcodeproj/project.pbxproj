@@ -20,6 +20,7 @@
 		DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED1182700B2C700ACACD6 /* Persistence.swift */; };
 		DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED11A2700B2C700ACACD6 /* password.xcdatamodeld */; };
 		DAA2984927218F2500FFCB0D /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2984827218F2500FFCB0D /* NumberView.swift */; };
+		DAA2984B27240E0C00FFCB0D /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */; };
 		DABC016E270830DB004B61EF /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC016D270830DB004B61EF /* SetPasswordView.swift */; };
 		DABC0171270DDED6004B61EF /* PincodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0170270DDED6004B61EF /* PincodeView.swift */; };
 		DABC0173270DDEE4004B61EF /* StringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC0172270DDEE4004B61EF /* StringView.swift */; };
@@ -40,6 +41,7 @@
 		DA2ED11B2700B2C700ACACD6 /* password.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = password.xcdatamodel; sourceTree = "<group>"; };
 		DA2ED11D2700B2C700ACACD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAA2984827218F2500FFCB0D /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
+		DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
 		DABC016D270830DB004B61EF /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
 		DABC0170270DDED6004B61EF /* PincodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PincodeView.swift; sourceTree = "<group>"; };
 		DABC0172270DDEE4004B61EF /* StringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */,
 				DA0E183C271D78CD000B53FB /* Setting.swift */,
 				DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */,
+				DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -107,12 +110,20 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		DAA2984C2724157C00FFCB0D /* password view */ = {
+			isa = PBXGroup;
+			children = (
+				DABC0172270DDEE4004B61EF /* StringView.swift */,
+				DABC0170270DDED6004B61EF /* PincodeView.swift */,
+			);
+			path = "password view";
+			sourceTree = "<group>";
+		};
 		DABC016F270DDE0E004B61EF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				DAA2984C2724157C00FFCB0D /* password view */,
 				DA1A35032705666800146994 /* AppLockView.swift */,
-				DABC0170270DDED6004B61EF /* PincodeView.swift */,
-				DABC0172270DDEE4004B61EF /* StringView.swift */,
 				DABC016D270830DB004B61EF /* SetPasswordView.swift */,
 				DAA2984827218F2500FFCB0D /* NumberView.swift */,
 				DA0E63F3271DA48F003682D5 /* KeyboardView.swift */,
@@ -206,6 +217,7 @@
 				DABC0173270DDEE4004B61EF /* StringView.swift in Sources */,
 				DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */,
 				DA0E63F4271DA48F003682D5 /* KeyboardView.swift in Sources */,
+				DAA2984B27240E0C00FFCB0D /* AppStateModel.swift in Sources */,
 				DABC0171270DDED6004B61EF /* PincodeView.swift in Sources */,
 				DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */,
 			);

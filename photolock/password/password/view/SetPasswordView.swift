@@ -9,6 +9,12 @@ import SwiftUI
 import Foundation
 import AlertToast
 
+enum PasswordOption {
+    case digit_4
+    case digit_6
+    case string
+}
+
 struct SetPasswordView: View {
     // view 관련
     var titles: [String] = ["Enter a passcode", "Verify your new passcode"]
@@ -18,13 +24,6 @@ struct SetPasswordView: View {
     @Binding var isShowingSheet: Bool
     
     @State var temp_password: String = ""
-    
-    enum PasswordOption {
-        case digit_4
-        case digit_6
-        case string
-    }
-    
     
     @State var passwordOption: PasswordOption = PasswordOption.digit_4
     @State var passwordOpetionSheet: Bool = false
