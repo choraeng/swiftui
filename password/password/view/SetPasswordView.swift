@@ -99,6 +99,9 @@ struct SetPasswordView: View {
                                         .cancel(Text("Cancel"))])
                     }
                 }
+                if passwordOption != .string {
+                    KeyboardView(password: $pwmodel.password)
+                }
             }
             .toast(isPresenting: $pwmodel.done, duration: 1.0, tapToDismiss: true, alert: {
                 AlertToast(type: .complete(Color.green), title: "Done")
@@ -126,7 +129,7 @@ struct SetPasswordView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    if passwordOption == .digit_4 || passwordOption == .digit_6 {
+                    if passwordOption != .string {
                         if pwmodel.state == 0 {
                             Button("Cancel") {
                                 isShowingSheet = false

@@ -7,38 +7,94 @@
 
 import SwiftUI
 
-struct KeyboardView: View {
-    @State var password = "asdfasdf"
-    @State var key: [String] = []
-    
-    init() {
-        for i in 0..<10 {
-            key.append("\(i)")
-            print(i)
-        }
-        print(key)
-    }
+//class KeyboardButton {
+//    @State var test: String
+//    @State var key: String = ""
+//
+//
+//}
+
+struct keyView: View {
+    var key: String
+    @Binding var password: String
     
     var body: some View {
-        VStack{
-            Text("asdfasdf")
-                .padding()
-            Text("asdfasdf")
-                .padding()
-            
-//            ForEach(0..<3) { i in
-//                HStack{
-//                    ForEach(0..<3){ j in
-//                        Text(key[i*3+j])
-//                    }
-//                }
-//            }
+        Button(action: {
+            password += key
+        }) {
+                Color.white
+                .overlay(Rectangle().fill(Color.white))
+                .overlay(Text(key).font(.system(size: 25)).accentColor(Color.black))
+                }
+        .frame(height: 48)
+    }
+}
+
+struct keyrowView: View {
+    var keys: [String]
+    @Binding var password: String
+    
+    var body: some View {
+        HStack {
+            keyView(key: keys[0], password: $password)
+            Spacer()
+            keyView(key: keys[1], password: $password)
+            Spacer()
+            keyView(key: keys[2], password: $password)
         }
     }
 }
 
-struct KeyboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        KeyboardView()
+struct KeyboardView: View {
+    @Binding var password: String
+    @State var keys: [String] = []
+    
+    init(password: Binding<String>) {
+        var temp_keys = [String]()
+        for i in 0..<10 {
+            temp_keys.append("\(i)")
+        }
+        temp_keys.shuffle()
+        
+        _keys = State(initialValue: temp_keys)
+        
+        _password = password
+    }
+    
+    var body: some View {
+        VStack{
+            ForEach(0..<3) { i in
+                keyrowView(keys: Array(keys[(i*3)...(i*3+3)]), password: $password)
+            }
+            HStack{
+                Button(action: { keys.shuffle() }) {
+                        Color.white
+                        .overlay(Rectangle().fill(Color.white))
+                        .overlay(Image("reload").accentColor(Color.black))
+                        }
+                .frame(height: 48)
+                
+                Spacer()
+
+                keyView(key: keys.last ?? "", password: $password)
+                
+                Spacer()
+                
+                Button(action: {
+                    if !password.isEmpty {
+                        let _ = password.popLast()
+                    }
+                }) {
+                        Color.white
+                        .overlay(Rectangle().fill(Color.white))
+                        .overlay(Image("backspace.left").accentColor(Color.black))
+                        }
+                .frame(height: 48)
+                
+
+            }
+        }
+        .padding([.leading, .trailing], 25)
+        .padding(.bottom, 80)
     }
 }

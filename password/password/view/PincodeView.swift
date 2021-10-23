@@ -21,7 +21,7 @@ struct PincodeView: View {
         VStack {
             ZStack {
                 pinDots
-                backgroundTF
+//                backgroundTF
             }
             
             if pwmodel.fail {

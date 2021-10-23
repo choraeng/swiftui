@@ -20,6 +20,10 @@ struct ContentView: View {
     @State var ispwInputTypeDisable = false // 패스워드 입력 설정 액션시트
     @State var password: String = ""
     
+    init() {
+        window
+    }
+    
     var body: some View {
 //        KeyboardView()
         Button ("set Password") {
