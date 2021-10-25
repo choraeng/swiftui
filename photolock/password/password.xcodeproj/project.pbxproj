@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA071B81270F00DF00FBA69F /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = DA071B80270F00DF00FBA69F /* AlertToast */; };
-		DA0E183D271D78CD000B53FB /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183C271D78CD000B53FB /* Setting.swift */; };
+		DA0E183D271D78CD000B53FB /* GlobalValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E183C271D78CD000B53FB /* GlobalValue.swift */; };
 		DA0E63F2271D9ACD003682D5 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */; };
 		DA0E63F4271DA48F003682D5 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0E63F3271DA48F003682D5 /* KeyboardView.swift */; };
 		DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */; };
@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA0E183C271D78CD000B53FB /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		DA0E183C271D78CD000B53FB /* GlobalValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalValue.swift; sourceTree = "<group>"; };
 		DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		DA0E63F3271DA48F003682D5 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLockViewModel.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				DA1A34FF2704B31D00146994 /* AppLockViewModel.swift */,
-				DA0E183C271D78CD000B53FB /* Setting.swift */,
+				DA0E183C271D78CD000B53FB /* GlobalValue.swift */,
 				DA0E63F1271D9ACC003682D5 /* PasswordModel.swift */,
 				DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */,
 			);
@@ -90,9 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				DA071B822714FF0F00FBA69F /* model */,
-				DABC016F270DDE0E004B61EF /* view */,
+				DABC016F270DDE0E004B61EF /* views */,
 				DA2ED10F2700B2C500ACACD6 /* passwordApp.swift */,
-				DA2ED1112700B2C500ACACD6 /* ContentView.swift */,
 				DA2ED1132700B2C700ACACD6 /* Assets.xcassets */,
 				DA2ED1182700B2C700ACACD6 /* Persistence.swift */,
 				DA2ED11D2700B2C700ACACD6 /* Info.plist */,
@@ -119,16 +118,17 @@
 			path = "password view";
 			sourceTree = "<group>";
 		};
-		DABC016F270DDE0E004B61EF /* view */ = {
+		DABC016F270DDE0E004B61EF /* views */ = {
 			isa = PBXGroup;
 			children = (
+				DA2ED1112700B2C500ACACD6 /* ContentView.swift */,
 				DAA2984C2724157C00FFCB0D /* password view */,
 				DA1A35032705666800146994 /* AppLockView.swift */,
 				DABC016D270830DB004B61EF /* SetPasswordView.swift */,
 				DAA2984827218F2500FFCB0D /* NumberView.swift */,
 				DA0E63F3271DA48F003682D5 /* KeyboardView.swift */,
 			);
-			path = view;
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +212,7 @@
 				DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */,
 				DABC016E270830DB004B61EF /* SetPasswordView.swift in Sources */,
 				DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */,
-				DA0E183D271D78CD000B53FB /* Setting.swift in Sources */,
+				DA0E183D271D78CD000B53FB /* GlobalValue.swift in Sources */,
 				DA2ED1122700B2C500ACACD6 /* ContentView.swift in Sources */,
 				DABC0173270DDEE4004B61EF /* StringView.swift in Sources */,
 				DA2ED1102700B2C500ACACD6 /* passwordApp.swift in Sources */,

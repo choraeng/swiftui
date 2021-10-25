@@ -59,6 +59,7 @@ struct SetPasswordView: View {
                                     pwmodel.done = true
                                 }else {
                                     pwmodel.fail = true
+                                    pwmodel.password = ""
                                     let impactMed = UIImpactFeedbackGenerator(style: .heavy)
                                     impactMed.impactOccurred()
                                 }
@@ -153,6 +154,7 @@ struct SetPasswordView: View {
                                     pwmodel.done = true
                                 }else {
                                     pwmodel.fail = true
+                                    pwmodel.password = ""
                                     let impactMed = UIImpactFeedbackGenerator(style: .heavy)
                                     impactMed.impactOccurred()
                                 }

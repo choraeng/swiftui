@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AppStateModel {
+class AppStateModel {
     var isLock: Bool = false
     var isBio: Bool = false
     var password: String = ""

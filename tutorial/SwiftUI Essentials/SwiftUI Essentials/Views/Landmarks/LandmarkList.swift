@@ -20,11 +20,6 @@ struct LandmarkList: View {
     var body: some View {
         NavigationView{
             List {
-                Button(action: {
-                    showFavoriteOnly = true
-                }) {
-                    Text("Asdfdasf")
-                }
                 Toggle(isOn: $showFavoriteOnly) {
                     Text("Favorites only")
                 }
