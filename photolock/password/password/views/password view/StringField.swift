@@ -7,62 +7,56 @@
 
 import SwiftUI
 
-struct StringView: View {
-    @ObservedObject var pwmodel: PasswordModel
-
-    @State var borderColor: Color = Color.gray
+struct StringField: View {
+    @Binding var input_password: String
+    @State var borderColor: Color
     @Binding var commit: Bool
+    @State var failText: String = ""
     
     // 패스워드 관련
-    var pwMaxLen: Int
+    var _len: Int = 64
 
     var body: some View {
         VStack {
             ZStack(alignment: .trailing) {
-                CustomStringTextField(text: $pwmodel.password, isFirstResponder: true, commit: $commit)
+                CustomStringTextField(text: $input_password, isFirstResponder: true, commit: $commit)
                     .frame(height: 16.0)
                     .padding(10)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(borderColor, lineWidth: 1)
+                                .padding([.leading, .trailing], 16)
                     )
-                    .padding()
-                    .onChange(of: pwmodel.fail) { newValue in
-                        if newValue {
-                            borderColor = GlobalValue.false_color
-                        }
-                    }
-                    .onChange(of: pwmodel.password) { newValue in
-                        if pwmodel.fail == true {
-                            pwmodel.fail.toggle()
-                        }
+                    // .onChange(of: pwmodel.fail) { newValue in
+                    //     if newValue {
+                    //         borderColor = GlobalValue.false_color
+                    //     }
+                    // }
+                    // .onChange(of: pwmodel.password) { newValue in
+                    //     if pwmodel.fail == true {
+                    //         pwmodel.fail.toggle()
+                    //     }
                         
-                        if newValue.count == 0 {
-                            borderColor = Color.gray
-                        } else {
-                            borderColor = Color.blue
-                        }
-                    }
-                
-                if pwmodel.password != "" {
+                    //     if newValue.count == 0 {
+                    //         borderColor = Color.gray
+                    //     } else {
+                    //         borderColor = Color.blue
+                    //     }
+                    // }
+                if input_password.count != 0{
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.medium)
                         .foregroundColor(Color(.systemGray3))
                         .padding(.trailing, 35)
                         .onTapGesture {
                             withAnimation {
-                                pwmodel.password = ""
+                                input_password = ""
                             }
                         }
                 }
             }
-            if pwmodel.fail {
-                Text("Passcode does not match")
-                    .foregroundColor(GlobalValue.false_color)
-                    .font(.system(size: 16))
-                    .padding(.leading, 35)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            Spacer()
+            Text(failText)
+                .foregroundColor(GlobalValue.false_color)
+                .font(.system(size: 16))
         }
     }
 }
@@ -88,7 +82,7 @@ struct CustomStringTextField: UIViewRepresentable {
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             commit.toggle()
             return true
-          }
+        }
         
     }
     
