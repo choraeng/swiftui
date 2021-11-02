@@ -13,6 +13,7 @@
 		DA321453272D65F50017C42A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA321452272D65F50017C42A /* Preview Assets.xcassets */; };
 		DA321455272D65F50017C42A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321454272D65F50017C42A /* Persistence.swift */; };
 		DA321458272D65F50017C42A /* PhotoLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA321456272D65F50017C42A /* PhotoLock.xcdatamodeld */; };
+		DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32146C273143C30017C42A /* tempPasswordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		DA321452272D65F50017C42A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA321454272D65F50017C42A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA321457272D65F50017C42A /* PhotoLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoLock.xcdatamodel; sourceTree = "<group>"; };
+		DA32146C273143C30017C42A /* tempPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempPasswordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		DA32145F272D66770017C42A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DA32146B273143B30017C42A /* tempView */,
 				DA321461272D668B0017C42A /* Password */,
 			);
 			path = Views;
@@ -103,6 +106,14 @@
 			children = (
 			);
 			path = Password;
+			sourceTree = "<group>";
+		};
+		DA32146B273143B30017C42A /* tempView */ = {
+			isa = PBXGroup;
+			children = (
+				DA32146C273143C30017C42A /* tempPasswordView.swift */,
+			);
+			path = tempView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,6 +189,7 @@
 				DA321455272D65F50017C42A /* Persistence.swift in Sources */,
 				DA321458272D65F50017C42A /* PhotoLock.xcdatamodeld in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
+				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
 				DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

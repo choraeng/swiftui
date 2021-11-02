@@ -12,7 +12,14 @@ struct ContentView: View {
     
 
     var body: some View {
-        Text("asdf")
+        NavigationView {
+            NavigationLink {
+                tempPasswordView()
+            } label: {
+                Text("password")
+            }
+
+        }
     }
 
 }
