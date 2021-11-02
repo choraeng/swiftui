@@ -42,7 +42,7 @@ struct ContentView: View {
     func didDismiss() {
         print(isPassword)
         if isPassword{
-            appLockVM.appLockStateChange(appLockState: true)
+//            appLockVM.appLockStateChange(appLockState: true)
         }
     }
 }

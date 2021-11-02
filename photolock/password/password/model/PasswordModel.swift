@@ -21,6 +21,8 @@ class PasswordModel: ObservableObject {
     
     @Published var target_password: String //
     
+    @Published var isFail: Bool
+    
 //    @Published var pwdColor: Color = Color.black
 //    @Published var title: String = ""
 //    @Published var subtitle: String = ""
@@ -36,5 +38,7 @@ class PasswordModel: ObservableObject {
         input_password = ""
         
         target_password = ""
+        
+        isFail = false
     }
 }

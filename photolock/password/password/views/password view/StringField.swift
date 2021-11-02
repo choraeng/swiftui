@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct StringField: View {
-    @Binding var input_password: String
-    @State var borderColor: Color
+    @ObservedObject var pwmodel: PasswordModel
     @Binding var commit: Bool
-    @State var failText: String = ""
+    
+//    @Binding var input_password: String
+    @State var borderColor: Color = Color.gray
+    
+//    @State var failText: String
     
     // 패스워드 관련
     var _len: Int = 64
@@ -19,9 +22,10 @@ struct StringField: View {
     var body: some View {
         VStack {
             ZStack(alignment: .trailing) {
-                CustomStringTextField(text: $input_password, isFirstResponder: true, commit: $commit)
+                CustomStringTextField(text: $pwmodel.input_password, isFirstResponder: true, commit: $commit)
                     .frame(height: 16.0)
-                    .padding(10)
+                    .padding([.top, .bottom], 16)
+                    .padding([.leading, .trailing], 32)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(borderColor, lineWidth: 1)
                                 .padding([.leading, .trailing], 16)
@@ -42,21 +46,37 @@ struct StringField: View {
                     //         borderColor = Color.blue
                     //     }
                     // }
-                if input_password.count != 0{
+                if pwmodel.input_password.count != 0{
                     Image(systemName: "xmark.circle.fill")
                         .imageScale(.medium)
                         .foregroundColor(Color(.systemGray3))
                         .padding(.trailing, 35)
                         .onTapGesture {
                             withAnimation {
-                                input_password = ""
+                                pwmodel.input_password = ""
                             }
                         }
                 }
             }
-            Text(failText)
-                .foregroundColor(GlobalValue.false_color)
-                .font(.system(size: 16))
+            if pwmodel.isFail {
+                Text(pwmodel.failtext)
+                    .foregroundColor(GlobalValue.false_color)
+                    .font(.system(size: 16))
+            }
+        }
+        .onChange(of: pwmodel.isFail) { newValue in
+            if newValue {
+                borderColor = GlobalValue.false_color
+            }else {
+                borderColor = Color.blue
+            }
+        }
+        .onChange(of: pwmodel.input_password) { newValue in
+            if newValue.count > 0 {
+                borderColor = Color.blue
+            }else {
+                borderColor = Color.gray
+            }
         }
     }
 }

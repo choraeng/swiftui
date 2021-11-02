@@ -19,6 +19,9 @@
 		DA2ED1172700B2C700ACACD6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA2ED1162700B2C700ACACD6 /* Preview Assets.xcassets */; };
 		DA2ED1192700B2C700ACACD6 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED1182700B2C700ACACD6 /* Persistence.swift */; };
 		DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA2ED11A2700B2C700ACACD6 /* password.xcdatamodeld */; };
+		DA321463272FF4240017C42A /* toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321462272FF4240017C42A /* toast.swift */; };
+		DA321467272FF68A0017C42A /* Toaster in Frameworks */ = {isa = PBXBuildFile; productRef = DA321466272FF68A0017C42A /* Toaster */; };
+		DA32146A272FF9D30017C42A /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = DA321469272FF9D30017C42A /* Loaf */; };
 		DAA2984B27240E0C00FFCB0D /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */; };
 		DAA2984E2726DFE400FFCB0D /* passwordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA2984D2726DFE400FFCB0D /* passwordView.swift */; };
 		DABC016E270830DB004B61EF /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DABC016D270830DB004B61EF /* SetPasswordView.swift */; };
@@ -40,6 +43,7 @@
 		DA2ED1182700B2C700ACACD6 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA2ED11B2700B2C700ACACD6 /* password.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = password.xcdatamodel; sourceTree = "<group>"; };
 		DA2ED11D2700B2C700ACACD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA321462272FF4240017C42A /* toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toast.swift; sourceTree = "<group>"; };
 		DAA2984A27240E0C00FFCB0D /* AppStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
 		DAA2984D2726DFE400FFCB0D /* passwordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordView.swift; sourceTree = "<group>"; };
 		DABC016D270830DB004B61EF /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA071B81270F00DF00FBA69F /* AlertToast in Frameworks */,
+				DA321467272FF68A0017C42A /* Toaster in Frameworks */,
+				DA32146A272FF9D30017C42A /* Loaf in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +133,7 @@
 				DA1A35032705666800146994 /* AppLockView.swift */,
 				DABC016D270830DB004B61EF /* SetPasswordView.swift */,
 				DA0E63F3271DA48F003682D5 /* KeyboardView.swift */,
+				DA321462272FF4240017C42A /* toast.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -149,6 +156,8 @@
 			name = password;
 			packageProductDependencies = (
 				DA071B80270F00DF00FBA69F /* AlertToast */,
+				DA321466272FF68A0017C42A /* Toaster */,
+				DA321469272FF9D30017C42A /* Loaf */,
 			);
 			productName = password;
 			productReference = DA2ED10C2700B2C500ACACD6 /* password.app */;
@@ -179,6 +188,8 @@
 			mainGroup = DA2ED1032700B2C500ACACD6;
 			packageReferences = (
 				DA071B7F270F00DF00FBA69F /* XCRemoteSwiftPackageReference "AlertToast" */,
+				DA321465272FF68A0017C42A /* XCRemoteSwiftPackageReference "Toaster" */,
+				DA321468272FF9D30017C42A /* XCRemoteSwiftPackageReference "Loaf" */,
 			);
 			productRefGroup = DA2ED10D2700B2C500ACACD6 /* Products */;
 			projectDirPath = "";
@@ -207,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1A35042705666800146994 /* AppLockView.swift in Sources */,
+				DA321463272FF4240017C42A /* toast.swift in Sources */,
 				DA2ED11C2700B2C700ACACD6 /* password.xcdatamodeld in Sources */,
 				DA1A35002704B31D00146994 /* AppLockViewModel.swift in Sources */,
 				DAA2984E2726DFE400FFCB0D /* passwordView.swift in Sources */,
@@ -420,6 +432,22 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		DA321465272FF68A0017C42A /* XCRemoteSwiftPackageReference "Toaster" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Toaster";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		DA321468272FF9D30017C42A /* XCRemoteSwiftPackageReference "Loaf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/schmidyy/Loaf";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -427,6 +455,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA071B7F270F00DF00FBA69F /* XCRemoteSwiftPackageReference "AlertToast" */;
 			productName = AlertToast;
+		};
+		DA321466272FF68A0017C42A /* Toaster */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA321465272FF68A0017C42A /* XCRemoteSwiftPackageReference "Toaster" */;
+			productName = Toaster;
+		};
+		DA321469272FF9D30017C42A /* Loaf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA321468272FF9D30017C42A /* XCRemoteSwiftPackageReference "Loaf" */;
+			productName = Loaf;
 		};
 /* End XCSwiftPackageProductDependency section */
 

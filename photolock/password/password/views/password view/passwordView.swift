@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//import AlertToast
 
 enum PasswordOption {
     case digit_4
@@ -24,8 +25,8 @@ struct passwordView: View {
 //    @Binding var type: PasswordOption // 저장 때문에, 비밀번호 옵션
 //    @Binding var input_password: String // 저장 떄문에, 입력 비밀번호
 //
-    @State var isFail: Bool = false // 일치 실패, 넘기자
-    @State var isEnter: Bool = false // 키보드 return 키
+//    @State var isEnter: Bool = false // 키보드 return 키
+    @Binding var isEnter: Bool // 키보드 return 키
 //
 ////    @State var isSetPwd: Bool // 이거는 그 비밀번호 옵션 버튼 보이는거떄문에
     @State var pwdOptSheet: Bool = false // 옵션 시트
@@ -33,7 +34,7 @@ struct passwordView: View {
 //    @Binding var temp_password: String // 이걸로 비밀번호 옵션 버튼 유무 결정
 //                                       // count 있으면 패스워드 일치, 없으면 setpw
 //
-    @State var pwdColor: Color = Color.black
+    @State var pwdColor: Color = Color.blue
     @ObservedObject var pwmodel: PasswordModel
     
 //    var password: String = "" // 기존 설정된 패스워드 . 앞의 뷰에서 처리
@@ -71,6 +72,7 @@ struct passwordView: View {
                                     .default(Text("Custom Alphanumeric Code")){
                                         pwmodel.input_password = ""
                                         pwmodel.type = .string
+                                        pwdColor = Color.black
                                     },
                                     .default(Text("4-Digit Numeric Code")){
                                         pwmodel.input_password = ""
@@ -93,54 +95,56 @@ struct passwordView: View {
 extension passwordView {
     // 패스워드 입력 완료시 확인
     // 맞는지 틀린지
+    // 0 -> 일반, 1 -> 성공(다음), 2 -> 취소(이전), 3-> 실패
     func check() -> Int{
+        if pwmodel.target_password == "" {
+            
+        }
         return 0
     }
 }
 
 extension passwordView {
     var _stringfield: some View {
-        StringField(input_password: $pwmodel.input_password,
-                    borderColor: pwdColor,
-                    commit: $isEnter,
-                    failText: pwmodel.failtext)
+        StringField(pwmodel: pwmodel,
+                    commit: $isEnter
+            )
             .onChange(of: isEnter) { newValue in
                 if newValue {
-                    pwmodel.result = check()
+//                    pwmodel.result = check()
+                    isEnter = false
+                    pwmodel.result = 1
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("why"){
-                        
+            .onChange(of: pwmodel.input_password, perform: { newValue in
+                if newValue.count > 0 {
+                    if pwmodel.isFail {
+                        pwmodel.isFail = false
                     }
+                    pwdColor = Color.blue
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("wn"){
-                        
-                    }
-                }
-            }
+                
+            })
     }
 }
 
 extension passwordView {
     var _pincodefield: some View {
-        PincodeField(circleColor: pwdColor,
-                     failText: pwmodel.failtext,
-                     _size: pwmodel.input_password.count,
+        PincodeField(pwmodel: pwmodel,
+//                     circleColor: $pwdColor,
+//                     failText: $pwmodel.failtext,
                      _len: (pwmodel.type == .digit_4) ? 4 : 6)
             .onChange(of: pwmodel.input_password) { newValue in
+                if pwmodel.isFail {
+                    let temp = newValue.last!
+                    pwmodel.input_password = "\(temp)"
+                    
+                    pwmodel.isFail = false
+                }
                 let _len = (pwmodel.type == .digit_4) ? 4 : 6
                 if newValue.count == _len {
-                    pwmodel.result = check()
-                }
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("why"){
-                        
-                    }
+//                    pwmodel.result = check()
+                    pwmodel.result = 1
                 }
             }
     }
