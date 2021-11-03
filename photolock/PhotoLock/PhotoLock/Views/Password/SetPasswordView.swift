@@ -1,14 +1,11 @@
 //
-//  passwordView.swift
-//  password
+//  SetPasswordView.swift
+//  PhotoLock
 //
-//  Created by 조영훈 on 2021/10/02.
+//  Created by 조영훈 on 2021/11/02.
 //
 
 import SwiftUI
-import Foundation
-//import AlertToast
-
 
 struct SetPasswordView: View {
     // view 관련
@@ -29,6 +26,8 @@ struct SetPasswordView: View {
     
     @ObservedObject var pwmodel: PasswordModel
     
+    @State var toast_msg: String
+    
     @State var state = 0
     @State var done = false
     
@@ -36,7 +35,7 @@ struct SetPasswordView: View {
     
     var body: some View {
         NavigationView {
-            passwordView(isEnter: $isEnter, pwmodel: pwmodel)
+            passwordView(pwmodel: pwmodel, isEnter: $isEnter)
                 .onChange(of: pwmodel.result, perform: { newValue in
                     if pwmodel.result == 1 { // 검색, 확인 버튼
                         if pwmodel.target_password == "" { // 저장이냐 아니냐
@@ -115,8 +114,7 @@ struct SetPasswordView: View {
                         }
                     }
                 }
-                .toast(isShowing: $done, text: "비밀번호 설정이 완료되었어요."){
-                    print("done")
+                .toast(isShowing: $done, text: toast_msg){
                     isPassword = true
                     isShowingSheet = false
                 }

@@ -14,6 +14,15 @@
 		DA321455272D65F50017C42A /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321454272D65F50017C42A /* Persistence.swift */; };
 		DA321458272D65F50017C42A /* PhotoLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA321456272D65F50017C42A /* PhotoLock.xcdatamodeld */; };
 		DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32146C273143C30017C42A /* tempPasswordView.swift */; };
+		DA32146F273144D60017C42A /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32146E273144D60017C42A /* PasswordModel.swift */; };
+		DA321471273147AE0017C42A /* Pincode.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321470273147AE0017C42A /* Pincode.swift */; };
+		DA321473273147B40017C42A /* Alphanumeric.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321472273147B40017C42A /* Alphanumeric.swift */; };
+		DA321475273153000017C42A /* passwordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321474273153000017C42A /* passwordView.swift */; };
+		DA321477273153450017C42A /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321476273153450017C42A /* Keyboard.swift */; };
+		DA32147A273153C20017C42A /* SetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA321479273153C20017C42A /* SetPasswordView.swift */; };
+		DA32147D273154760017C42A /* toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32147C273154760017C42A /* toast.swift */; };
+		DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32147E273155840017C42A /* ResetPasswordView.swift */; };
+		DA32148127315F5F0017C42A /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32148027315F5F0017C42A /* AppStateModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +34,15 @@
 		DA321454272D65F50017C42A /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		DA321457272D65F50017C42A /* PhotoLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoLock.xcdatamodel; sourceTree = "<group>"; };
 		DA32146C273143C30017C42A /* tempPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempPasswordView.swift; sourceTree = "<group>"; };
+		DA32146E273144D60017C42A /* PasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
+		DA321470273147AE0017C42A /* Pincode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pincode.swift; sourceTree = "<group>"; };
+		DA321472273147B40017C42A /* Alphanumeric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alphanumeric.swift; sourceTree = "<group>"; };
+		DA321474273153000017C42A /* passwordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = passwordView.swift; sourceTree = "<group>"; };
+		DA321476273153450017C42A /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		DA321479273153C20017C42A /* SetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetPasswordView.swift; sourceTree = "<group>"; };
+		DA32147C273154760017C42A /* toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = toast.swift; sourceTree = "<group>"; };
+		DA32147E273155840017C42A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
+		DA32148027315F5F0017C42A /* AppStateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +99,8 @@
 		DA32145E272D666E0017C42A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				DA32146E273144D60017C42A /* PasswordModel.swift */,
+				DA32148027315F5F0017C42A /* AppStateModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +108,7 @@
 		DA32145F272D66770017C42A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DA32147B2731546D0017C42A /* help */,
 				DA32146B273143B30017C42A /* tempView */,
 				DA321461272D668B0017C42A /* Password */,
 			);
@@ -104,6 +125,10 @@
 		DA321461272D668B0017C42A /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				DA321478273153AF0017C42A /* help */,
+				DA321474273153000017C42A /* passwordView.swift */,
+				DA321479273153C20017C42A /* SetPasswordView.swift */,
+				DA32147E273155840017C42A /* ResetPasswordView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -114,6 +139,24 @@
 				DA32146C273143C30017C42A /* tempPasswordView.swift */,
 			);
 			path = tempView;
+			sourceTree = "<group>";
+		};
+		DA321478273153AF0017C42A /* help */ = {
+			isa = PBXGroup;
+			children = (
+				DA321470273147AE0017C42A /* Pincode.swift */,
+				DA321472273147B40017C42A /* Alphanumeric.swift */,
+				DA321476273153450017C42A /* Keyboard.swift */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
+		DA32147B2731546D0017C42A /* help */ = {
+			isa = PBXGroup;
+			children = (
+				DA32147C273154760017C42A /* toast.swift */,
+			);
+			path = help;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,10 +229,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA32146F273144D60017C42A /* PasswordModel.swift in Sources */,
+				DA32147D273154760017C42A /* toast.swift in Sources */,
 				DA321455272D65F50017C42A /* Persistence.swift in Sources */,
+				DA321477273153450017C42A /* Keyboard.swift in Sources */,
 				DA321458272D65F50017C42A /* PhotoLock.xcdatamodeld in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
+				DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */,
+				DA321471273147AE0017C42A /* Pincode.swift in Sources */,
 				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
+				DA321473273147B40017C42A /* Alphanumeric.swift in Sources */,
+				DA321475273153000017C42A /* passwordView.swift in Sources */,
+				DA32148127315F5F0017C42A /* AppStateModel.swift in Sources */,
+				DA32147A273153C20017C42A /* SetPasswordView.swift in Sources */,
 				DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

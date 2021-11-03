@@ -13,13 +13,14 @@ struct ContentView: View {
     @AppStorage("isPassword") var isPassword: Bool = UserDefaults.standard.bool(forKey: "isPassword")
     @AppStorage("AppPassword") var AppPassword = UserDefaults.standard.string(forKey: "password") ?? "" // 저장된 패스워드
     
-    @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
-    @EnvironmentObject var appLockVM: AppLockViewModel
+//    @EnvironmentObject var appLockVM: AppLockViewModel
     
     @State private var isShowingSheet = false
-    @State var ispwInputTypeDisable = false // 패스워드 입력 설정 액션시트
     @State var password: String = ""
+    
+//    @State private var
+    
+    @ObservedObject var pwmodel: PasswordModel = PasswordModel()
     
     var body: some View {
 //        KeyboardView()
@@ -30,11 +31,12 @@ struct ContentView: View {
         }
         .sheet(isPresented: $isShowingSheet, onDismiss: didDismiss) {
             SetPasswordView(isPassword: $isPassword,
-                         isShowingSheet: $isShowingSheet)
+                         isShowingSheet: $isShowingSheet,
+                        pwmodel: pwmodel)
         }
         .padding()
         Button ("re-set Password") {
-
+            
         }
         .padding()
     }
@@ -42,6 +44,7 @@ struct ContentView: View {
     func didDismiss() {
         print(isPassword)
         if isPassword{
+            AppPassword = pwmodel.input_password
 //            appLockVM.appLockStateChange(appLockState: true)
         }
     }
