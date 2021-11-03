@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct Toast<Presenting>: View where Presenting: View {
 
     /// The binding that decides the appropriate drawing in the body.
@@ -64,7 +65,7 @@ struct Toast<Presenting>: View where Presenting: View {
 
 }
 
-
+
 extension View {
     func toast(isShowing: Binding<Bool>, text: String, complete: @escaping () -> Void) -> some View {
         Toast(isShowing: isShowing,
