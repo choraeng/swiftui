@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct Pincode: View {
-    @ObservedObject var pwmodel: PasswordModel
-    @State var circleColor: Color = Color.blue
+//    @ObservedObject var pwmodel: PasswordModel
+    @State var circleColor: Color = ColorPalette.primary.color
 //    @Binding var failText: String
     
-    
+    @Binding var input_password: String
+    @Binding var isFail: Bool
+    @Binding var fail_text: String
     
     // 패스워드 관련
 //    var _size: Int
@@ -21,7 +23,7 @@ struct Pincode: View {
 //    @FocusState private var passwordIsFocus: Bool -> ios 15부터 ㅜㅜ
 
     private func getImageName(at index: Int) -> String {
-        if index >= pwmodel.input_password.count {
+        if index >= input_password.count {
             return "circle"
         }
         
@@ -40,17 +42,18 @@ struct Pincode: View {
                 }
             }
             .padding()
-            if pwmodel.isFail {
-                Text(pwmodel.failtext)
-                    .foregroundColor(Color.red)
-                    .font(.system(size: 16))
+            
+            if isFail {
+                Text(fail_text)
+                    .foregroundColor(ColorPalette.status_error.color)
+                    .font(.system(size: 13))
             }
         }
-        .onChange(of: pwmodel.isFail) { newValue in
+        .onChange(of: isFail) { newValue in
             if newValue {
-                circleColor = Color.red
+                circleColor = ColorPalette.status_error.color
             }else {
-                circleColor = Color.blue
+                circleColor = ColorPalette.primary.color
             }
         }
          

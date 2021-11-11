@@ -34,7 +34,7 @@ struct SetPasswordView: View {
     
     
     var body: some View {
-        NavigationView {
+        NavigationView { 
             passwordView(pwmodel: pwmodel, isEnter: $isEnter)
                 .onChange(of: pwmodel.result, perform: { newValue in
                     if pwmodel.result == 1 { // 검색, 확인 버튼
@@ -129,6 +129,7 @@ struct SetPasswordView: View {
             pwmodel.title = titles[state]
             pwmodel.subtitle = subtitles[state]
         }
+        .accentColor(ColorPalette.primary.color)
         
     }
 }

@@ -10,27 +10,16 @@ import Foundation
 
 
 struct tempPasswordView: View {
-//    @AppStorage("AppPassword") var AppPassword = UserDefaults.standard.string(forKey: "password") ?? "" // 저장된 패스워드
-//    @AppStorage("AppState") var APPSTATE: AppStateModel = AppStateModel()
-    @State var APPSTATE: AppStateModel? = nil
-    
+    //    @AppStorage("AppPassword") var AppPassword = UserDefaults.standard.string(forKey: "password") ?? "" // 저장된 패스워드
+    //    @AppStorage("AppState") var APPSTATE: AppStateModel = AppStateModel()
+    @EnvironmentObject var appLockVM: AppLockModel
+    @ObservedObject var pwmodel: PasswordModel = PasswordModel()
     
     @State private var setPwSheet = false
     @State private var resetPwSheet = false
     
     @State private var setPassword = false
     
-    @ObservedObject var pwmodel: PasswordModel = PasswordModel()
-    
-    init() {
-        if let appstate = UserDefaults.standard.data(forKey: "AppState") {
-            if let decoded = try? JSONDecoder().decode(AppStateModel.self, from: appstate) {
-                _APPSTATE = State(initialValue: decoded)
-            }
-        }else {
-            _APPSTATE = State(initialValue: AppStateModel())
-        }
-    }
     
     var body: some View {
         VStack {
@@ -49,14 +38,8 @@ extension tempPasswordView {
         .sheet(isPresented: $setPwSheet, onDismiss: {
             print(setPassword)
             if setPassword {
-//                AppPassword = pwmodel.input_password
-                APPSTATE?.passwordType = pwmodel.type
-                APPSTATE?.isLock = true
-                APPSTATE?.password = pwmodel.input_password
-
-                if let encoded = try? JSONEncoder().encode(APPSTATE) {
-                    UserDefaults.standard.set(encoded, forKey: "AppState")
-                }
+                //                AppPassword = pwmodel.input_password
+                appLockVM.setAppLock(pw: pwmodel.input_password, type: pwmodel.type)
             }
             pwmodel.reset()
         }) {
@@ -73,23 +56,17 @@ extension tempPasswordView {
 extension tempPasswordView {
     var reset_btn: some View {
         Button("reset password") {
-//            pwmodel.target_password = AppPassword
-            pwmodel.type = APPSTATE!.passwordType
-            pwmodel.target_password = APPSTATE!.password
+            //            pwmodel.target_password = AppPassword
+            pwmodel.type = appLockVM.password_type
+            pwmodel.target_password = appLockVM.password
             
             setPassword = false
             resetPwSheet = true
         }
         .sheet(isPresented: $resetPwSheet, onDismiss: {
             if setPassword {
-//                AppPassword = pwmodel.input_password
-                APPSTATE?.passwordType = pwmodel.type
-                APPSTATE?.isLock = true
-                APPSTATE?.password = pwmodel.input_password
-
-                if let encoded = try? JSONEncoder().encode(APPSTATE) {
-                    UserDefaults.standard.set(encoded, forKey: "AppState")
-                }
+                //                AppPassword = pwmodel.input_password
+                appLockVM.setAppLock(pw: pwmodel.input_password, type: pwmodel.type)
             }
             pwmodel.reset()
         }) {

@@ -42,6 +42,21 @@ class PasswordModel: ObservableObject {
         isFail = false
     }
     
+    init(title: String, subtitle: String, failtext: String, password: String, type: PasswordOption){
+        self.title = title
+        self.subtitle = subtitle
+        self.failtext = failtext
+        
+        result = 0
+        
+        self.type = type
+        input_password = ""
+        
+        self.target_password = password
+        
+        isFail = false
+    }
+    
     func reset() {
         title = ""
         subtitle = ""

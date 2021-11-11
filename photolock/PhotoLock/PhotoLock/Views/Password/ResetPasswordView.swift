@@ -140,5 +140,6 @@ struct ResetPasswordView: View {
             pwmodel.title = titles[state]
             pwmodel.subtitle = subtitles[state]
         }
+        .accentColor(ColorPalette.primary.color)
     }
 }

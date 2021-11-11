@@ -12,13 +12,14 @@ struct passwordView: View {
     @Binding var isEnter: Bool // 키보드 return 키
 
     @State var pwdOptSheet: Bool = false // 옵션 시트
-    @State var pwdColor: Color = Color.blue
+    @State var pwdColor: Color = ColorPalette.primary.color
     
+    @State var isLock:Bool = false
     
     var body: some View {
         VStack {
             Text(pwmodel.title)
-                .font(.system(size: 21))
+                .font(.system(size: 21, weight: .bold))
                 .padding([.leading, .trailing], 16)
 //                .padding(.bottom, 50)
             Text(pwmodel.subtitle)
@@ -40,7 +41,8 @@ struct passwordView: View {
                 Button("비밀번호 옵션"){
                     pwdOptSheet.toggle()
                 }
-                .foregroundColor(Color.blue)
+                .font(.system(size: 16, weight: .bold))
+                .foregroundColor(ColorPalette.primary.color)
                 .padding(.bottom, 24)
                 .actionSheet(isPresented: $pwdOptSheet) {
                     ActionSheet(title: Text("비밀번호 옵션"),
@@ -48,7 +50,7 @@ struct passwordView: View {
                                     .default(Text("사용자 지정 비밀번호")){
                                         pwmodel.input_password = ""
                                         pwmodel.type = .string
-                                        pwdColor = Color.black
+                                        pwdColor = ColorPalette.primary_disabled.color
                                     },
                                     .default(Text("4자리 숫자 비밀번호")){
                                         pwmodel.input_password = ""
@@ -62,7 +64,7 @@ struct passwordView: View {
                 }
             }
             if pwmodel.type != .string {
-                Keyboard(password: $pwmodel.input_password)
+                Keyboard(password: $pwmodel.input_password, lock: $isLock)
             }
         }
     }
@@ -97,7 +99,7 @@ extension passwordView {
                     if pwmodel.isFail {
                         pwmodel.isFail = false
                     }
-                    pwdColor = Color.blue
+                    pwdColor = ColorPalette.primary.color
                 }
                 
             })
@@ -106,10 +108,10 @@ extension passwordView {
 
 extension passwordView {
     var _pincodefield: some View {
-        Pincode(pwmodel: pwmodel,
-//                     circleColor: $pwdColor,
-//                     failText: $pwmodel.failtext,
-                     _len: (pwmodel.type == .digit_4) ? 4 : 6)
+        Pincode(input_password: $pwmodel.input_password,
+                isFail: $pwmodel.isFail,
+                fail_text: $pwmodel.failtext,
+                _len: (pwmodel.type == .digit_4) ? 4 : 6)
             .onChange(of: pwmodel.input_password) { newValue in
                 if pwmodel.isFail {
                     let temp = newValue.last!

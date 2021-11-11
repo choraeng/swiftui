@@ -12,7 +12,7 @@ struct Alphanumeric: View {
     @Binding var commit: Bool
     
 //    @Binding var input_password: String
-    @State var borderColor: Color = Color.gray
+    @State var borderColor: Color = ColorPalette.text_disaled.color
     
 //    @State var failText: String
     
@@ -44,22 +44,22 @@ struct Alphanumeric: View {
             }
             if pwmodel.isFail {
                 Text(pwmodel.failtext)
-                    .foregroundColor(Color.red)
-                    .font(.system(size: 16))
+                    .foregroundColor(ColorPalette.status_error.color)
+                    .font(.system(size: 13))
             }
         }
         .onChange(of: pwmodel.isFail) { newValue in
             if newValue {
-                borderColor = Color.red
+                borderColor = ColorPalette.status_error.color
             }else {
-                borderColor = Color.blue
+                borderColor = ColorPalette.primary_pressed.color
             }
         }
         .onChange(of: pwmodel.input_password) { newValue in
             if newValue.count > 0 {
-                borderColor = Color.blue
+                borderColor = ColorPalette.primary_pressed.color
             }else {
-                borderColor = Color.gray
+                borderColor = ColorPalette.text_disaled.color
             }
         }
     }

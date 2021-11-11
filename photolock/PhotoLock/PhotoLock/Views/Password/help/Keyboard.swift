@@ -10,10 +10,14 @@ import SwiftUI
 struct keyView: View {
     var key: String
     @Binding var password: String
+    @Binding var isLock: Bool
     
     var body: some View {
         Button(action: {
-            password += key
+            if !isLock {
+                password += key
+            }else{
+            }
         }) {
                 Color.clear
                     .overlay(Rectangle()
@@ -29,14 +33,15 @@ struct keyView: View {
 struct keyrowView: View {
     var keys: [String]
     @Binding var password: String
+    @Binding var isLock: Bool
     
     var body: some View {
         HStack {
-            keyView(key: keys[0], password: $password)
+            keyView(key: keys[0], password: $password, isLock: $isLock)
             Spacer()
-            keyView(key: keys[1], password: $password)
+            keyView(key: keys[1], password: $password, isLock: $isLock)
             Spacer()
-            keyView(key: keys[2], password: $password)
+            keyView(key: keys[2], password: $password, isLock: $isLock)
         }
     }
 }
@@ -45,8 +50,9 @@ struct keyrowView: View {
 struct Keyboard: View {
     @Binding var password: String
     @State var keys: [String] = []
+    @Binding var isLock: Bool
     
-    init(password: Binding<String>) {
+    init(password: Binding<String>, lock: Binding<Bool>) {
         var temp_keys = [String]()
         for i in 0..<10 {
             temp_keys.append("\(i)")
@@ -56,12 +62,13 @@ struct Keyboard: View {
         _keys = State(initialValue: temp_keys)
         
         _password = password
+        _isLock = lock
     }
     
     var body: some View {
         VStack{
             ForEach(0..<3) { i in
-                keyrowView(keys: Array(keys[(i*3)...(i*3+3)]), password: $password)
+                keyrowView(keys: Array(keys[(i*3)...(i*3+3)]), password: $password, isLock: $isLock)
             }
             HStack{
                 Button(action: { keys.shuffle() }) {
@@ -76,7 +83,7 @@ struct Keyboard: View {
                 
                 Spacer()
 
-                keyView(key: keys.last ?? "", password: $password)
+                keyView(key: keys.last ?? "", password: $password, isLock: $isLock)
                 
                 Spacer()
                 
