@@ -48,7 +48,7 @@ struct Toast<Presenting>: View where Presenting: View {
 //                    }
 //                    .background(Color(red: 0.27, green: 0.287, blue: 1.0, opacity: 0.2))
                 }
-                .frame(width: geometry.size.width - 16*2,
+                .frame(width: geometry.size.width * 0.9,
                        height: 48)
                 .background(Color(red: 0.27, green: 0.287, blue: 0.312, opacity: 0.8))
 //                .foregroundColor(Color.primary)

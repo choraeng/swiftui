@@ -17,6 +17,7 @@ struct tempPasswordView: View {
     
     @State private var setPwSheet = false
     @State private var resetPwSheet = false
+    @State private var emailSheet = false
     
     @State private var setPassword = false
     
@@ -25,6 +26,7 @@ struct tempPasswordView: View {
         VStack {
             set_btn
             reset_btn
+            email_btn
         }
     }
 }
@@ -75,6 +77,28 @@ extension tempPasswordView {
                               pwmodel: pwmodel)
         }
         .padding()
+        
+    }
+}
+
+extension tempPasswordView {
+    var email_btn: some View {
+        NavigationLink {
+            VerifyEmailView()
+        } label: {
+            Text("email")
+                .padding()
+        }
+//        Button("email password") {
+//            //            pwmodel.target_password = AppPassword
+//            emailSheet = true
+//        }
+//        .sheet(isPresented: $emailSheet, onDismiss: {
+//
+//        }) {
+//
+//        }
+//        .padding()
         
     }
 }

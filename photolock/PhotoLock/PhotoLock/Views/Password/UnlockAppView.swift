@@ -65,8 +65,10 @@ struct UnlockAppView: View {
         .onAppear {
             pwmodel.target_password = appLockVM.password
             pwmodel.type = appLockVM.password_type
-            
+            print(Date())
+            print(appLockVM.lockTime)
             if Date() < appLockVM.lockTime  {
+                isFail = true
                 isLocked = true
             }
             else {
@@ -85,20 +87,21 @@ struct UnlockAppView: View {
             }
         }
         .onReceive(timer) { _ in
-            let _now = Date()
             if isLocked {
+                let _now = Date()
                 
                 //                let df = DateFormatter()
                 //                df.dateFormat = "HH:mm"
                 //                let dif = Calendar.current.date(b: .day, value: 1, to: date)
                 let dif_time = Int(appLockVM.lockTime.timeIntervalSince(_now))
+                
                 if dif_time <= 0 {
                     isLocked = false
                     isFail = false
                     fail_cnt = 0
                 } else {
 //                    print("잠금 해제까지 \(dif_time / 60):\(dif_time % 60)분 남았어요")
-                    pwmodel.failtext = "잠금 해제까지 \(dif_time / 60):\(dif_time % 60)분 남았어요"
+                    pwmodel.failtext = "잠금 해제까지 \(String(format: "%02d", (dif_time / 60))):\(String(format: "%02d", (dif_time % 60)))분 남았어요"
                 }
             }
         }
@@ -139,7 +142,7 @@ extension UnlockAppView {
                 if !isLocked {
                     let _len = (pwmodel.type == .digit_4) ? 4 : 6
                     
-                    if isFail && pwmodel.input_password.count > _len{
+                    if isFail && pwmodel.input_password.count == 1{
                         let temp = newValue.last!
                         pwmodel.input_password = "\(temp)"
                         
@@ -159,12 +162,16 @@ extension UnlockAppView {
                                 let date1 = Calendar.current.date(byAdding: .minute, value: 5, to: date)
                                 appLockVM.setLockTime(date: date1 ?? Date())
                             }else {
+                                pwmodel.input_password = ""
                                 pwmodel.failtext = failes[fail_cnt]
                             }
                             isFail = true
                             
-                            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                            impactMed.impactOccurred()
+//                            let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                            impactMed.impactOccurred()
+                            
+                            let notiMed = UINotificationFeedbackGenerator()
+                            notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                         } else { // 맞출시에
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                                 appLockVM.isAppUnlocked = true

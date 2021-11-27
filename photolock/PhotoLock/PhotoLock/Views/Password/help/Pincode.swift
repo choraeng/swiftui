@@ -9,13 +9,15 @@ import SwiftUI
 
 struct Pincode: View {
 //    @ObservedObject var pwmodel: PasswordModel
-    @State var circleColor: Color = ColorPalette.primary.color
+    
 //    @Binding var failText: String
     
     @Binding var input_password: String
     @Binding var isFail: Bool
     @Binding var fail_text: String
     
+    
+    @State var circleColor: Color = ColorPalette.primary.color
     // 패스워드 관련
 //    var _size: Int
     var _len: Int
@@ -51,6 +53,13 @@ struct Pincode: View {
         }
         .onChange(of: isFail) { newValue in
             if newValue {
+                circleColor = ColorPalette.status_error.color
+            }else {
+                circleColor = ColorPalette.primary.color
+            }
+        }
+        .onAppear {
+            if isFail {
                 circleColor = ColorPalette.status_error.color
             }else {
                 circleColor = ColorPalette.primary.color

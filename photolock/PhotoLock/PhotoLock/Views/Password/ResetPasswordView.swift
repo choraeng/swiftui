@@ -39,8 +39,10 @@ struct ResetPasswordView: View {
                             if pwmodel.target_password != pwmodel.input_password {
                                 pwmodel.isFail = true
                                 
-                                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                impactMed.impactOccurred()
+//                                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                                impactMed.impactOccurred()
+                                let notiMed = UINotificationFeedbackGenerator()
+                                notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                             } else { // 맞출시에
                                 if state == 0 {
                                     pwmodel.target_password = ""
@@ -92,8 +94,10 @@ struct ResetPasswordView: View {
                                     if pwmodel.target_password != pwmodel.input_password {
                                         pwmodel.isFail = true
 
-                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                        impactMed.impactOccurred()
+//                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                                        impactMed.impactOccurred()
+                                        let notiMed = UINotificationFeedbackGenerator()
+                                        notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                                     } else { // 맞출시에
                                         state += 1
                                     }
@@ -112,8 +116,10 @@ struct ResetPasswordView: View {
                                     if pwmodel.target_password != pwmodel.input_password {
                                         pwmodel.isFail = true
 
-                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                        impactMed.impactOccurred()
+//                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                                        impactMed.impactOccurred()
+                                        let notiMed = UINotificationFeedbackGenerator()
+                                        notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                                     } else { // 맞출시에
 
                                         done = true

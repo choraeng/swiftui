@@ -17,7 +17,7 @@ struct passwordView: View {
     @State var isLock:Bool = false
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             Text(pwmodel.title)
                 .font(.system(size: 21, weight: .bold))
                 .padding([.leading, .trailing], 16)

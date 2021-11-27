@@ -43,9 +43,13 @@ struct Alphanumeric: View {
                 }
             }
             if pwmodel.isFail {
-                Text(pwmodel.failtext)
-                    .foregroundColor(ColorPalette.status_error.color)
-                    .font(.system(size: 13))
+                HStack {
+                    Text(pwmodel.failtext)
+                        .foregroundColor(ColorPalette.status_error.color)
+                        .font(.system(size: 13))
+                        .padding(.leading, 32)
+                    Spacer()
+                }
             }
         }
         .onChange(of: pwmodel.isFail) { newValue in

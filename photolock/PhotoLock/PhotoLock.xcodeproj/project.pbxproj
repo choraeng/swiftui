@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1C0B7C273D25EA00A32156 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C0B7B273D25EA00A32156 /* VerifyEmailView.swift */; };
 		DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32144B272D65F40017C42A /* PhotoLockApp.swift */; };
 		DA32144E272D65F40017C42A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32144D272D65F40017C42A /* ContentView.swift */; };
 		DA321450272D65F50017C42A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA32144F272D65F50017C42A /* Assets.xcassets */; };
@@ -25,9 +26,12 @@
 		DA32148127315F5F0017C42A /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32148027315F5F0017C42A /* AppStateModel.swift */; };
 		DA3214832736477D0017C42A /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3214822736477D0017C42A /* Palette.swift */; };
 		DA32148527379F1C0017C42A /* UnlockAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32148427379F1C0017C42A /* UnlockAppView.swift */; };
+		DADD5BBA274D10F000BCAB1E /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD5BB9274D10F000BCAB1E /* GridView.swift */; };
+		DADD5BBC274D1C8200BCAB1E /* PartialSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD5BBB274D1C8200BCAB1E /* PartialSheetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA1C0B7B273D25EA00A32156 /* VerifyEmailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
 		DA321448272D65F40017C42A /* PhotoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA32144B272D65F40017C42A /* PhotoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLockApp.swift; sourceTree = "<group>"; };
 		DA32144D272D65F40017C42A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +52,8 @@
 		DA3214822736477D0017C42A /* Palette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		DA32148427379F1C0017C42A /* UnlockAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockAppView.swift; sourceTree = "<group>"; };
 		DA3214862737E7A10017C42A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		DADD5BB9274D10F000BCAB1E /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		DADD5BBB274D1C8200BCAB1E /* PartialSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialSheetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +121,7 @@
 		DA32145F272D66770017C42A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DADD5BB8274D10DD00BCAB1E /* gridView */,
 				DA32147B2731546D0017C42A /* help */,
 				DA32146B273143B30017C42A /* tempView */,
 				DA321461272D668B0017C42A /* Password */,
@@ -137,6 +144,7 @@
 				DA321479273153C20017C42A /* SetPasswordView.swift */,
 				DA32147E273155840017C42A /* ResetPasswordView.swift */,
 				DA32148427379F1C0017C42A /* UnlockAppView.swift */,
+				DA1C0B7B273D25EA00A32156 /* VerifyEmailView.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -163,8 +171,17 @@
 			isa = PBXGroup;
 			children = (
 				DA32147C273154760017C42A /* toast.swift */,
+				DADD5BBB274D1C8200BCAB1E /* PartialSheetView.swift */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		DADD5BB8274D10DD00BCAB1E /* gridView */ = {
+			isa = PBXGroup;
+			children = (
+				DADD5BB9274D10F000BCAB1E /* GridView.swift */,
+			);
+			path = gridView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,14 +261,17 @@
 				DA321458272D65F50017C42A /* PhotoLock.xcdatamodeld in Sources */,
 				DA3214832736477D0017C42A /* Palette.swift in Sources */,
 				DA32148527379F1C0017C42A /* UnlockAppView.swift in Sources */,
+				DADD5BBC274D1C8200BCAB1E /* PartialSheetView.swift in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
 				DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */,
 				DA321471273147AE0017C42A /* Pincode.swift in Sources */,
 				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
 				DA321473273147B40017C42A /* Alphanumeric.swift in Sources */,
+				DA1C0B7C273D25EA00A32156 /* VerifyEmailView.swift in Sources */,
 				DA321475273153000017C42A /* passwordView.swift in Sources */,
 				DA32148127315F5F0017C42A /* AppStateModel.swift in Sources */,
 				DA32147A273153C20017C42A /* SetPasswordView.swift in Sources */,
+				DADD5BBA274D10F000BCAB1E /* GridView.swift in Sources */,
 				DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -398,7 +418,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = choraeng.PhotoLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -430,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = choraeng.PhotoLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

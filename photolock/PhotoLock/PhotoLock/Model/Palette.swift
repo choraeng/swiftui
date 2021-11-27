@@ -38,10 +38,14 @@ struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
                     .padding()
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .frame(height: 48)
 //                    .background(ColorPalette.primary.color)
-                    .background(configuration.isPressed ? ColorPalette.primary_pressed.color : ColorPalette.primary.color)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                                    .fill(configuration.isPressed ? ColorPalette.primary_pressed.color : ColorPalette.primary.color))
                     .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+//                    .frame(width: .infinity)
 //                    .scaleEffect(configuration.isPressed? 1.2 : 1)
                     .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
@@ -51,10 +55,11 @@ struct PrimaryDisableButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
                     .padding()
-                    .background(ColorPalette.primary_disabled.color)
+                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .frame(height: 48)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                                    .fill(ColorPalette.primary_disabled.color))
                     .foregroundColor(.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-//                    .scaleEffect(configuration.isPressed ? 1.2 : 1)
                     .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }

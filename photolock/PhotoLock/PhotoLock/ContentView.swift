@@ -13,6 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         //appLockModel 에서 그 인증중 변수를 추가하자
+//        VerifyEmailView()
+        
+//        PartialSheetView()
+        
         if appLockVM.isLock && !appLockVM.isAppUnlocked {
 //            if appLockVM.isBio && !appLockVM.isUnloking{
                 UnlockAppView()

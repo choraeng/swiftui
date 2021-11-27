@@ -87,7 +87,7 @@ class AppLockModel: ObservableObject {
         if let _lockTime = UserDefaults.standard.object(forKey: UserDefaultsKeys.lock_time.rawValue){
             lockTime = _lockTime as! Date
         }
-        lockTime = Date()
+//        lockTime = Date()
     }
     
     func setAppLock(pw: String, type: PasswordOption) {

@@ -46,8 +46,10 @@ struct SetPasswordView: View {
                             if pwmodel.target_password != pwmodel.input_password {
                                 pwmodel.isFail = true
                                 
-                                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                impactMed.impactOccurred()
+//                                let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                                impactMed.impactOccurred()
+                                let notiMed = UINotificationFeedbackGenerator()
+                                notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                             } else { // 맞출시에
                                 
                                 done = true
@@ -100,8 +102,10 @@ struct SetPasswordView: View {
                                     if pwmodel.target_password != pwmodel.input_password {
                                         pwmodel.isFail = true
                                         
-                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
-                                        impactMed.impactOccurred()
+//                                        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+//                                        impactMed.impactOccurred()
+                                        let notiMed = UINotificationFeedbackGenerator()
+                                        notiMed.notificationOccurred(UINotificationFeedbackGenerator.FeedbackType.error)
                                     } else { // 맞출시에
                                         
                                         done = true

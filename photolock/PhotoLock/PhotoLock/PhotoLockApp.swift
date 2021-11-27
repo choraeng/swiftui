@@ -27,7 +27,8 @@ struct PhotoLockApp: App {
                     case .active :
                         blurRadius = 0
                     case .background:
-                        appLockVM.isAppUnlocked = false
+                        let a = 0
+//                        appLockVM.isAppUnlocked = false
 //                    case .inactive:
 //                        blurRadius = 10
                     case .inactive:
