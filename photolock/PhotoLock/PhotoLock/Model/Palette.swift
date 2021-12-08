@@ -35,19 +35,32 @@ enum ColorPalette{
 }
 //
 struct PrimaryButton: ButtonStyle {
+    var condition: Bool
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-                    .padding()
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame(height: 48)
-//                    .background(ColorPalette.primary.color)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                                    .fill(configuration.isPressed ? ColorPalette.primary_pressed.color : ColorPalette.primary.color))
-                    .foregroundColor(.white)
+        if condition {
+            configuration.label
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 48)
+    //                    .background(ColorPalette.primary.color)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                        .fill(configuration.isPressed ? ColorPalette.primary_pressed.color : ColorPalette.primary.color))
+                        .foregroundColor(.white)
+                        
+    //                    .frame(width: .infinity)
+    //                    .scaleEffect(configuration.isPressed? 1.2 : 1)
+                        .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+        }else {
+            configuration.label
+                        .padding()
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame(height: 48)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                                        .fill(ColorPalette.primary_disabled.color))
+                        .foregroundColor(.white)
+                        .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+        }
                     
-//                    .frame(width: .infinity)
-//                    .scaleEffect(configuration.isPressed? 1.2 : 1)
-                    .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }
 

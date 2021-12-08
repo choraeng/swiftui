@@ -24,11 +24,11 @@ struct Alphanumeric: View {
             ZStack(alignment: .trailing) {
                 CustomStringTextField(text: $pwmodel.input_password, isFirstResponder: true, commit: $commit)
                     .frame(height: 16.0)
-                    .padding([.top, .bottom], 16)
-                    .padding([.leading, .trailing], 32)
+                    .padding(.vertical, 16)
+                    .padding(.horizontal, 32)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                                 .stroke(borderColor, lineWidth: 1)
-                                .padding([.leading, .trailing], 16)
+                                .padding(.horizontal, 16)
                     )
                 if pwmodel.input_password.count != 0{
                     Image(systemName: "xmark.circle.fill")

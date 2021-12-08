@@ -20,7 +20,7 @@ struct passwordView: View {
         VStack(spacing: 0) {
             Text(pwmodel.title)
                 .font(.system(size: 21, weight: .bold))
-                .padding([.leading, .trailing], 16)
+                .padding(.horizontal, 16)
 //                .padding(.bottom, 50)
             Text(pwmodel.subtitle)
                 .font(.system(size: 16))

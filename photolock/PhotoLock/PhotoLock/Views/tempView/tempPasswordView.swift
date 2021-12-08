@@ -36,7 +36,7 @@ extension tempPasswordView {
         Button("set password") {
             setPassword = false
             setPwSheet = true
-        }
+        } // set pwd button
         .sheet(isPresented: $setPwSheet, onDismiss: {
             print(setPassword)
             if setPassword {
@@ -83,22 +83,22 @@ extension tempPasswordView {
 
 extension tempPasswordView {
     var email_btn: some View {
-        NavigationLink {
-            VerifyEmailView()
-        } label: {
-            Text("email")
-                .padding()
+//        NavigationLink {
+//            VerifyEmailView()
+//        } label: {
+//            Text("email")
+//                .padding()
+//        }
+        Button("email password") {
+            //            pwmodel.target_password = AppPassword
+            emailSheet = true
         }
-//        Button("email password") {
-//            //            pwmodel.target_password = AppPassword
-//            emailSheet = true
-//        }
-//        .sheet(isPresented: $emailSheet, onDismiss: {
-//
-//        }) {
-//
-//        }
-//        .padding()
+        .sheet(isPresented: $emailSheet, onDismiss: {
+
+        }) {
+            VerifyEmailView(emailSheet: $emailSheet)
+        }
+        .padding()
         
     }
 }

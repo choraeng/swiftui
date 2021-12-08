@@ -35,12 +35,13 @@ struct UnlockAppView: View {
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    
     var body: some View {
         NavigationView {
             VStack {
                 Text(titles[0])
                     .font(.system(size: 21, weight: .bold))
-                    .padding([.leading, .trailing], 16)
+                    .padding(.horizontal, 16)
                 //                .padding(.bottom, 50)
                 Text(!isLocked ? subtitles[0] : subtitles[1])
                     .font(.system(size: 16))

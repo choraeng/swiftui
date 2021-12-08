@@ -13,6 +13,7 @@ struct PhotoLockApp: App {
     @Environment(\.scenePhase) var scenePhase
     @State var blurRadius: CGFloat = 0
     
+    
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {

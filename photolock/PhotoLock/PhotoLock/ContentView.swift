@@ -10,33 +10,37 @@ import CoreData
 
 struct ContentView: View {
     @EnvironmentObject var appLockVM: AppLockModel
+    @State private var bottomSheetShown = false
+    
+    @State var sheetTest = false
     
     var body: some View {
-        //appLockModel 에서 그 인증중 변수를 추가하자
-//        VerifyEmailView()
-        
-//        PartialSheetView()
-        
-        if appLockVM.isLock && !appLockVM.isAppUnlocked {
-//            if appLockVM.isBio && !appLockVM.isUnloking{
-                UnlockAppView()
-//            }
-        }else {
-            NavigationView {
-                NavigationLink {
-                    tempPasswordView()
-                } label: {
-                    Text("password")
+        // 잠금 설정이 되어있고, 잠금 해제가 안되어 있다면
+        //        if appLockVM.isLock && !appLockVM.isAppUnlocked {
+        //                UnlockAppView()
+        //        }else { // if 화면 잠금
+        //            NavigationView {
+        //                NavigationLink {
+        //                    tempPasswordView()
+        //                } label: {
+        //                    Text("password")
+        //                }
+        //            } // navigationview
+        //        } // if
+        VStack {
+            Button("partial test"){
+                withAnimation(.easeInOut) {
+                    sheetTest.toggle()
                 }
-    //            Text("asdfasdf")
-    //                .foregroundColor(ColorPalette.primary.color)
-    //                .padding()
-    //
-    //            Button("asdf"){
-    //            }
-    //                .buttonStyle(PrimaryButton())
             }
+            
+            Spacer()
+        }
+        .customBottomSheet(isPresented: $sheetTest, title: "main") {
+            Text("Asdf")
+                .frame(width: .infinity, height: 400)
         }
     }
-
+    
+    
 }

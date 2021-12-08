@@ -41,6 +41,9 @@ class AppLockModel: ObservableObject {
     
     @Published var lockTime = Date() // 풀려야하는 시간
     
+    @Published var emailTime = Date() // 이메일 인증 시간
+    @Published var sendedEmail = "" // 이메일 인증 시간
+    
     init() {
         getAppLockState()
     }
@@ -120,6 +123,26 @@ class AppLockModel: ObservableObject {
         UserDefaults.standard.set(date, forKey: UserDefaultsKeys.lock_time.rawValue)
     }
     
+    func getEmailTime() {
+        if emailTime < Date() {
+            if let _emailTime = UserDefaults.standard.object(forKey: UserDefaultsKeys.email_verify.rawValue){
+                emailTime = _emailTime as! Date
+            }
+        }
+        
+        if let temp = UserDefaults.standard.object(forKey: UserDefaultsKeys.email.rawValue){
+            sendedEmail = temp as! String
+        }
+    }
+    
+    func setEmailTime(date: Date, email: String){
+        self.emailTime = date
+        UserDefaults.standard.set(date, forKey: UserDefaultsKeys.email_verify.rawValue)
+        
+        self.sendedEmail = email
+        UserDefaults.standard.set(email, forKey: UserDefaultsKeys.email.rawValue)
+    }
+    
     func disableBio() {
         let reason = "Provice Touch ID/Face ID to disable App Lock"
         let laContext = LAContext()
@@ -156,7 +179,7 @@ class AppLockModel: ObservableObject {
         return isBimetricAvailable
     }
     
-    // 앱 잠금 설정 변경
+    // 앱 잠금설정 변경
     func appLockStateChange(appLockState: Bool) {
         let laContext = LAContext()
         // 바이오 가능하면
@@ -194,7 +217,7 @@ class AppLockModel: ObservableObject {
         }
     }
     
-    // 앱 잠그해제
+    // 앱 잠금해제
     func appLockValidation(complete: @escaping () -> Void){
         let laContext = LAContext()
         if checkIfBioMetricAvailable() {
@@ -227,5 +250,7 @@ enum UserDefaultsKeys: String {
     case password
     case password_type
     case lock_time
+    case email_verify
+    case email
 }
 

@@ -104,7 +104,7 @@ struct Keyboard: View {
 
             }
         }
-        .padding([.leading, .trailing], 25)
+        .padding(.horizontal, 25)
         .padding(.bottom, 80)
     }
 }
