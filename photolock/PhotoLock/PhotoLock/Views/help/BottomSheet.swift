@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BottomSheet<SheetContent: View>: ViewModifier {
+    @Environment(\.colorScheme) var colorScheme
+
     @Binding var isPresented: Bool
     var title: String
     let sheetContent: () -> SheetContent
@@ -36,6 +38,7 @@ struct BottomSheet<SheetContent: View>: ViewModifier {
                             Text(title)
                                 .font(.system(size: 24))
                                 .bold()
+                                .accentColor(.primary)
                                 .padding(.leading, 4)
                             Spacer()
                             Button(action: {
@@ -56,7 +59,7 @@ struct BottomSheet<SheetContent: View>: ViewModifier {
                             
                     }
 //                    .clipShape(Capsule())
-                    .background(Color.white)
+                    .background(Color(UIColor.systemBackground)) // colorScheme == .dark ? Color(UIColor.systemBackground) : Color.white)
                     .cornerRadius(15)
                     
                 }

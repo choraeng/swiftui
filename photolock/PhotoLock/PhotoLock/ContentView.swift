@@ -14,33 +14,48 @@ struct ContentView: View {
     
     @State var sheetTest = false
     
+    @State var mainviewFortest = false
+    
     var body: some View {
-        // 잠금 설정이 되어있고, 잠금 해제가 안되어 있다면
-        //        if appLockVM.isLock && !appLockVM.isAppUnlocked {
-        //                UnlockAppView()
-        //        }else { // if 화면 잠금
-        //            NavigationView {
-        //                NavigationLink {
-        //                    tempPasswordView()
-        //                } label: {
-        //                    Text("password")
-        //                }
-        //            } // navigationview
-        //        } // if
-        VStack {
-            Button("partial test"){
-                withAnimation(.easeInOut) {
-                    sheetTest.toggle()
+        //         잠금 설정이 되어있고, 잠금 해제가 안되어 있다면
+        if appLockVM.isLock && !appLockVM.isAppUnlocked {
+            UnlockAppView()
+        }else { // if 화면 잠금
+            if mainviewFortest {
+                MainView()
+            } else {
+                NavigationView {
+                    VStack {
+                        NavigationLink {
+                            tempPasswordView()
+                        } label: {
+                            Text("passworddd")
+                        }
+                        .padding()
+                        
+                        
+                        Button {
+                            withAnimation(.easeInOut) {
+                                sheetTest.toggle()
+                            }
+                        } label: {
+                            Text("partial test")
+                        }
+                        .padding()
+                        
+                        Button("mainview") {
+                            mainviewFortest.toggle()
+                        }
+                        .padding()
+                        
+                    } // vstack
+                }// navigationview
+                .customBottomSheet(isPresented: $sheetTest, title: "main") {
+                    Text("Asdasdfasdff")
+                        .foregroundColor(Color.red)
+                        .frame(width: .infinity, height: 200)
                 }
-            }
-            
-            Spacer()
-        }
-        .customBottomSheet(isPresented: $sheetTest, title: "main") {
-            Text("Asdf")
-                .frame(width: .infinity, height: 400)
+            } // if
         }
     }
-    
-    
 }

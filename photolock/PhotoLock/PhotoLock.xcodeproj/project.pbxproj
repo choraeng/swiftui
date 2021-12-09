@@ -33,7 +33,9 @@
 		DA5C24D32760D2EF005BAC61 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D22760D2EF005BAC61 /* MainListView.swift */; };
 		DA5C24D52760D3FF005BAC61 /* photoDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D42760D3FF005BAC61 /* photoDataList.swift */; };
 		DA5C24D72760D5D2005BAC61 /* gridcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D62760D5D2005BAC61 /* gridcell.swift */; };
-		DADD5BBA274D10F000BCAB1E /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADD5BB9274D10F000BCAB1E /* GridView.swift */; };
+		DA85112627619189009D23A4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA85112527619189009D23A4 /* MainView.swift */; };
+		DA8511282761921D009D23A4 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511272761921D009D23A4 /* MainNavigationView.swift */; };
+		DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511292761BBEA009D23A4 /* MainTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,7 +66,9 @@
 		DA5C24D22760D2EF005BAC61 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		DA5C24D42760D3FF005BAC61 /* photoDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoDataList.swift; sourceTree = "<group>"; };
 		DA5C24D62760D5D2005BAC61 /* gridcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gridcell.swift; sourceTree = "<group>"; };
-		DADD5BB9274D10F000BCAB1E /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		DA85112527619189009D23A4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DA8511272761921D009D23A4 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
+		DA8511292761BBEA009D23A4 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				DA5C24CC2760CD29005BAC61 /* main */,
-				DADD5BB8274D10DD00BCAB1E /* gridView */,
 				DA32147B2731546D0017C42A /* help */,
 				DA32146B273143B30017C42A /* tempView */,
 				DA321461272D668B0017C42A /* Password */,
@@ -197,6 +200,9 @@
 				DA5C24D02760D2BC005BAC61 /* MainGridView.swift */,
 				DA5C24D22760D2EF005BAC61 /* MainListView.swift */,
 				DA5C24D42760D3FF005BAC61 /* photoDataList.swift */,
+				DA85112527619189009D23A4 /* MainView.swift */,
+				DA8511272761921D009D23A4 /* MainNavigationView.swift */,
+				DA8511292761BBEA009D23A4 /* MainTabBar.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -207,14 +213,6 @@
 				DA5C24D62760D5D2005BAC61 /* gridcell.swift */,
 			);
 			path = help;
-			sourceTree = "<group>";
-		};
-		DADD5BB8274D10DD00BCAB1E /* gridView */ = {
-			isa = PBXGroup;
-			children = (
-				DADD5BB9274D10F000BCAB1E /* GridView.swift */,
-			);
-			path = gridView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA32147D273154760017C42A /* toast.swift in Sources */,
+				DA85112627619189009D23A4 /* MainView.swift in Sources */,
 				DA2B361327523D19002A2C87 /* PasswordModel.swift in Sources */,
 				DA5C24D12760D2BC005BAC61 /* MainGridView.swift in Sources */,
 				DA321455272D65F50017C42A /* Persistence.swift in Sources */,
@@ -304,6 +303,7 @@
 				DA32148527379F1C0017C42A /* UnlockAppView.swift in Sources */,
 				DA2B362727525318002A2C87 /* VerifyEmailView.swift in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
+				DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */,
 				DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */,
 				DA321471273147AE0017C42A /* Pincode.swift in Sources */,
 				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
@@ -314,8 +314,8 @@
 				DA2B36292754D615002A2C87 /* NavigationBar.swift in Sources */,
 				DA32148127315F5F0017C42A /* AppStateModel.swift in Sources */,
 				DA32147A273153C20017C42A /* SetPasswordView.swift in Sources */,
-				DADD5BBA274D10F000BCAB1E /* GridView.swift in Sources */,
 				DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */,
+				DA8511282761921D009D23A4 /* MainNavigationView.swift in Sources */,
 				DA5C24D52760D3FF005BAC61 /* photoDataList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +467,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -499,7 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

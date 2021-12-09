@@ -19,13 +19,13 @@ struct keyView: View {
             }else{
             }
         }) {
-                Color.clear
-                    .overlay(Rectangle()
+            Color.clear
+                .overlay(Rectangle()
                             .fill(.clear))
-                    .overlay(Text(key)
+                .overlay(Text(key)
                             .font(.system(size: 25))
                             .accentColor(.primary))
-                }
+        }
         .frame(height: 48)
     }
 }
@@ -78,11 +78,11 @@ struct Keyboard: View {
                         .overlay(Image("reload")
                                     .renderingMode(.template)
                                     .accentColor(.primary))
-                        }
+                }
                 .frame(height: 48)
                 
                 Spacer()
-
+                
                 keyView(key: keys.last ?? "", password: $password, isLock: $isLock)
                 
                 Spacer()
@@ -98,10 +98,10 @@ struct Keyboard: View {
                         .overlay(Image("backspace.left")
                                     .renderingMode(.template)
                                     .accentColor(.primary))
-                        }
+                }
                 .frame(height: 48)
                 
-
+                
             }
         }
         .padding(.horizontal, 25)
