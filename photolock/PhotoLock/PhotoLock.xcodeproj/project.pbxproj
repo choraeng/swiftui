@@ -10,6 +10,7 @@
 		DA2B361327523D19002A2C87 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B361227523D19002A2C87 /* PasswordModel.swift */; };
 		DA2B362727525318002A2C87 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B362627525318002A2C87 /* VerifyEmailView.swift */; };
 		DA2B36292754D615002A2C87 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B36282754D615002A2C87 /* NavigationBar.swift */; };
+		DA306A5227632CB70092B2BE /* albumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA306A5127632CB70092B2BE /* albumCell.swift */; };
 		DA32144C272D65F40017C42A /* PhotoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32144B272D65F40017C42A /* PhotoLockApp.swift */; };
 		DA32144E272D65F40017C42A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA32144D272D65F40017C42A /* ContentView.swift */; };
 		DA321450272D65F50017C42A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA32144F272D65F50017C42A /* Assets.xcassets */; };
@@ -32,7 +33,6 @@
 		DA5C24D12760D2BC005BAC61 /* MainGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D02760D2BC005BAC61 /* MainGridView.swift */; };
 		DA5C24D32760D2EF005BAC61 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D22760D2EF005BAC61 /* MainListView.swift */; };
 		DA5C24D52760D3FF005BAC61 /* photoDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D42760D3FF005BAC61 /* photoDataList.swift */; };
-		DA5C24D72760D5D2005BAC61 /* gridcell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D62760D5D2005BAC61 /* gridcell.swift */; };
 		DA85112627619189009D23A4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA85112527619189009D23A4 /* MainView.swift */; };
 		DA8511282761921D009D23A4 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511272761921D009D23A4 /* MainNavigationView.swift */; };
 		DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511292761BBEA009D23A4 /* MainTabBar.swift */; };
@@ -42,6 +42,7 @@
 		DA2B361227523D19002A2C87 /* PasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		DA2B362627525318002A2C87 /* VerifyEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
 		DA2B36282754D615002A2C87 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		DA306A5127632CB70092B2BE /* albumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = albumCell.swift; sourceTree = "<group>"; };
 		DA321448272D65F40017C42A /* PhotoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA32144B272D65F40017C42A /* PhotoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLockApp.swift; sourceTree = "<group>"; };
 		DA32144D272D65F40017C42A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		DA5C24D02760D2BC005BAC61 /* MainGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGridView.swift; sourceTree = "<group>"; };
 		DA5C24D22760D2EF005BAC61 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		DA5C24D42760D3FF005BAC61 /* photoDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoDataList.swift; sourceTree = "<group>"; };
-		DA5C24D62760D5D2005BAC61 /* gridcell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gridcell.swift; sourceTree = "<group>"; };
 		DA85112527619189009D23A4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DA8511272761921D009D23A4 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		DA8511292761BBEA009D23A4 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		DA5C24CD2760CD41005BAC61 /* help */ = {
 			isa = PBXGroup;
 			children = (
-				DA5C24D62760D5D2005BAC61 /* gridcell.swift */,
+				DA306A5127632CB70092B2BE /* albumCell.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -304,11 +304,11 @@
 				DA2B362727525318002A2C87 /* VerifyEmailView.swift in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
 				DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */,
+				DA306A5227632CB70092B2BE /* albumCell.swift in Sources */,
 				DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */,
 				DA321471273147AE0017C42A /* Pincode.swift in Sources */,
 				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
 				DA321473273147B40017C42A /* Alphanumeric.swift in Sources */,
-				DA5C24D72760D5D2005BAC61 /* gridcell.swift in Sources */,
 				DA5C24D32760D2EF005BAC61 /* MainListView.swift in Sources */,
 				DA321475273153000017C42A /* passwordView.swift in Sources */,
 				DA2B36292754D615002A2C87 /* NavigationBar.swift in Sources */,
