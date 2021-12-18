@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct MainGridView: View {
-    private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
-
-    private var gridItemAlbumLayout = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
-    private var gridItemLayout = Array(repeating: GridItem(.flexible(), spacing: 3), count: 3)
+    var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
+    
+    var gridItemAlbumLayout = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
+    var gridItemLayout = Array(repeating: GridItem(.flexible(), spacing: 3), count: 3)
+    
+    @Binding var selectedImage: [Image]
     
     var body: some View {
         VStack{
-        ScrollView {
+            ScrollView {
                 LazyVGrid(columns: gridItemAlbumLayout, spacing: 3) {
                     ForEach((0...3), id: \.self) {_ in
                         albumCell()
@@ -23,24 +25,25 @@ struct MainGridView: View {
                 }
                 .padding(.horizontal, 9)
                 .padding(.vertical, 10)
-//            }
-//        ScrollView {
+                //            }
+                //        ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 3) {
-                    ForEach((0...20), id: \.self) {
-                        Image(systemName: symbols[$0 % symbols.count])
-                            .font(.system(size: 30))
-                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
-                            .aspectRatio(1, contentMode: .fill)
-                            .background(Color.gray)
+                    ForEach((0..<selectedImage.count), id: \.self) { idx in
+                        contentCell(img: selectedImage[idx])
+//                        Image(systemName: symbols[$0 % symbols.count])
+//                            .font(.system(size: 30))
+//                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
+//                            .aspectRatio(1, contentMode: .fill)
+//                            .background(Color.gray)
                     }
                 }
             }
         }
     }
 }
-
-struct MainGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainGridView()
-    }
-}
+//
+//struct MainGridView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainGridView()
+//    }
+//}

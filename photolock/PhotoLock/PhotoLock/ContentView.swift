@@ -29,7 +29,7 @@ struct ContentView: View {
                         NavigationLink {
                             tempPasswordView()
                         } label: {
-                            Text("passworddd")
+                            Text("password")
                         }
                         .padding()
                         
@@ -47,6 +47,13 @@ struct ContentView: View {
                             mainviewFortest.toggle()
                         }
                         .padding()
+                        
+//                        NavigationLink {
+//                            tempPhotoView()
+//                        } label: {
+//                            Text("photo pick and share")
+//                        }
+//                        .padding()
                         
                     } // vstack
                 }// navigationview

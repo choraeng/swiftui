@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1091DD27679D1100EDAEDF /* tempPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1091DC27679D1100EDAEDF /* tempPhotoView.swift */; };
 		DA2B361327523D19002A2C87 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B361227523D19002A2C87 /* PasswordModel.swift */; };
 		DA2B362727525318002A2C87 /* VerifyEmailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B362627525318002A2C87 /* VerifyEmailView.swift */; };
 		DA2B36292754D615002A2C87 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2B36282754D615002A2C87 /* NavigationBar.swift */; };
@@ -33,12 +34,15 @@
 		DA5C24D12760D2BC005BAC61 /* MainGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D02760D2BC005BAC61 /* MainGridView.swift */; };
 		DA5C24D32760D2EF005BAC61 /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D22760D2EF005BAC61 /* MainListView.swift */; };
 		DA5C24D52760D3FF005BAC61 /* photoDataList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5C24D42760D3FF005BAC61 /* photoDataList.swift */; };
+		DA617B2D276CC255003CECF4 /* contentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA617B2C276CC255003CECF4 /* contentCell.swift */; };
+		DA617B2F276CC316003CECF4 /* contentAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA617B2E276CC316003CECF4 /* contentAdd.swift */; };
 		DA85112627619189009D23A4 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA85112527619189009D23A4 /* MainView.swift */; };
 		DA8511282761921D009D23A4 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511272761921D009D23A4 /* MainNavigationView.swift */; };
 		DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8511292761BBEA009D23A4 /* MainTabBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA1091DC27679D1100EDAEDF /* tempPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempPhotoView.swift; sourceTree = "<group>"; };
 		DA2B361227523D19002A2C87 /* PasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		DA2B362627525318002A2C87 /* VerifyEmailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyEmailView.swift; sourceTree = "<group>"; };
 		DA2B36282754D615002A2C87 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		DA5C24D02760D2BC005BAC61 /* MainGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGridView.swift; sourceTree = "<group>"; };
 		DA5C24D22760D2EF005BAC61 /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		DA5C24D42760D3FF005BAC61 /* photoDataList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoDataList.swift; sourceTree = "<group>"; };
+		DA617B2C276CC255003CECF4 /* contentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentCell.swift; sourceTree = "<group>"; };
+		DA617B2E276CC316003CECF4 /* contentAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = contentAdd.swift; sourceTree = "<group>"; };
 		DA85112527619189009D23A4 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DA8511272761921D009D23A4 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 		DA8511292761BBEA009D23A4 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
@@ -169,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				DA32146C273143C30017C42A /* tempPasswordView.swift */,
+				DA1091DC27679D1100EDAEDF /* tempPhotoView.swift */,
 			);
 			path = tempView;
 			sourceTree = "<group>";
@@ -211,6 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				DA306A5127632CB70092B2BE /* albumCell.swift */,
+				DA617B2C276CC255003CECF4 /* contentCell.swift */,
+				DA617B2E276CC316003CECF4 /* contentAdd.swift */,
 			);
 			path = help;
 			sourceTree = "<group>";
@@ -294,6 +303,7 @@
 				DA32147D273154760017C42A /* toast.swift in Sources */,
 				DA85112627619189009D23A4 /* MainView.swift in Sources */,
 				DA2B361327523D19002A2C87 /* PasswordModel.swift in Sources */,
+				DA617B2D276CC255003CECF4 /* contentCell.swift in Sources */,
 				DA5C24D12760D2BC005BAC61 /* MainGridView.swift in Sources */,
 				DA321455272D65F50017C42A /* Persistence.swift in Sources */,
 				DA321477273153450017C42A /* Keyboard.swift in Sources */,
@@ -301,10 +311,12 @@
 				DA3214832736477D0017C42A /* Palette.swift in Sources */,
 				DA5C24CB275F98F9005BAC61 /* BottomSheet.swift in Sources */,
 				DA32148527379F1C0017C42A /* UnlockAppView.swift in Sources */,
+				DA1091DD27679D1100EDAEDF /* tempPhotoView.swift in Sources */,
 				DA2B362727525318002A2C87 /* VerifyEmailView.swift in Sources */,
 				DA32144E272D65F40017C42A /* ContentView.swift in Sources */,
 				DA85112A2761BBEA009D23A4 /* MainTabBar.swift in Sources */,
 				DA306A5227632CB70092B2BE /* albumCell.swift in Sources */,
+				DA617B2F276CC316003CECF4 /* contentAdd.swift in Sources */,
 				DA32147F273155840017C42A /* ResetPasswordView.swift in Sources */,
 				DA321471273147AE0017C42A /* Pincode.swift in Sources */,
 				DA32146D273143C30017C42A /* tempPasswordView.swift in Sources */,
@@ -374,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -429,7 +441,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -452,6 +464,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoLock/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "페이스 아이디로 잠금해제를 할 수 있습니다.\n등록하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 정보 필요";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -462,7 +475,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = choraeng.PhotoLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -484,6 +497,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhotoLock/Info.plist;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "페이스 아이디로 잠금해제를 할 수 있습니다.\n등록하시겠습니까?";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "사진 정보 필요";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -494,7 +508,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = choraeng.PhotoLock;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
