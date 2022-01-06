@@ -192,7 +192,7 @@ struct VerifyEmailView: View {
         .toast(isShowing: $isSend, text: "이메일로 전송을 완료했어요.") {
             isSend = false
         }
-        .navigationTitle(Text(""))
+//        .navigationTitle(Text(""))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("취소") {

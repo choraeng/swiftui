@@ -76,3 +76,13 @@ struct PrimaryDisableButton: ButtonStyle {
                     .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }
 }
+
+
+struct SheetButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(maxWidth: .infinity)
+            .background(RoundedRectangle(cornerRadius: 4)
+                            .fill(configuration.isPressed ? Color(red: 0.769, green: 0.769, blue: 0.769, opacity: 0.15) : Color.clear))
+    }
+}

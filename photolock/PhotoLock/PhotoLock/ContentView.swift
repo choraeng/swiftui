@@ -34,14 +34,14 @@ struct ContentView: View {
                         .padding()
                         
                         
-                        Button {
-                            withAnimation(.easeInOut) {
-                                sheetTest.toggle()
-                            }
-                        } label: {
-                            Text("partial test")
-                        }
-                        .padding()
+//                        Button {
+//                            withAnimation(.easeInOut) {
+//                                sheetTest.toggle()
+//                            }
+//                        } label: {
+//                            Text("partial test")
+//                        }
+//                        .padding()
                         
                         Button("mainview") {
                             mainviewFortest.toggle()
@@ -56,11 +56,14 @@ struct ContentView: View {
 //                        .padding()
                         
                     } // vstack
+                    .navigationBarHidden(true)
                 }// navigationview
                 .customBottomSheet(isPresented: $sheetTest, title: "main") {
+                    AnyView(
                     Text("Asdasdfasdff")
                         .foregroundColor(Color.red)
                         .frame(width: .infinity, height: 200)
+                    )
                 }
             } // if
         }

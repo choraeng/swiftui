@@ -9,14 +9,16 @@ import SwiftUI
 
 struct contentCell: View {
     var img: Image
+    
 //    var clickEvent: () -> Void
     var body: some View {
-        Button {
+        NavigationLink {
+            ImageDetailView(img: img)
             //                            selectedImg[idx].
         } label: {
             ZStack {
                 Rectangle()
-                    .fill(Color.gray)
+                    .fill(Color.white)
                     .aspectRatio(1, contentMode: .fit)
                 
                 img

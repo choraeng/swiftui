@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct MainGridView: View {
-    var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
-    
     var gridItemAlbumLayout = Array(repeating: GridItem(.flexible(), spacing: 0), count: 3)
     var gridItemLayout = Array(repeating: GridItem(.flexible(), spacing: 3), count: 3)
     
-    @Binding var selectedImage: [Image]
+    @Binding var contents: [MainContent]
+    @Binding var isSelectMode: Bool
     
     var body: some View {
         VStack{
@@ -28,17 +27,50 @@ struct MainGridView: View {
                 //            }
                 //        ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 3) {
-                    ForEach((0..<selectedImage.count), id: \.self) { idx in
-                        contentCell(img: selectedImage[idx])
-//                        Image(systemName: symbols[$0 % symbols.count])
-//                            .font(.system(size: 30))
-//                            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
-//                            .aspectRatio(1, contentMode: .fill)
-//                            .background(Color.gray)
+                    ForEach((0..<contents.count), id: \.self) { idx in
+                        ZStack(alignment: .topLeading) {
+                            contentCell(img: contents[idx].img)
+                            
+                            Rectangle()
+                                .fill(Color.black)
+                                .aspectRatio(1, contentMode: .fit)
+                                .opacity(0.2)
+                            
+                            checkCircle()
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+struct checkCircle: View {
+    
+    var body: some View {
+        ZStack() {
+            
+//            Circle()
+//                .strokeBorder(Color.white, lineWidth: 1.5)
+//                .background(Circle().foregroundColor(Color.clear))
+//                  .frame(width: 22.5, height: 22.5)
+            
+            Circle()
+                .strokeBorder(Color.white, lineWidth: 1.5)
+                .background(Circle().foregroundColor(ColorPalette.primary.color))
+                .frame(width: 22.5, height: 22.5)
+            
+            
+            Image("check_icon_rounded")
+                .resizable()
+                .renderingMode(.template)
+                .foregroundColor(Color.white)
+                .background(Color.clear)
+                .frame(width: 10, height: 8)
+                
+            
+        }
+        .padding(8)
     }
 }
 //

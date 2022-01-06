@@ -7,55 +7,95 @@
 
 import SwiftUI
 
-struct MainView: View {
-    @State var selectedImg: [Image] = []
-    var body: some View {
-        ZStack {
-            VStack(spacing: 0) {
-                MainNavigationView()
-                
-                MainTabBar()
-                    .padding(.vertical, 6)
-                
-                MainGridView(selectedImage: $selectedImg)
-            }
-            
-            contentAdd(selectedImg: $selectedImg)
-        }
-    }
+enum contentViewType: Int {
+    case grid
+    case list
 }
+
+enum mainViewMode: Int {
+    case search
+    case select
+    case setting
+    case addAlbum
+}
+
+struct MainView: View {
+    @State var contents: [MainContent] = [] // selectedImg: [Image] = []
+    @State var viewType: contentViewType = .grid
+    
+    @State var isFilterSheet = false // 필터 시트를 위한
+    @State var isSelectMode = false // 사진 및 앨범 선택을 위해
+    @State var isSearchMode = false // 검색 모드
+    
+    @ObservedObject var sheetStates = ViewStateModel()
+    
+    
+    var body: some View {
+        NavigationView {
+            ZStack {
+                VStack(spacing: 0) {
+                    if isSearchMode {
+                        SearchView(isSearchMode: $isSearchMode)
+                    } else {
+                        MainNavigationView(isSelectMode: $isSelectMode, isSearchMode: $isSearchMode)
+                            .environmentObject(sheetStates)
+                        
+                        MainTabBar(viewtype: $viewType, isFilterSheet: $isFilterSheet)
+                            .padding(.vertical, 6)
+                        
+                        
+                        if contents.isEmpty {
+                            ZStack {
+                                VStack (spacing: 21) {
+                                    Image("add_arrow")
+                                        .opacity(0)
+                                    
+                                    Text("비어있음")
+                                        .font(.system(size: 24))
+                                        .bold()
+                                    
+                                    Text("업로드를 위해 하단의 업로드 버튼을\n눌러주세요")
+                                        .font(.system(size: 16))
+                                    HStack {
+                                        Spacer()
+                                        
+                                        Image("add_arrow")
+                                            .padding(.horizontal, 45)
+                                    }
+                                }
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        } else{
+                            if viewType == .grid {
+                                MainGridView(contents: $contents, isSelectMode: $isSelectMode)
+                            }else {
+                                MainListView(contents: $contents)
+                            }
+                        }
+                    }
+                } // vstack
+                
+                if !isSearchMode{
+                    floatingButton(contents: $contents)
+                        .environmentObject(sheetStates)
+                }
+            } // zstack
+            .customBottomSheet(isPresented: $isFilterSheet, title: "정렬") {
+                AnyView(filterSheetView())
+            } // filter sheet
+            .customBottomSheet(isPresented: $sheetStates.albumAddSheetShowing, title: "앨범 추가") {
+                AnyView(addViewOnBottomSheet(addType: "앨범"))
+            } // album add
+            .customBottomSheet(isPresented: $sheetStates.memoAddSheetShowing, title: "메모 추가") {
+                AnyView(addViewOnBottomSheet(addType: "메모"))
+            } // album add
+            .navigationBarHidden(true)
+        }
+    } // body
+} // mainview
+
+
 
 extension MainView {
-    var floatingButton: some View {
-        VStack(spacing: 0) {
-            Spacer()
-            HStack(spacing: 0) {
-                Spacer()
-                
-                Button {
-                    
-                } label: {
-                    ZStack(alignment: .center) {
-                        Circle()
-                            .foregroundColor(ColorPalette.primary.color)
-                            .frame(width: 56, height: 56)
-                        
-                        Image(systemName: "plus")
-                            .resizable()
-                            .renderingMode(.template)
-                            .foregroundColor(Color.white)
-                            .frame(width: 24, height: 24)
-                    }
-                }
-            }
-        }
-        .padding(.horizontal, 16)
-        .padding(.bottom, 50)
-    }
-}
-
-struct MainView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
-    }
-}
+    
+} // mainView
