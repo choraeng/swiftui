@@ -30,7 +30,7 @@ struct addViewOnBottomSheet: View {
                 )
             Button {
                 if !extendToggle {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
                         withAnimation {
                             extendViewOpacity = 1
                         }
