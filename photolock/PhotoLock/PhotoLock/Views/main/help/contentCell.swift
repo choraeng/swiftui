@@ -27,7 +27,6 @@ struct contentCell: View {
                     .layoutPriority(-1)
             }
             .clipped()
-            
         }
     }
 }
