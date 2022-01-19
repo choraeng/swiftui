@@ -10,7 +10,7 @@ import SwiftUI
 struct CustomText: View {
     var text: String
     var size: Float
-    var color: Color = ColorPalette.text.color //.primary
+    var color: Color = .textNormal
     var weight: SwiftUI.Font.Weight = SwiftUI.Font.Weight.medium
 //    var font:
     
@@ -18,8 +18,7 @@ struct CustomText: View {
     var body: some View {
         Text(text)
             .font(.custom("Apple SD Gothic Neo", size: CGFloat(size)))
-//            .foregroundColor(color)
-            .foregroundColor(.textNormal)
+            .foregroundColor(color)
             .fontWeight(weight)
     }
 }

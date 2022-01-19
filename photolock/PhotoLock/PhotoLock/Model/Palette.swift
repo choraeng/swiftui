@@ -44,7 +44,7 @@ struct PrimaryButton: ButtonStyle {
                         .frame(height: 48)
     //                    .background(ColorPalette.primary.color)
                         .background(RoundedRectangle(cornerRadius: 10)
-                                        .fill(configuration.isPressed ? ColorPalette.primary_pressed.color : ColorPalette.primary.color))
+                                        .fill(configuration.isPressed ? Color.primaryPressed : Color.primary))
                         .foregroundColor(.white)
                         
     //                    .frame(width: .infinity)
@@ -56,7 +56,7 @@ struct PrimaryButton: ButtonStyle {
                         .frame(minWidth: 0, maxWidth: .infinity)
                         .frame(height: 48)
                         .background(RoundedRectangle(cornerRadius: 10)
-                                        .fill(ColorPalette.primary_disabled.color))
+                                        .fill(Color.primaryDisabled))
                         .foregroundColor(.white)
                         .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
         }
@@ -71,7 +71,7 @@ struct PrimaryDisableButton: ButtonStyle {
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .frame(height: 48)
                     .background(RoundedRectangle(cornerRadius: 10)
-                                    .fill(ColorPalette.primary_disabled.color))
+                                    .fill(Color.primaryDisabled))
                     .foregroundColor(.white)
                     .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
     }

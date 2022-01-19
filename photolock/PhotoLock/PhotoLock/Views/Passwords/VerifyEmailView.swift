@@ -28,7 +28,7 @@ struct VerifyEmailView: View {
     @State var title = "이메일 인증"
     @State var subTitle = "이메일을 인증할 경우 비밀번호를 잊어버렸을 때\n재설정을 신속하게 도와드릴 수 있어요."
     
-    @State var borderColor = ColorPalette.text_disaled.color
+    @State var borderColor:Color = .textDisabled
     
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
@@ -54,7 +54,7 @@ struct VerifyEmailView: View {
             
             Circle()
                 .frame(width: 62, height: 62)
-                .foregroundColor(ColorPalette.primary.color)
+                .foregroundColor(.primary)
                 .overlay(Image("mail")
                             .renderingMode(.template)
                             .resizable()
@@ -67,11 +67,11 @@ struct VerifyEmailView: View {
             
             //                    .padding(.top, 10)
             
-            CustomText(text: title, size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
+            CustomText(text: title, size: 21, color: .textEmphasis, weight: .bold)
                 .padding(.horizontal, 16)
                 .padding(.top, 20)
             //                .padding(.bottom, 50)
-            CustomText(text: subTitle, size: 21, color: ColorPalette.text.color)
+            CustomText(text: subTitle, size: 21, color: .textNormal)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .frame(height: 66)
                 .multilineTextAlignment(.center)
@@ -84,16 +84,16 @@ struct VerifyEmailView: View {
                     .padding(.top, 30)
                     .onChange(of: input_email) { newValue in
                         if newValue.count == 0 {
-                            borderColor = ColorPalette.text_disaled.color
+                            borderColor = .textDisabled
                         } else {
                             if isValidEmailFormat(input: newValue) {
                                 isVaild = true
                                 failText = " "
-                                borderColor = ColorPalette.primary.color
+                                borderColor = .primary
                             }else {
                                 isVaild = false
                                 failText = "올바른 이메일 형식이 아닙니다. 다시 입력해주세요."
-                                borderColor = ColorPalette.status_error.color
+                                borderColor = .error
                             }
                         }
                     }
@@ -116,16 +116,16 @@ struct VerifyEmailView: View {
                     .padding(.top, 30)
                     .onChange(of: input_email) { newValue in
                         if newValue.count == 0 {
-                            borderColor = ColorPalette.text_disaled.color
+                            borderColor = .textDisabled
                         } else {
                             if isValidEmailFormat(input: newValue) {
                                 isVaild = true
                                 failText = " "
-                                borderColor = ColorPalette.primary.color
+                                borderColor = .primary
                             }else {
                                 isVaild = false
                                 failText = "올바른 이메일 형식이 아닙니다. 다시 입력해주세요."
-                                borderColor = ColorPalette.status_error.color
+                                borderColor = .error
                             }
                         }
                     }
@@ -139,7 +139,7 @@ struct VerifyEmailView: View {
             
             //                    Spacer()
             HStack() {
-                CustomText(text: failText, size: 13, color: ColorPalette.status_error.color)
+                CustomText(text: failText, size: 13, color: .error)
                     .padding(.top, 8)
                     .padding(.leading, 32)
                 Spacer()
@@ -179,7 +179,7 @@ struct VerifyEmailView: View {
                     //                    pwdOptSheet.toggle()
                 }
                 .font(.system(size: 16, weight: .bold))
-                .foregroundColor(ColorPalette.primary.color)
+                .foregroundColor(.primary)
                 .padding(.bottom, 17)
             }
         } // vstack
@@ -353,7 +353,7 @@ extension VerifyEmailView {
                 }
             
             if !isOverWait {
-                CustomText(text: timerText, size: 16, color: ColorPalette.primary.color, weight: .semibold)
+                CustomText(text: timerText, size: 16, color: .primary, weight: .semibold)
                     .padding(.trailing, 32)
                     .onReceive(timer) { _ in
                         if isWaiting {
@@ -382,7 +382,7 @@ extension VerifyEmailView {
                     appLockVM.setEmailTime(date: date1 ?? Date(), email: input_email)
                     isOverWait.toggle()
                 }
-                .foregroundColor(ColorPalette.primary.color)
+                .foregroundColor(.primary)
                 .padding(.trailing, 32)
                 .font(.system(size: 16))
             }
@@ -461,7 +461,7 @@ struct EmailHelpView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomText(text: "인증코드를 받지 못했나요?", size: 24, color: ColorPalette.text_emphasis.color, weight: .bold)
+            CustomText(text: "인증코드를 받지 못했나요?", size: 24, color: .textEmphasis, weight: .bold)
                 .padding(.top, 20)
             
             CustomText(text: "아래의 체크리스트를 확인해보세요", size: 16)
@@ -500,7 +500,7 @@ struct EmailHelpBox: View {
                     texts
                 }
                 .font(.custom("Apple SD Gothic Neo", size: fontSize))
-                .foregroundColor(ColorPalette.text.color)
+                .foregroundColor(.textNormal)
                 
                 Spacer()
             }
@@ -511,64 +511,3 @@ struct EmailHelpBox: View {
         .cornerRadius(10)
     }
 }
-
-// version 1.0
-//struct EmailHelpView: View {
-//    var fontSize: Float = 15
-//    var body: some View {
-//        VStack(spacing: 0) {
-//            CustomText(text: "인증코드를 받지 못했나요?", size: 24, color: ColorPalette.text_emphasis.color, weight: .bold)
-//                .padding(.top, 20)
-//
-//            CustomText(text: "아래의 체크리스트를 확인해보세요", size: 16)
-//                .padding(.top, 10)
-//                .padding(.bottom, 30)
-//
-//            VStack(spacing: 10) {
-//            EmailHelpBox(texts: [[CustomText(text: "휴지통과 스팸 메일함", size: fontSize, weight: .bold), CustomText(text: "을 확인해보세요", size: fontSize)]])
-//
-//                EmailHelpBox(texts: [[CustomText(text: "인증코드를 받을 때 까지 ", size: fontSize), CustomText(text: "1~5분이 소요", size: fontSize, weight: .bold), CustomText(text: "될 수 있어요.", size: fontSize)]])
-//
-//                EmailHelpBox(texts: [[CustomText(text: "입력하신 이메일로 인증코드를 받을 수", size: fontSize)],[CustomText(text: "없다면 ", size: fontSize), CustomText(text: "재전송 버튼", size: fontSize, weight: .bold), CustomText(text: "을 눌러 다시 요청해보세요.", size: fontSize)]])
-//
-//                EmailHelpBox(texts: [[CustomText(text: "잘못된 이메일", size: fontSize, weight: .bold), CustomText(text: "을 입력했을 수 있습니다.", size: fontSize)], [CustomText(text: "이전 단계로 돌아가 이메일을 다시 입력해보세요.", size: fontSize)]])
-//
-//            }
-//
-//            Spacer()
-//
-//        }
-//        .padding(.horizontal, 16)
-//    }
-//}
-//
-//struct EmailHelpBox: View {
-////    var _text: Text
-//    var texts: [[CustomText]] = []
-//    var body: some View {
-//        ZStack(alignment: .center) {
-//            HStack {
-//                Image("check_icon")
-//                    .frame(width: 24, height: 24)
-//                    .padding(.horizontal, 16)
-//                Group {
-//                VStack(alignment: .leading, spacing: 8) {
-//                    ForEach(0..<texts.count, id: \.self) { row in
-//                        HStack(spacing: 0) {
-//                            ForEach(0..<texts[row].count, id: \.self) { text in
-//                                texts[row][text]
-//                            }
-//                        }
-//                    }
-//                }
-//                }
-//
-//                Spacer()
-//            }
-//        }
-//        .frame(height: 90)
-//        .frame(maxWidth: .infinity)
-//        .background(Color(red: 0.975, green: 0.975, blue: 0.975))
-//        .cornerRadius(10)
-//    }
-//}

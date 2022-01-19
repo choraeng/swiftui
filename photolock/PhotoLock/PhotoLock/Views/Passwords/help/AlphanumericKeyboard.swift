@@ -12,7 +12,7 @@ struct AlphanumericKeyboard: View {
     @Binding var commit: Bool
     
 //    @Binding var input_password: String
-    @State var borderColor: Color = ColorPalette.text_disaled.color
+    @State var borderColor: Color = .textDisabled
     
 //    @State var failText: String
     
@@ -44,7 +44,7 @@ struct AlphanumericKeyboard: View {
             }
             if pwmodel.isFail {
                 HStack {
-                    CustomText(text: pwmodel.failtext, size: 13, color: ColorPalette.status_error.color)
+                    CustomText(text: pwmodel.failtext, size: 13, color: .error)
                         .padding(.leading, 32)
                     Spacer()
                 }
@@ -52,16 +52,16 @@ struct AlphanumericKeyboard: View {
         }
         .onChange(of: pwmodel.isFail) { newValue in
             if newValue {
-                borderColor = ColorPalette.status_error.color
+                borderColor = .error
             }else {
-                borderColor = ColorPalette.primary_pressed.color
+                borderColor = .primaryPressed
             }
         }
         .onChange(of: pwmodel.input_password) { newValue in
             if newValue.count > 0 {
-                borderColor = ColorPalette.primary_pressed.color
+                borderColor = .primaryDisabled
             }else {
-                borderColor = ColorPalette.text_disaled.color
+                borderColor = .textDisabled
             }
         }
     }

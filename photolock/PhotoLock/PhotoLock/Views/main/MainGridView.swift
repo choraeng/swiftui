@@ -57,7 +57,7 @@ struct checkCircle: View {
             
             Circle()
                 .strokeBorder(Color.white, lineWidth: 1.5)
-                .background(Circle().foregroundColor(ColorPalette.primary.color))
+                .background(Circle().foregroundColor(.primary))
                 .frame(width: 22.5, height: 22.5)
             
             

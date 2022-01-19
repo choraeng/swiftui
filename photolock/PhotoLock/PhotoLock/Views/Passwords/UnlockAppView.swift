@@ -28,7 +28,7 @@ struct UnlockAppView: View {
     
     @State var fail_cnt = -1
     @State var state = 0
-    @State var pwdColor: Color = ColorPalette.primary.color
+    @State var pwdColor: Color = .primary
     
     @State var isLocked = false
     @State var isFail = false
@@ -39,7 +39,7 @@ struct UnlockAppView: View {
     var body: some View {
         NavigationView {
             VStack {
-                CustomText(text: titles[0], size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
+                CustomText(text: titles[0], size: 21, color: .textEmphasis, weight: .bold)
                     .padding(.horizontal, 16)
                 //                .padding(.bottom, 50)
                 CustomText(text: !isLocked ? subtitles[0] : subtitles[1], size: 16)
@@ -124,7 +124,7 @@ extension UnlockAppView {
                     if isFail {
                         isFail = false
                     }
-                    pwdColor = ColorPalette.primary.color
+                    pwdColor = .primary
                 }
                 
             })

@@ -17,7 +17,7 @@ struct PincodeKeyboard: View {
     @Binding var fail_text: String
     
     
-    @State var circleColor: Color = ColorPalette.primary.color
+    @State var circleColor: Color = .primary
     // 패스워드 관련
 //    var _size: Int
     var _len: Int
@@ -46,21 +46,21 @@ struct PincodeKeyboard: View {
             .padding()
             
             if isFail {
-                CustomText(text: fail_text, size: 13, color: ColorPalette.status_error.color)
+                CustomText(text: fail_text, size: 13, color: .error)
             }
         }
         .onChange(of: isFail) { newValue in
             if newValue {
-                circleColor = ColorPalette.status_error.color
+                circleColor = .error
             }else {
-                circleColor = ColorPalette.primary.color
+                circleColor = .primary
             }
         }
         .onAppear {
             if isFail {
-                circleColor = ColorPalette.status_error.color
+                circleColor = .error
             }else {
-                circleColor = ColorPalette.primary.color
+                circleColor = .primary
             }
         }
          

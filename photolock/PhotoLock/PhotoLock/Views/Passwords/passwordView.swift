@@ -12,13 +12,13 @@ struct passwordView: View {
     @Binding var isEnter: Bool // 키보드 return 키
 
     @State var pwdOptSheet: Bool = false // 옵션 시트
-    @State var pwdColor: Color = ColorPalette.primary.color
+    @State var pwdColor: Color = .primary
     
     @State var isLock:Bool = false
     
     var body: some View {
         VStack(spacing: 0) {
-            CustomText(text: pwmodel.title, size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
+            CustomText(text: pwmodel.title, size: 21, color: .textEmphasis, weight: .bold)
                 .padding(.horizontal, 16)
 //                .padding(.bottom, 50)
             CustomText(text: pwmodel.subtitle, size: 16)
@@ -40,7 +40,7 @@ struct passwordView: View {
                     pwdOptSheet.toggle()
                 }
                 .font(.system(size: 16, weight: .bold))
-                .foregroundColor(ColorPalette.primary.color)
+                .foregroundColor(.primary)
                 .padding(.bottom, 24)
                 .actionSheet(isPresented: $pwdOptSheet) {
                     ActionSheet(title: Text("비밀번호 옵션"),
@@ -48,7 +48,7 @@ struct passwordView: View {
                                     .default(Text("사용자 지정 비밀번호")){
                                         pwmodel.input_password = ""
                                         pwmodel.type = .string
-                                        pwdColor = ColorPalette.primary_disabled.color
+                                        pwdColor = .primaryDisabled
                                     },
                                     .default(Text("4자리 숫자 비밀번호")){
                                         pwmodel.input_password = ""
@@ -97,7 +97,7 @@ extension passwordView {
                     if pwmodel.isFail {
                         pwmodel.isFail = false
                     }
-                    pwdColor = ColorPalette.primary.color
+                    pwdColor = .primary
                 }
                 
             })

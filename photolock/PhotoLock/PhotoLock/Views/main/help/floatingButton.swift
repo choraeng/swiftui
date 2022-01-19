@@ -29,7 +29,7 @@ struct floatingButton: View {
                 } label: {
                     ZStack(alignment: .center) {
                         Circle()
-                            .foregroundColor(ColorPalette.primary.color)
+                            .foregroundColor(.primary)
                             .frame(width: 56, height: 56)
                         
                         Image(systemName: "plus")

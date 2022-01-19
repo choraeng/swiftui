@@ -119,7 +119,7 @@ extension MainNavigationView {
             } label: {
                 Image("delete_icon")
                     .renderingMode(.template)
-                    .foregroundColor(ColorPalette.primary.color)
+                    .foregroundColor(.primary)
                     .padding(.trailing, 24)
             }
             .opacity(0)
@@ -137,7 +137,7 @@ extension MainNavigationView {
             } label: {
                 Image("delete_icon")
                     .renderingMode(.template)
-                    .foregroundColor(ColorPalette.primary.color)
+                    .foregroundColor(.primary)
                     .padding(.trailing, 24)
             }
             
