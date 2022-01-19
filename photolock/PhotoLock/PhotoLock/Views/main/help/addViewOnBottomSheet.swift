@@ -49,10 +49,7 @@ struct addViewOnBottomSheet: View {
                         .rotationEffect(Angle.degrees(extendToggle ? 90 : 0))
                         .animation(.default)
                     
-                    Text("\(addType) 설정")
-                        .font(.system(size: 16))
-                        .foregroundColor(Color.black)
-                        .bold()
+                    CustomText(text: "\(addType) 설정", size: 16, weight: .bold)
                     
                     Spacer()
                 }
@@ -63,10 +60,8 @@ struct addViewOnBottomSheet: View {
                     
                 } label: {
                     HStack {
-                        Text("커버이미지 설정")
+                        CustomText(text: "커버이미지 설정", size: 16, weight: .semibold)
                             .padding(.leading, 56)
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.black)
                         
                         Spacer()
                         
@@ -81,10 +76,8 @@ struct addViewOnBottomSheet: View {
                     setPasswrdToggle.toggle()
                 } label: {
                     HStack {
-                        Text("비밀번호 설정")
+                        CustomText(text: "비밀번호 설정", size: 16, weight: .semibold)
                             .padding(.leading, 56)
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.black)
                         
                         Spacer()
                         

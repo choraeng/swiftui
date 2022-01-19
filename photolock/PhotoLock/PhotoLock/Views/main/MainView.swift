@@ -50,12 +50,11 @@ struct MainView: View {
                                     Image("add_arrow")
                                         .opacity(0)
                                     
-                                    Text("비어있음")
-                                        .font(.system(size: 24))
-                                        .bold()
+                                    CustomText(text: "비어있음", size: 24, weight: .bold)
                                     
-                                    Text("업로드를 위해 하단의 업로드 버튼을\n눌러주세요")
-                                        .font(.system(size: 16))
+                                    CustomText(text: "업로드를 위해 하단의 업로드 버튼을\n눌러주세요", size: 16)
+                                        .multilineTextAlignment(.center)
+
                                     HStack {
                                         Spacer()
                                         

@@ -47,10 +47,7 @@ struct BottomSheet<Presenting>: View where Presenting: View {
                     
                     VStack(spacing: 0) {
                         HStack(alignment: .center, spacing: 0) {
-                            Text(title)
-                                .font(.system(size: 24))
-                                .bold()
-                                .accentColor(.primary)
+                            CustomText(text: title, size: 24, weight: .bold)
                                 .padding(.leading, 4)
                             Spacer()
                             Button(action: {
@@ -58,9 +55,7 @@ struct BottomSheet<Presenting>: View where Presenting: View {
                                     self.isPresented = false
                                 }
                             }) {
-                                Text("취소")
-                                    .font(.system(size: 18))
-                                    .bold()
+                                CustomText(text: "취소", size: 18, weight: .bold)
                             }
                             .padding(.trailing)
                         }

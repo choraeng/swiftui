@@ -23,10 +23,11 @@ struct navigationButtonCell: View {
     
     
     var body: some View {
-        if type == .text{
+        if type == .text{ // 안쓸듯한데 ㅠㅠ
             Button{
                 complete()
             } label: {
+                
                 Text(text!).bold()
             }
         }

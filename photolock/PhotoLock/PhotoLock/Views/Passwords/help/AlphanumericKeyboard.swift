@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Alphanumeric: View {
+struct AlphanumericKeyboard: View {
     @ObservedObject var pwmodel: PasswordModel
     @Binding var commit: Bool
     
@@ -44,9 +44,7 @@ struct Alphanumeric: View {
             }
             if pwmodel.isFail {
                 HStack {
-                    Text(pwmodel.failtext)
-                        .foregroundColor(ColorPalette.status_error.color)
-                        .font(.system(size: 13))
+                    CustomText(text: pwmodel.failtext, size: 13, color: ColorPalette.status_error.color)
                         .padding(.leading, 32)
                     Spacer()
                 }

@@ -39,12 +39,10 @@ struct UnlockAppView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(titles[0])
-                    .font(.system(size: 21, weight: .bold))
+                CustomText(text: titles[0], size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
                     .padding(.horizontal, 16)
                 //                .padding(.bottom, 50)
-                Text(!isLocked ? subtitles[0] : subtitles[1])
-                    .font(.system(size: 16))
+                CustomText(text: !isLocked ? subtitles[0] : subtitles[1], size: 16)
                     .padding(.top, 20)
                     .padding(.bottom, 30)
                 
@@ -59,7 +57,7 @@ struct UnlockAppView: View {
                 Spacer()
                 
                 if pwmodel.type != .string {
-                    Keyboard(password: $pwmodel.input_password, lock: $isLocked)
+                    NineNumberKeyboard(password: $pwmodel.input_password, lock: $isLocked)
                 }
             }
         }
@@ -111,7 +109,7 @@ struct UnlockAppView: View {
 
 extension UnlockAppView {
     var _stringfield: some View {
-        Alphanumeric(pwmodel: pwmodel,
+        AlphanumericKeyboard(pwmodel: pwmodel,
                      commit: $isEnter
         )
             .onChange(of: isEnter) { newValue in
@@ -135,7 +133,7 @@ extension UnlockAppView {
 
 extension UnlockAppView {
     var _pincodefield: some View {
-        Pincode(input_password: $pwmodel.input_password,
+        PincodeKeyboard(input_password: $pwmodel.input_password,
                 isFail: $isFail,
                 fail_text: $pwmodel.failtext,
                 _len: (pwmodel.type == .digit_4) ? 4 : 6)

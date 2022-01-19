@@ -22,9 +22,9 @@ struct keyView: View {
             Color.clear
                 .overlay(Rectangle()
                             .fill(.clear))
-                .overlay(Text(key)
-                            .font(.system(size: 25))
-                            .accentColor(.primary))
+                .overlay(
+                    CustomText(text: key, size: 25)
+                )
         }
         .frame(height: 48)
     }
@@ -47,7 +47,7 @@ struct keyrowView: View {
 }
 
 
-struct Keyboard: View {
+struct NineNumberKeyboard: View {
     @Binding var password: String
     @State var keys: [String] = []
     @Binding var isLock: Bool

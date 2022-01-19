@@ -67,19 +67,15 @@ struct VerifyEmailView: View {
             
             //                    .padding(.top, 10)
             
-            Text(title)
-                .font(.system(size: 21, weight: .bold))
-                .foregroundColor(ColorPalette.text_emphasis.color)
+            CustomText(text: title, size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
                 .padding(.horizontal, 16)
                 .padding(.top, 20)
             //                .padding(.bottom, 50)
-            Text(subTitle)
-                .foregroundColor(ColorPalette.text.color)
+            CustomText(text: subTitle, size: 21, color: ColorPalette.text.color)
                 .frame(minWidth: 0, maxWidth: .infinity)
                 .frame(height: 66)
                 .multilineTextAlignment(.center)
                 .lineLimit(nil)
-                .font(.system(size: 16))
                 .padding(.top, 20)
             
             //                ZStack() {
@@ -143,9 +139,7 @@ struct VerifyEmailView: View {
             
             //                    Spacer()
             HStack() {
-                Text(failText)
-                    .foregroundColor(ColorPalette.status_error.color)
-                    .font(.system(size: 13))
+                CustomText(text: failText, size: 13, color: ColorPalette.status_error.color)
                     .padding(.top, 8)
                     .padding(.leading, 32)
                 Spacer()
@@ -170,7 +164,7 @@ struct VerifyEmailView: View {
                 .padding(.top, 12)
             } else {
                 Button(buttonText) {
-//                    ClickSendBtn()
+                    //                    ClickSendBtn()
                 }
                 .buttonStyle(PrimaryButton(condition: input_verity_code.count != 0))
                 .disabled(input_verity_code.count == 0)
@@ -192,7 +186,7 @@ struct VerifyEmailView: View {
         .toast(isShowing: $isSend, text: "이메일로 전송을 완료했어요.") {
             isSend = false
         }
-//        .navigationTitle(Text(""))
+        //        .navigationTitle(Text(""))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("취소") {
@@ -359,10 +353,8 @@ extension VerifyEmailView {
                 }
             
             if !isOverWait {
-                Text(timerText)
+                CustomText(text: timerText, size: 16, color: ColorPalette.primary.color, weight: .semibold)
                     .padding(.trailing, 32)
-                    .foregroundColor(ColorPalette.primary.color)
-                    .font(.system(size: 16))
                     .onReceive(timer) { _ in
                         if isWaiting {
                             let _now = Date()
@@ -441,7 +433,7 @@ struct VerifyTextField: UIViewRepresentable {
     func updateUIView(_ uiView: UITextField, context: UIViewRepresentableContext<VerifyTextField>) {
         uiView.text = text
         if isFirstResponder && !context.coordinator.didBecomeFirstResponder  {
-//            uiView.becomeFirstResponder()
+            //            uiView.becomeFirstResponder()
             context.coordinator.didBecomeFirstResponder = true
         }
     }
@@ -455,40 +447,37 @@ struct VerifyTextField: UIViewRepresentable {
 //}
 
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
+//#if canImport(UIKit)
+//extension View {
+//    func hideKeyboard() {
+//        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+//    }
+//}
+//#endif
 
 
+// version 2.0
 struct EmailHelpView: View {
+    
     var body: some View {
         VStack(spacing: 0) {
-            Text("인증코드를 받지 못했나요?")
-                .font(.system(size: 24, weight: .bold))
-                .foregroundColor(ColorPalette.text_emphasis.color)
+            CustomText(text: "인증코드를 받지 못했나요?", size: 24, color: ColorPalette.text_emphasis.color, weight: .bold)
                 .padding(.top, 20)
             
-            Text("아래의 체크리스트를 확인해보세요")
-                .foregroundColor(ColorPalette.text.color)
-                .font(.system(size: 16))
+            CustomText(text: "아래의 체크리스트를 확인해보세요", size: 16)
                 .padding(.top, 10)
                 .padding(.bottom, 30)
             
-            EmailHelpBox(_text: Text("휴지통과 스팸 메일함").bold() + Text("을 확인해보세요."))
-                .padding(.bottom, 10)
-            
-            EmailHelpBox(_text: Text("인증코드를 받을 때 까지 ") + Text("1~5분이 소요").bold() + Text("될 수 있어요."))
-                .padding(.bottom, 10)
-            
-            EmailHelpBox(_text: Text("입력하신 이멩이로 인증코드를 받을 수\n업다면") + Text("재전송 버튼").bold() + Text("을 눌러 다시 요청해보세요."))
-                .padding(.bottom, 10)
-            
-            EmailHelpBox(_text: Text("잘못된 이메일").bold() + Text("을 입력했을 수 있습니다.\n이전 단계로 돌아가 이메일을 다시 입력해보세요."))
-                .padding(.bottom, 10)
+            VStack(spacing: 10) {
+                EmailHelpBox(texts: Text("휴지통과 스팸 메일함").bold() + Text("을 확인해보세요.").fontWeight(.medium))
+                
+                EmailHelpBox(texts: Text("인증코드를 받을 때 까지 ").fontWeight(.medium) + Text("1~5분이 소요").bold() + Text("될 수 있어요.").fontWeight(.medium))
+                
+                EmailHelpBox(texts: Text("입력하신 이메일로 인증코드를 받을 수 없다면 ").fontWeight(.medium) + Text("재전송 버튼").bold() + Text("을 눌러 다시 요청해보세요.").fontWeight(.medium))
+                
+                EmailHelpBox(texts: Text("잘못된 이메일").bold() + Text("을 입력했을 수 있습니다.\n이전 단계로 돌아가 이메일을 다시 입력해보세요").fontWeight(.medium))
+                
+            }
             
             Spacer()
             
@@ -498,15 +487,20 @@ struct EmailHelpView: View {
 }
 
 struct EmailHelpBox: View {
-    var _text: Text
+    var fontSize: CGFloat = 14
+    //    var _text: Text
+    var texts: Text
     var body: some View {
         ZStack(alignment: .center) {
             HStack {
                 Image("check_icon")
                     .frame(width: 24, height: 24)
                     .padding(.horizontal, 16)
-                
-                _text
+                Group {
+                    texts
+                }
+                .font(.custom("Apple SD Gothic Neo", size: fontSize))
+                .foregroundColor(ColorPalette.text.color)
                 
                 Spacer()
             }
@@ -515,14 +509,66 @@ struct EmailHelpBox: View {
         .frame(maxWidth: .infinity)
         .background(Color(red: 0.975, green: 0.975, blue: 0.975))
         .cornerRadius(10)
-        
     }
 }
+
+// version 1.0
+//struct EmailHelpView: View {
+//    var fontSize: Float = 15
+//    var body: some View {
+//        VStack(spacing: 0) {
+//            CustomText(text: "인증코드를 받지 못했나요?", size: 24, color: ColorPalette.text_emphasis.color, weight: .bold)
+//                .padding(.top, 20)
 //
+//            CustomText(text: "아래의 체크리스트를 확인해보세요", size: 16)
+//                .padding(.top, 10)
+//                .padding(.bottom, 30)
 //
-//struct EmailHelpView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmailHelpView()
+//            VStack(spacing: 10) {
+//            EmailHelpBox(texts: [[CustomText(text: "휴지통과 스팸 메일함", size: fontSize, weight: .bold), CustomText(text: "을 확인해보세요", size: fontSize)]])
+//
+//                EmailHelpBox(texts: [[CustomText(text: "인증코드를 받을 때 까지 ", size: fontSize), CustomText(text: "1~5분이 소요", size: fontSize, weight: .bold), CustomText(text: "될 수 있어요.", size: fontSize)]])
+//
+//                EmailHelpBox(texts: [[CustomText(text: "입력하신 이메일로 인증코드를 받을 수", size: fontSize)],[CustomText(text: "없다면 ", size: fontSize), CustomText(text: "재전송 버튼", size: fontSize, weight: .bold), CustomText(text: "을 눌러 다시 요청해보세요.", size: fontSize)]])
+//
+//                EmailHelpBox(texts: [[CustomText(text: "잘못된 이메일", size: fontSize, weight: .bold), CustomText(text: "을 입력했을 수 있습니다.", size: fontSize)], [CustomText(text: "이전 단계로 돌아가 이메일을 다시 입력해보세요.", size: fontSize)]])
+//
+//            }
+//
+//            Spacer()
+//
+//        }
+//        .padding(.horizontal, 16)
 //    }
 //}
 //
+//struct EmailHelpBox: View {
+////    var _text: Text
+//    var texts: [[CustomText]] = []
+//    var body: some View {
+//        ZStack(alignment: .center) {
+//            HStack {
+//                Image("check_icon")
+//                    .frame(width: 24, height: 24)
+//                    .padding(.horizontal, 16)
+//                Group {
+//                VStack(alignment: .leading, spacing: 8) {
+//                    ForEach(0..<texts.count, id: \.self) { row in
+//                        HStack(spacing: 0) {
+//                            ForEach(0..<texts[row].count, id: \.self) { text in
+//                                texts[row][text]
+//                            }
+//                        }
+//                    }
+//                }
+//                }
+//
+//                Spacer()
+//            }
+//        }
+//        .frame(height: 90)
+//        .frame(maxWidth: .infinity)
+//        .background(Color(red: 0.975, green: 0.975, blue: 0.975))
+//        .cornerRadius(10)
+//    }
+//}

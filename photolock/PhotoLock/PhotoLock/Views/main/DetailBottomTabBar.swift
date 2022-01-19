@@ -12,7 +12,6 @@ struct DetailBottomTabBar: View {
         
         HStack(spacing: 0) {
             bottomTabBarCell(img_name: "favorite_icon", text: "즐겨찾기")
-            
             bottomTabBarCell(img_name: "share_icon", text: "공유하기")
             bottomTabBarCell(img_name: "info_icon", text: "파일정보")
             bottomTabBarCell(img_name: "delete_icon", text: "휴지통")
@@ -41,8 +40,9 @@ struct bottomTabBarCell: View {
                     .scaledToFit()
                 //                .accentColor((viewtype == contentViewType.grid) ? .primary : .gray)
                     .frame(width: 24.0, height: 24.0)
-                Text(text)
-                    .font(.system(size: 9))
+                    .foregroundColor(.black)
+                
+                CustomText(text: text, size: 9, weight: .regular)
                 Spacer()
             }
             .contentShape(Rectangle())

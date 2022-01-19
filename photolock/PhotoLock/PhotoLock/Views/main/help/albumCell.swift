@@ -22,12 +22,11 @@ struct albumCell: View {
                 Image("lock")
                     .padding(8)
             }
-            Text("앨범 타이틀")
+            CustomText(text: "앨범 타이틀", size: 13, weight: .semibold)
                 .padding(.top, 8)
-                .font(.system(size: 13))
-            Text("1,000")
+            
+            CustomText(text: "1,000", size: 13)
                 .padding(.top, 4)
-                .font(.system(size: 13))
                 .opacity(0.4)
         }
         .padding(.horizontal, 7)

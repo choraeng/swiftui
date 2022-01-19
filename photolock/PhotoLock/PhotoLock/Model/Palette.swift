@@ -86,3 +86,19 @@ struct SheetButtonStyle: ButtonStyle {
                             .fill(configuration.isPressed ? Color(red: 0.769, green: 0.769, blue: 0.769, opacity: 0.15) : Color.clear))
     }
 }
+
+
+extension Color {
+    // text
+    static let textNormal = Color("textNormal")
+    static let textEmphasis = Color("textEmphasis")
+    static let textDisabled = Color("textDisabled")
+    
+    // primary
+    static let primary = Color("primary")
+    static let primaryDisabled = Color("primaryDisabled")
+    static let primaryPressed = Color("primaryPressed")
+    
+    // other
+    static let error = Color("error")
+}

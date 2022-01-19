@@ -14,9 +14,7 @@ struct filterSheetView: View {
                 
             } label: {
                 HStack(spacing: 0) {
-                    Text("날짜 오름차순")
-                        .font(.system(size: 16))
-                        .bold()
+                    CustomText(text: "날짜 오름차순", size: 16, weight: .bold)
                     
                     Spacer()
                 }
@@ -31,10 +29,7 @@ struct filterSheetView: View {
                 
             } label: {
                 HStack(spacing: 16) {
-                    Text("날짜 내림차순")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 16))
-                        .bold()
+                    CustomText(text: "날짜 내림차순", size: 16, weight: .bold)
                     
                     Spacer()
                 }
@@ -49,10 +44,7 @@ struct filterSheetView: View {
                 
             } label: {
                 HStack(spacing: 16) {
-                    Text("파일 이름별")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 16))
-                        .bold()
+                    CustomText(text: "파일 이름별", size: 16, weight: .bold)
                     
                     Spacer()
                 }
@@ -67,10 +59,7 @@ struct filterSheetView: View {
                 
             } label: {
                 HStack(spacing: 16) {
-                    Text("파일 유형별")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 16))
-                        .bold()
+                    CustomText(text: "파일 유형별", size: 16, weight: .bold)
                     
                     Spacer()
                 }
@@ -85,10 +74,7 @@ struct filterSheetView: View {
                 
             } label: {
                 HStack(spacing: 16) {
-                    Text("파일 크기별")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 16))
-                        .bold()
+                    CustomText(text: "파일 크기별", size: 16, weight: .bold)
                     
                     Spacer()
                 }

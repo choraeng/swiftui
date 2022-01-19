@@ -95,9 +95,7 @@ struct DetatilNavigation: View {
             Spacer()
             
             
-            
             Button {
-                
             } label: {
                 Image("back_arrow_icon")
             }
@@ -144,10 +142,9 @@ struct TagCell: View {
     
     var body: some View {
         HStack(spacing: 0) {
-            Text(tagName)
-                .font(.system(size: 13))
+            CustomText(text: tagName, size: 13, color: Color.white, weight: .semibold)
                 .padding(.leading, 8)
-                .foregroundColor(Color.white)
+
             Image("close_icon_sm")
             //                .resizable()
                 .renderingMode(.template)

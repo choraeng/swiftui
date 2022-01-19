@@ -57,9 +57,7 @@ struct floatingButton: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                             
-                            Text("사진 촬영")
-                                .font(.system(size: 16))
-                                .bold()
+                            CustomText(text: "사진 촬영", size: 16, weight: .bold)
                             
                             Spacer()
                         }
@@ -80,9 +78,7 @@ struct floatingButton: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                             
-                            Text("사진 / 비디오")
-                                .font(.system(size: 16))
-                                .bold()
+                            CustomText(text: "사진 / 비디오", size: 16, weight: .bold)
                             
                             Spacer()
                         }
@@ -103,9 +99,7 @@ struct floatingButton: View {
                                 .resizable()
                                 .frame(width: 24, height: 24)
                             
-                            Text("메모")
-                                .font(.system(size: 16))
-                                .bold()
+                            CustomText(text: "메모", size: 16, weight: .bold)
                             
                             Spacer()
                         }

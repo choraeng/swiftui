@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Pincode: View {
+struct PincodeKeyboard: View {
 //    @ObservedObject var pwmodel: PasswordModel
     
 //    @Binding var failText: String
@@ -46,9 +46,7 @@ struct Pincode: View {
             .padding()
             
             if isFail {
-                Text(fail_text)
-                    .foregroundColor(ColorPalette.status_error.color)
-                    .font(.system(size: 13))
+                CustomText(text: fail_text, size: 13, color: ColorPalette.status_error.color)
             }
         }
         .onChange(of: isFail) { newValue in

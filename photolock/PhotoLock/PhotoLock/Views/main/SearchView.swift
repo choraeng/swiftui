@@ -18,14 +18,14 @@ struct SearchView: View {
         VStack(spacing: 0) {
             HStack(spacing: 27) {
                 Button {
-                    
                 } label: {
                     Image("close_icon")
+                        .resizable()
+                        .frame(width: 24, height: 24)
                 }
                 .opacity(0)
                 
                 Button {
-                    
                 } label: {
                     Text("선택")
                 }
@@ -33,22 +33,18 @@ struct SearchView: View {
                 
                 Spacer()
                 
-                Text("검색")
-                    .font(.system(size: 18))
-                    .foregroundColor(Color.black)
-                    .bold()
+                CustomText(text: "검색", size: 18, weight: .bold)
                 
                 Spacer()
                 
-                if isCommit {
-                    Button {
-                        
-                    } label: {
-                        Text("선택")
-                            .font(.system(size: 16))
-                            .foregroundColor(Color.black)
-                    }
+                
+                Button {
+                    
+                } label: {
+                    CustomText(text: "선택", size: 16)
                 }
+                .opacity(isCommit ? 1 : 0)
+                .disabled(!isCommit)
                 
                 Button {
                     withAnimation {

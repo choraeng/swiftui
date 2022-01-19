@@ -18,12 +18,10 @@ struct passwordView: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            Text(pwmodel.title)
-                .font(.system(size: 21, weight: .bold))
+            CustomText(text: pwmodel.title, size: 21, color: ColorPalette.text_emphasis.color, weight: .bold)
                 .padding(.horizontal, 16)
 //                .padding(.bottom, 50)
-            Text(pwmodel.subtitle)
-                .font(.system(size: 16))
+            CustomText(text: pwmodel.subtitle, size: 16)
                 .padding(.top, 20)
                 .padding(.bottom, 30)
             
@@ -64,7 +62,7 @@ struct passwordView: View {
                 }
             }
             if pwmodel.type != .string {
-                Keyboard(password: $pwmodel.input_password, lock: $isLock)
+                NineNumberKeyboard(password: $pwmodel.input_password, lock: $isLock)
             }
         }
     }
@@ -84,7 +82,7 @@ extension passwordView {
 
 extension passwordView {
     var _stringfield: some View {
-        Alphanumeric(pwmodel: pwmodel,
+        AlphanumericKeyboard(pwmodel: pwmodel,
                     commit: $isEnter
             )
             .onChange(of: isEnter) { newValue in
@@ -108,7 +106,7 @@ extension passwordView {
 
 extension passwordView {
     var _pincodefield: some View {
-        Pincode(input_password: $pwmodel.input_password,
+        PincodeKeyboard(input_password: $pwmodel.input_password,
                 isFail: $pwmodel.isFail,
                 fail_text: $pwmodel.failtext,
                 _len: (pwmodel.type == .digit_4) ? 4 : 6)
