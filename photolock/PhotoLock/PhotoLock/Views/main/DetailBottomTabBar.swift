@@ -18,7 +18,7 @@ struct DetailBottomTabBar: View {
         }
         
         //            .frame(width: geometry.size.width, height: 48, alignment: .bottom)
-        .background(Color.white)
+        .background(Color.background)
     }
 }
 

@@ -39,7 +39,7 @@ struct navigationButtonCell: View {
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
-                    .accentColor(.primary)
+                    .accentColor(.foreground)
                     .frame(width: 24.0, height: 24.0)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
@@ -54,7 +54,7 @@ struct navigationButtonCell: View {
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
-                    .accentColor(.primary)
+                    .accentColor(.foreground)
                     .frame(width: 24.0, height: 24.0)
                     .padding(.horizontal, 12)
                     .padding(.vertical, 6)
@@ -119,7 +119,7 @@ extension MainNavigationView {
             } label: {
                 Image("delete_icon")
                     .renderingMode(.template)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.foreground)
                     .padding(.trailing, 24)
             }
             .opacity(0)
@@ -137,7 +137,7 @@ extension MainNavigationView {
             } label: {
                 Image("delete_icon")
                     .renderingMode(.template)
-                    .foregroundColor(.primary)
+                    .foregroundColor(.foreground)
                     .padding(.trailing, 24)
             }
             

@@ -100,5 +100,8 @@ extension Color {
     static let primaryPressed = Color("primaryPressed")
     
     // other
+    static let background = Color("background")
+    static let foreground = Color("foreground")
+    
     static let error = Color("error")
 }

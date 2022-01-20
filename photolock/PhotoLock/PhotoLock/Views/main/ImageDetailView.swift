@@ -32,15 +32,15 @@ struct ImageDetailView: View {
             VStack(spacing: 0) {
                 Rectangle() // status bar
                     .frame(maxWidth: .infinity, maxHeight: statusBarHeight)
-                    .foregroundColor(Color.white)
+                    .foregroundColor(.background)
                 
                 DetatilNavigation(title: "IMG_123") // navigation bar
-                    .background(Color.white)
+                    .background(Color.background)
                 
                 Spacer()
                 
                 DetailTagView() // tag view
-                    .background(Color.white)
+                    .background(Color.background)
                 
                 Color(red: 0.958, green: 0.958, blue: 0.958)
                     .frame(maxWidth: .infinity, maxHeight: 44)
@@ -53,7 +53,8 @@ struct ImageDetailView: View {
                 
                 DetailBottomTabBar() // bottom tab bar
                 
-                Color.white
+//                Color.white
+                Color.background
                     .frame(maxWidth: .infinity, maxHeight: 40)
             } // vstack
             .padding(.bottom, -40)
@@ -103,7 +104,7 @@ struct DetatilNavigation: View {
         }
         .padding(.horizontal, 16)
         .frame(height: 40)
-        .background(Color.white)
+        .background(Color.background)
     }
 }
 

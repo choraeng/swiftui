@@ -22,19 +22,19 @@ struct MainTabBar: View {
                 viewtype = .grid
                 print(viewtype)
             }
-            .accentColor((viewtype == contentViewType.grid) ? .primary : .gray)
+            .accentColor((viewtype == contentViewType.grid) ? .foreground : .gray)
             
             mainTabBarCell(img_name: "list_icon") {
                 viewtype = .list
                 print(viewtype)
             }
-            .accentColor((viewtype == contentViewType.grid) ? .primary : .gray)
+            .accentColor((viewtype == contentViewType.list) ? .foreground : .gray)
             
             mainTabBarCell(img_name: "funnel_icon") {
                 isFilter.toggle()
                 isFilterSheet = true
             }
-            .foregroundColor(isFilter ? .primary : .gray)
+            .foregroundColor(isFilter ? .foreground : .gray)
             
             //            Button {
             //                viewtype = .grid
