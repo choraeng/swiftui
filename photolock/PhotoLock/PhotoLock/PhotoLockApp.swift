@@ -2,10 +2,22 @@
 //  PhotoLockApp.swift
 //  PhotoLock
 //
-//  Created by 조영훈 on 2021/10/30.
+//  Created by 조영훈 on 2022/01/29.
 //
 
 import SwiftUI
+
+//@main
+//struct PhotoLockApp: App {
+//    let persistenceController = PersistenceController.shared
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//        }
+//    }
+//}
 
 @main
 struct PhotoLockApp: App {

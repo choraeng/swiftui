@@ -8,6 +8,8 @@
 import SwiftUI
 import PhotosUI
 
+import CloudKit
+
 struct floatingButton: View {
     @EnvironmentObject var sheetStates: ViewStateModel
     
@@ -127,7 +129,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
         print("load picker")
         
         var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-        //        config.filter = .vide
+        config.filter = .images
         config.selectionLimit = 10
         //        config.preferredAssetRepresentationMode = .compatible
         
@@ -160,12 +162,12 @@ extension PhotoPicker {
         func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
             if !results.isEmpty{
                 for i in results {
-                    let itemProvider = i.itemProvider
-                    
                     if let assetId = i.assetIdentifier {
                         let assetResults = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
                         
                         let asset = PHAssetResource.assetResources(for: assetResults.firstObject!)
+                        
+                        //
                         
                         print("-------------------")
                         print("생성 날짜: \(String(describing: assetResults.firstObject!.creationDate))")
@@ -186,12 +188,15 @@ extension PhotoPicker {
                         
                     }
                     
+                    let itemProvider = i.itemProvider
+                    
                     if itemProvider.canLoadObject(ofClass: UIImage.self){
                         itemProvider.loadObject(ofClass: UIImage.self, completionHandler: {
                             (image, error) in
                             //                            print(image!)
                             
                             self.contents.append(MainContent(img: Image(uiImage: image as! UIImage)))
+                            self.addItem(img: image as! UIImage)
                             //                            self.pickImage.append( Image(uiImage: image as! UIImage))
                             //                    DispatchQueue.main.async {
                             //                        self.pickImage = Image(uiImage: image!)
@@ -206,7 +211,59 @@ extension PhotoPicker {
             photoPicker.isUploadSheet = false
             //            pickImage = results[0]
         }
-        
+        func addItem(img: UIImage) -> Void{
+            
+            
+            let data = img.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
+            let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
+            
+            do {
+                try data!.write(to: url!) // data!.writeToURL(url, options: [])
+            } catch let e as NSError {
+                print("Error! \(e)");
+                return
+            }
+            ///// image
+            let record = CKRecord(recordType: "Image")
+            record.setValuesForKeys([
+                "createdAt": Date(),
+                "height": 1,
+                "width": 1,
+                "image": CKAsset(fileURL: url!),
+                "index": 1,
+                "isFavorite": 0,
+                "memo": "asdf",
+                "name": "Asdf",
+                "size": 123,
+                "tags": ["a","b","c"],
+            ])
+            
+            
+            ///// test
+//            let record = CKRecord(recordType: "test")
+//            record.setValuesForKeys([
+//                "test1": "!23123",
+//                "test2": CKAsset(fileURL: url!)
+//            ])
+            
+            let container = CKContainer.default()
+            let database = container.privateCloudDatabase
+            
+            database.save(record) { record, error in
+                if let error = error {
+                    // Handle error.
+                    print(error)
+                    return
+                }
+                // Record saved successfully.
+                print("\(record!.recordID) save")
+                do {
+                    try FileManager.default.removeItem(at: url!)
+                } catch let e {
+                    print("Error deleting temp file: \(e)")
+                }
+            }
+        } // func additem
         
     }
 }
