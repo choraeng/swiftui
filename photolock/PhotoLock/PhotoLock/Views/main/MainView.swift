@@ -44,39 +44,56 @@ struct MainView: View {
                             .padding(.vertical, 6)
                         
                         
-                        if contents.isEmpty {
-                            ZStack {
-                                VStack (spacing: 21) {
-                                    Image("add_arrow")
-                                        .opacity(0)
-                                    
-                                    CustomText(text: "비어있음", size: 24, weight: .bold)
-                                    
-                                    CustomText(text: "업로드를 위해 하단의 업로드 버튼을\n눌러주세요", size: 16)
-                                        .multilineTextAlignment(.center)
-
-                                    HStack {
-                                        Spacer()
-                                        
-                                        Image("add_arrow")
-                                            .padding(.horizontal, 45)
-                                    }
-                                }
-                            }
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        } else{
+//                        if newImageItems.isEmpty {//contents.isEmpty {
+//                            ZStack {
+//                                VStack (spacing: 21) {
+//                                    Image("add_arrow")
+//                                        .opacity(0)
+//
+//                                    CustomText(text: "비어있음", size: 24, weight: .bold)
+//
+//                                    CustomText(text: "업로드를 위해 하단의 업로드 버튼을\n눌러주세요", size: 16)
+//                                        .multilineTextAlignment(.center)
+//
+//                                    HStack {
+//                                        Spacer()
+//
+//                                        Image("add_arrow")
+//                                            .padding(.horizontal, 45)
+//                                    }
+//                                }
+//                            }
+//                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                        } else{
                             if viewType == .grid {
-                                MainGridView(contents: $contents, isSelectMode: $isSelectMode)
+                                MainGridView(isSelectMode: $isSelectMode)
                             }else {
                                 MainListView(contents: $contents)
                             }
-                        }
+//                        }
                     }
                 } // vstack
                 
                 if !isSearchMode{
-                    floatingButton(contents: $contents)
+                    floatingButton()
                         .environmentObject(sheetStates)
+//                        .onChange(of: contents.count) { newValue in
+//                            for i in contents {
+//                                let newImage = ImageEntity(context: viewContext)
+//                                newImage.name = i.name
+//                                newImage.size = i.size
+//                                newImage.height = Int16(i.height)
+//                                newImage.width = Int16(i.width)
+//                                newImage.isFavorite = false
+//                                newImage.data = i.img!//(contents[0].img! as! UIImage).jpegData(compressionQuality: 1.0)
+//                                newImage.tags = ""
+//                                newImage.memo = ""
+//                                saveItem()
+//                            }
+//                            contents = []
+//                        }
+                        
+                        
                 }
             } // zstack
             .customBottomSheet(isPresented: $isFilterSheet, title: "정렬") {
@@ -91,6 +108,21 @@ struct MainView: View {
             .navigationBarHidden(true)
         }
     } // body
+    
+//    func saveItem() {
+//        DispatchQueue.main.async(){
+//            do {
+//
+//                try viewContext.save()
+//
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nsError = error as NSError
+//                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+//            }
+//        }
+//    }
 } // mainview
 
 

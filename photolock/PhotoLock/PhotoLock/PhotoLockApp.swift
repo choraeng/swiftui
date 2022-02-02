@@ -33,6 +33,7 @@ struct PhotoLockApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appLockVM)
                 .blur(radius: blurRadius)
                 .onChange(of: scenePhase, perform: { value in

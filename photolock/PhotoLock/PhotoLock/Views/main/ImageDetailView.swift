@@ -8,61 +8,121 @@
 import SwiftUI
 
 struct ImageDetailView: View {
-    @ObservedObject var keyboardResponder = KeyboardResponder()
-    var img: Image
     var statusBarHeight: CGFloat {
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         
     }
     
-    @State var memo: String = ""
+    @ObservedObject var keyboardResponder = KeyboardResponder()
+    
+    
+    @Binding var cImage: ContentImage
+    @State var infoSheet = false
     
     var body: some View {
         ZStack {
-            img
-            //            Image("App")
-                .resizable()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .scaledToFit()
-                .edgesIgnoringSafeArea(.all)
-                .offset(y: -keyboardResponder.currentHeight*0.3)
+//            Color.black
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+//            Image(uiImage: UIImage(data: cImage.data!)!)
+//            //            Image("App")
+//                .resizable()
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .scaledToFit()
+//                .edgesIgnoringSafeArea(.all)
+//                .offset(x: -8)
+            MyScrollView(content:
+//                            Color.green
+//                            .frame(width: 100, height: 100)
+                            
+                Image(uiImage: UIImage(data: cImage.data!)!)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+//                    .resizable()
+//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                    .scaledToFit()
+//                    .edgesIgnoringSafeArea(.all)
+//                    .aspectRatio(contentMode: .fit)
+            )
+//                .offset(y: -keyboardResponder.currentHeight*0.3) // 이거 왜 했지?
+                
 //                .ignoresSafeArea(.keyboard)
             
+            // debug
             VStack(spacing: 0) {
                 Rectangle() // status bar
                     .frame(maxWidth: .infinity, maxHeight: statusBarHeight)
                     .foregroundColor(.background)
-                
-                DetatilNavigation(title: "IMG_123") // navigation bar
+
+                DetatilNavigation(title: cImage.name) // navigation bar
                     .background(Color.background)
-                
+
                 Spacer()
-                
-                DetailTagView() // tag view
+
+                DetailTagView(cImage: $cImage) // tag view
                     .background(Color.background)
-                
+
                 Color(red: 0.958, green: 0.958, blue: 0.958)
                     .frame(maxWidth: .infinity, maxHeight: 44)
                     .overlay(
-                        TextField("메모를 입력하세요", text: $memo)
+                        TextField("메모를 입력하세요", text: $cImage.memo)
                             .frame(maxWidth: .infinity, maxHeight: 44)
                             .padding(.horizontal, 16)
 //                            .edgesIgnoringSafeArea(.horizontal)
                     )
-                
-                DetailBottomTabBar() // bottom tab bar
-                
+
+                DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
+
 //                Color.white
-                Color.background
-                    .frame(maxWidth: .infinity, maxHeight: 40)
+//                Color.background
+//                    .frame(maxWidth: .infinity, maxHeight: 40)
             } // vstack
-            .padding(.bottom, -40)
-            .offset(y: -keyboardResponder.currentHeight*0.9)
+//            .padding(.bottom, -40)
+////            .offset(y: -keyboardResponder.currentHeight*0.9) // 왜지? 왜ㅗ내ㅗ롬ㄴㅇ라ㅣㅠㅁㄴ이ㅏ럼ㄴ이ㅏ러모니아러몬이ㅏ러ㅚㅏㅓㅗ ㅗㅗㅗㅗㅗ
         } // zstack
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.top)
-        .ignoresSafeArea(.keyboard)
+//        .ignoresSafeArea(.keyboard)
+        .customBottomSheet(isPresented: $infoSheet, title: "파일정보") {
+            AnyView(
+                VStack(spacing: 10){
+                    HStack(spacing: 0){
+                        CustomText(text: "파일명", size: 16, color: .black, weight: .semibold)
+                            .opacity(0.6)
+                            .frame(maxWidth: 80, maxHeight: 44)
+                        CustomText(text: cImage.name, size: 16, color: .black)
+                        Spacer()
+                        
+                    }
+                    HStack(spacing: 0){
+                        CustomText(text: "해상도", size: 16, color: .black, weight: .semibold)
+                            .opacity(0.6)
+                            .frame(maxWidth: 80, maxHeight: 44)
+                        CustomText(text: "\(cImage.width)x\(cImage.height)", size: 16, color: .black)
+                        Spacer()
+                        
+                    }
+                    HStack(spacing: 0){
+                        CustomText(text: "파일크기", size: 16, color: .black, weight: .semibold)
+                            .opacity(0.6)
+                            .frame(maxWidth: 80, maxHeight: 44)
+                        CustomText(text: String(fileSizeToStr(bytes: cImage.size)), size: 16, color: .black)
+                        Spacer()
+                        
+                    }
+                    HStack(spacing: 0){
+                        CustomText(text: "날짜", size: 16, color: .black, weight: .semibold)
+                            .opacity(0.6)
+                            .frame(maxWidth: 80, maxHeight: 44)
+                        CustomText(text: "\(dateToStr(inputDate:  cImage.createdAt))", size: 16, color: .black)
+                        Spacer()
+                        
+                    }
+                    
+                }
+            )
+        }
     } // body
 } // View
 
@@ -109,6 +169,8 @@ struct DetatilNavigation: View {
 }
 
 struct DetailTagView: View {
+    @Binding var cImage: ContentImage
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
@@ -123,13 +185,29 @@ struct DetailTagView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    TagCell(tagName: "1234")
-                    TagCell(tagName: "2345")
-                    TagCell(tagName: "3456")
-                    TagCell(tagName: "4567")
-                    TagCell(tagName: "4567")
-                    TagCell(tagName: "4567")
-                    TagCell(tagName: "4567")
+                    if cImage.tags.count == 0 {
+                        Button {
+                            
+                        } label: {
+                            CustomText(text: "+ 태그추가", size: 13, color: Color.white, weight: .semibold)
+                                .padding(.horizontal, 8)
+                        }
+                        .frame(height: 24)
+//                        .frame(maxWidth: 71, maxHeight: 24)
+                        .background(Color(red: 0.604, green: 0.604, blue: 0.604))
+                        .cornerRadius(4)
+                    }else {
+                        ForEach(0..<cImage.tags.count) { idx in
+                            TagCell(tagName: cImage.tags[0])
+                        }
+                    }
+//                    TagCell(tagName: "1234")
+//                    TagCell(tagName: "2345")
+//                    TagCell(tagName: "3456")
+//                    TagCell(tagName: "4567")
+//                    TagCell(tagName: "4567")
+//                    TagCell(tagName: "4567")
+//                    TagCell(tagName: "4567")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 44)
@@ -142,17 +220,23 @@ struct TagCell: View {
     var tagName: String
     
     var body: some View {
-        HStack(spacing: 0) {
-            CustomText(text: tagName, size: 13, color: Color.white, weight: .semibold)
-                .padding(.leading, 8)
+        Button{
+            
+        } label: {
+            HStack(spacing: 0) {
+                CustomText(text: tagName, size: 13, color: Color.white, weight: .semibold)
+                    
 
-            Image("close_icon_sm")
-            //                .resizable()
-                .renderingMode(.template)
-                .foregroundColor(Color.white)
-            //                .frame(width: 24, height: 24)
+                Image("close_icon_sm")
+                //                .resizable()
+                    .renderingMode(.template)
+                    .foregroundColor(Color.white)
+                //                .frame(width: 24, height: 24)
+            }
         }
-        .frame(maxWidth: 77, maxHeight: 24)
+        .frame(height: 24)
+        .padding(.horizontal, 8)
+//        .frame(maxWidth: 77, maxHeight: 24)
         .background(Color(red: 0.384, green: 0.38, blue: 0.4))
         .cornerRadius(4)
     } // body

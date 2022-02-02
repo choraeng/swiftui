@@ -28,7 +28,7 @@ extension MainListView {
         
         var body: some View {
             HStack(alignment: .center,  spacing: 16) {
-                contentCell(img: content.img)
+//                contentCell(img: Image(uiImage: UIImage(data: content.img!)!))
                 
                 VStack(alignment: .leading, spacing: 4) {
                     CustomText(text: "title", size: 16)

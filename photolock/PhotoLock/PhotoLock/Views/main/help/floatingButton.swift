@@ -11,11 +11,13 @@ import PhotosUI
 import CloudKit
 
 struct floatingButton: View {
+    // for coredata
+    @Environment(\.managedObjectContext) private var viewContext // 무조건 추가만 있으니깐
+    
     @EnvironmentObject var sheetStates: ViewStateModel
     
-    @Binding var contents: [MainContent]// = []
-    @State private var isPresentPicker: Bool = false
-    @State private var isUploadSheeet = false
+    @State private var isPresentPicker: Bool = false // phpicker를 열기위한 변수
+    @State private var isUploadSheeet = false // 추가를 위한 sheet 변수
     
     @State var memoAddSheetShowing: Bool = false
     
@@ -42,9 +44,34 @@ struct floatingButton: View {
                     }
                 }
                 .sheet(isPresented: $isPresentPicker) {
-                    PhotoPicker(contents: $contents, isPresentPicker: $isPresentPicker, isUploadSheet: $isUploadSheeet)
+                    PhotoPicker(isPresentPicker: $isPresentPicker, isUploadSheet: $isUploadSheeet) { type, cImage, cVideo, cMemo in
+                        if type == 0{ // image
+                            let newImage = ImageEntity(context: viewContext)
+                            newImage.name = cImage!.name
+                            newImage.size = cImage!.size
+                            newImage.height = Int16(cImage!.height)
+                            newImage.width = Int16(cImage!.width)
+                            newImage.isFavorite = false
+                            newImage.data = cImage!.data!//(contents[0].img! as! UIImage).jpegData(compressionQuality: 1.0)
+                            newImage.tags = []
+                            newImage.memo = ""
+                            newImage.createdAt = cImage!.createdAt
+                            
+                            if viewContext.hasChanges {
+                                do {
+                                    try viewContext.save()
+                                } catch {
+                                    let nserror = error as NSError
+                                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                                }
+                            }
+                        }else if type == 1{ //video
+                            let a = 1
+                        }else if type == 2{ // memo
+                            let a = 1
+                        }
+                    }
                 }
-                
             }
         }
         .padding(16)
@@ -119,151 +146,3 @@ struct floatingButton: View {
     }
 }
 
-struct PhotoPicker: UIViewControllerRepresentable {
-    typealias UIViewControllerType = PHPickerViewController
-    @Binding var contents: [MainContent]
-    @Binding var isPresentPicker: Bool
-    @Binding var isUploadSheet: Bool
-    
-    func makeUIViewController(context: Context) -> PHPickerViewController {
-        print("load picker")
-        
-        var config = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-        config.filter = .images
-        config.selectionLimit = 10
-        //        config.preferredAssetRepresentationMode = .compatible
-        
-        let controller = PHPickerViewController(configuration: config)
-        controller.delegate = context.coordinator
-        
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: Context) {
-        
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(with: self, contents: $contents)
-    }
-}
-
-extension PhotoPicker {
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
-        var photoPicker: PhotoPicker
-        //        @Binding var pickImage: [Image]
-        @Binding var contents: [MainContent]
-        
-        init(with photoPicker: PhotoPicker, contents: Binding<[MainContent]>){
-            self.photoPicker = photoPicker
-            _contents = contents
-        }
-        
-        func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-            if !results.isEmpty{
-                for i in results {
-                    if let assetId = i.assetIdentifier {
-                        let assetResults = PHAsset.fetchAssets(withLocalIdentifiers: [assetId], options: nil)
-                        
-                        let asset = PHAssetResource.assetResources(for: assetResults.firstObject!)
-                        
-                        //
-                        
-                        print("-------------------")
-                        print("생성 날짜: \(String(describing: assetResults.firstObject!.creationDate))")
-                        print("위치   :\(String(describing: assetResults.firstObject!.location))")
-                        print("사이즈  :\(String(describing: assetResults.firstObject!.pixelWidth))*\(String(describing: assetResults.firstObject!.pixelHeight))")
-                        print("이름  :\(String(describing: asset.first!.originalFilename))")
-                        
-                        var sizeOnDisk: Int64 = 0
-                        var byte = ""
-                        if let resource = asset.first {
-                            let unsignedInt64 = resource.value(forKey: "fileSize") as? CLong
-                            sizeOnDisk = Int64(bitPattern: UInt64(unsignedInt64!))
-                            byte = String(format: "%.2f", Double(sizeOnDisk) / (1024.0*1024.0))+" MB"
-                        }
-                        
-                        print("크기  :\(String(describing: byte))")
-                        print("")
-                        
-                    }
-                    
-                    let itemProvider = i.itemProvider
-                    
-                    if itemProvider.canLoadObject(ofClass: UIImage.self){
-                        itemProvider.loadObject(ofClass: UIImage.self, completionHandler: {
-                            (image, error) in
-                            //                            print(image!)
-                            
-                            self.contents.append(MainContent(img: Image(uiImage: image as! UIImage)))
-                            self.addItem(img: image as! UIImage)
-                            //                            self.pickImage.append( Image(uiImage: image as! UIImage))
-                            //                    DispatchQueue.main.async {
-                            //                        self.pickImage = Image(uiImage: image!)
-                            //                    }
-                        })
-                        
-                    }
-                }
-                
-            }
-            photoPicker.isPresentPicker = false
-            photoPicker.isUploadSheet = false
-            //            pickImage = results[0]
-        }
-        func addItem(img: UIImage) -> Void{
-            
-            
-            let data = img.pngData(); // UIImage -> NSData, see also UIImageJPEGRepresentation
-            let url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(NSUUID().uuidString+".dat")
-            
-            do {
-                try data!.write(to: url!) // data!.writeToURL(url, options: [])
-            } catch let e as NSError {
-                print("Error! \(e)");
-                return
-            }
-            ///// image
-            let record = CKRecord(recordType: "Image")
-            record.setValuesForKeys([
-                "createdAt": Date(),
-                "height": 1,
-                "width": 1,
-                "image": CKAsset(fileURL: url!),
-                "index": 1,
-                "isFavorite": 0,
-                "memo": "asdf",
-                "name": "Asdf",
-                "size": 123,
-                "tags": ["a","b","c"],
-            ])
-            
-            
-            ///// test
-//            let record = CKRecord(recordType: "test")
-//            record.setValuesForKeys([
-//                "test1": "!23123",
-//                "test2": CKAsset(fileURL: url!)
-//            ])
-            
-            let container = CKContainer.default()
-            let database = container.privateCloudDatabase
-            
-            database.save(record) { record, error in
-                if let error = error {
-                    // Handle error.
-                    print(error)
-                    return
-                }
-                // Record saved successfully.
-                print("\(record!.recordID) save")
-                do {
-                    try FileManager.default.removeItem(at: url!)
-                } catch let e {
-                    print("Error deleting temp file: \(e)")
-                }
-            }
-        } // func additem
-        
-    }
-}
