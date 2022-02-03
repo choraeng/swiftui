@@ -16,14 +16,12 @@ struct ImageDetailView: View, KeyboardAwareModifier{
         
     }
     
-//    @ObservedObject var keyboardResponder = KeyboardResponder()
-    @State private var isKeyboardVisible = false
     @State private var keyboardHeight = 0.0
-    @State private var bottomPadding = 0
-//    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
     
     @Binding var cImage: ContentImage
     @State var infoSheet = false
+    
+    @State var memoHeight: CGFloat = 44
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -58,62 +56,59 @@ struct ImageDetailView: View, KeyboardAwareModifier{
             } // vstck
             
             VStack(spacing: 0){
-                    Spacer()
-                    
-                    DetailTagView(cImage: $cImage) // tag view
-                        .background(Color.background)
-                    
-                    
-                    Color(red: 0.958, green: 0.958, blue: 0.958)
-                        .frame(maxWidth: .infinity, maxHeight: 44)
-                        .overlay(
-                            TextField("메모를 입력하세요", text: $cImage.memo)//, onEditingChanged: { if $0 { self.kGuardian.showField = 0 } })
-                                .frame(maxWidth: .infinity, maxHeight: 44)
-                                .padding(.horizontal, 16)
-//                                                        .background(GeometryGetter(rect: $kGuardian.rects[0]))
-                            
-                            ///
-                            ///
-                            ///
-                            ///
-                            ///
-                            ///
-                            //                            .edgesIgnoringSafeArea(.horizontal)
-                                                        
-                        )
-//                        .readSize {
-//                            print($0)
-//                        }
-//                        .onChange(of: keyboardResponder.currentHeight, perform: { newValue in
-//                            print("height: ", newValue)
-//                        })
-                        .onReceive(keyboardHeightPublisher) { newValue in
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                keyboardHeight = newValue
+                Spacer()
+                
+                DetailTagView(cImage: $cImage) // tag view
+                    .background(Color.background)
+                
+                
+                Color(red: 0.958, green: 0.958, blue: 0.958)
+                    .frame(maxWidth: .infinity, maxHeight: memoHeight)
+                    .overlay(
+                        TextField("메모를 입력하세요", text: $cImage.memo)
+                            .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
+                            .padding(.horizontal, 16)
+                    )
+                    .padding(.bottom, keyboardHeight>0 ? 0 : 48)
+                    .gesture(DragGesture(minimumDistance: 2, coordinateSpace: .local)
+                                            .onEnded({ value in
+                        if value.translation.width < 0 {
+                            // left
+//                            print("left")
+                        }
+                        if value.translation.width > 0 {
+                            // right
+//                            print("right")
+                        }
+                        if value.translation.height < 0 {
+                            // up
+//                            print("up")
+                            if cImage.memo.count > 0 {
+                                withAnimation {
+                                    memoHeight = 96
+                                }
                             }
                         }
-                        .padding(.bottom, keyboardHeight>0 ? 0 : 48)
-//                        .onReceive(keyboardPublisher) { newValue in
-//                            print(newValue)
-//
-////                            bottomPadding = 100
-//                        }
-//                }
-//                VStack(){
-//                    DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
-//                }
-//                .ignoresSafeArea(.keyboard)
+                        if value.translation.height > 0 {
+                            // down
+//                            print("down")
+                            withAnimation {
+                                memoHeight = 44
+                            }
+                        }
+                    }))
             } // vstack 1
-//                        .offset(y: kGuardian.slide)//.animation(.easeInOut(duration: 0.7))
-//                        .onChange(of: kGuardian.slide) { newValue in
-//                            print(newValue)
-//                        }
-                        VStack{
-                            Spacer()
-                            DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
-                        } // vstack2
-                        .padding(.top, UIApplication.shared.windows[0].safeAreaInsets.top)
-                        .ignoresSafeArea(.keyboard)
+            .onReceive(keyboardHeightPublisher) { newValue in
+                withAnimation(.easeOut(duration: 0.3)) {
+                    keyboardHeight = newValue
+                }
+            }
+            VStack{
+                Spacer()
+                DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
+            } // vstack2
+            .padding(.top, UIApplication.shared.windows[0].safeAreaInsets.top)
+            .ignoresSafeArea(.keyboard)
             
         } // zstack
         .navigationBarHidden(true)
@@ -158,8 +153,6 @@ struct ImageDetailView: View, KeyboardAwareModifier{
                 }
             )
         } // zstack custombottom
-//        .onAppear { self.kGuardian.addObserver() }
-//        .onDisappear { self.kGuardian.removeObserver() }
     } // body
 } // View
 
@@ -238,13 +231,6 @@ struct DetailTagView: View {
                             TagCell(tagName: cImage.tags[0])
                         }
                     }
-                    //                    TagCell(tagName: "1234")
-                    //                    TagCell(tagName: "2345")
-                    //                    TagCell(tagName: "3456")
-                    //                    TagCell(tagName: "4567")
-                    //                    TagCell(tagName: "4567")
-                    //                    TagCell(tagName: "4567")
-                    //                    TagCell(tagName: "4567")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 44)
