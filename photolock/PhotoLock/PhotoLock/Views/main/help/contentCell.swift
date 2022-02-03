@@ -18,10 +18,10 @@ struct contentCell: View {
     var body: some View {
         NavigationLink {
             ImageDetailView(cImage: $cImage)
-                .onChange(of: cImage.memo.count) { newValue in
-                    imageItem.memo = cImage.memo
-                    save()
-                }
+//                .onChange(of: cImage.memo.count) { newValue in
+//                    imageItem.memo = cImage.memo
+//                    save()
+//                }
                 .onChange(of: cImage.tags) { newValue in
                     imageItem.tags = cImage.tags
                     save()

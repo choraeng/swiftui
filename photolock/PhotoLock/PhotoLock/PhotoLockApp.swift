@@ -33,6 +33,7 @@ struct PhotoLockApp: App {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             ContentView()
+                .preferredColorScheme(.light)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appLockVM)
                 .blur(radius: blurRadius)

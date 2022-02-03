@@ -6,84 +6,119 @@
 //
 
 import SwiftUI
+import Combine
 
-struct ImageDetailView: View {
+
+struct ImageDetailView: View, KeyboardAwareModifier{
     var statusBarHeight: CGFloat {
         let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         return window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
         
     }
     
-    @ObservedObject var keyboardResponder = KeyboardResponder()
-    
+//    @ObservedObject var keyboardResponder = KeyboardResponder()
+    @State private var isKeyboardVisible = false
+    @State private var keyboardHeight = 0.0
+    @State private var bottomPadding = 0
+//    @ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
     
     @Binding var cImage: ContentImage
     @State var infoSheet = false
     
     var body: some View {
-        ZStack {
-//            Color.black
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        ZStack(alignment: .bottom) {
+            //            Color.black
+            //                .frame(maxWidth: .infinity, maxHeight: .infinity)
             
-//            Image(uiImage: UIImage(data: cImage.data!)!)
-//            //            Image("App")
-//                .resizable()
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .scaledToFit()
-//                .edgesIgnoringSafeArea(.all)
-//                .offset(x: -8)
+            //            Image(uiImage: UIImage(data: cImage.data!)!)
+            //            //            Image("App")
+            //                .resizable()
+            //                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            //                .scaledToFit()
+            //                .edgesIgnoringSafeArea(.all)
+            //                .offset(x: -8)
             MyScrollView(content:
-//                            Color.green
-//                            .frame(width: 100, height: 100)
-                            
-                Image(uiImage: UIImage(data: cImage.data!)!)
+                            Image(uiImage: UIImage(data: cImage.data!)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-//                    .resizable()
-//                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                    .scaledToFit()
-//                    .edgesIgnoringSafeArea(.all)
-//                    .aspectRatio(contentMode: .fit)
             )
-//                .offset(y: -keyboardResponder.currentHeight*0.3) // 이거 왜 했지?
-                
-//                .ignoresSafeArea(.keyboard)
+            //                .offset(y: -keyboardResponder.currentHeight*0.3) // 이거 왜 했지?
+            //                .ignoresSafeArea(.keyboard)
             
-            // debug
+            //            ScrollViwe
             VStack(spacing: 0) {
                 Rectangle() // status bar
                     .frame(maxWidth: .infinity, maxHeight: statusBarHeight)
                     .foregroundColor(.background)
-
+                
                 DetatilNavigation(title: cImage.name) // navigation bar
                     .background(Color.background)
-
+                
                 Spacer()
-
-                DetailTagView(cImage: $cImage) // tag view
-                    .background(Color.background)
-
-                Color(red: 0.958, green: 0.958, blue: 0.958)
-                    .frame(maxWidth: .infinity, maxHeight: 44)
-                    .overlay(
-                        TextField("메모를 입력하세요", text: $cImage.memo)
-                            .frame(maxWidth: .infinity, maxHeight: 44)
-                            .padding(.horizontal, 16)
-//                            .edgesIgnoringSafeArea(.horizontal)
-                    )
-
-                DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
-
-//                Color.white
-//                Color.background
-//                    .frame(maxWidth: .infinity, maxHeight: 40)
-            } // vstack
-//            .padding(.bottom, -40)
-////            .offset(y: -keyboardResponder.currentHeight*0.9) // 왜지? 왜ㅗ내ㅗ롬ㄴㅇ라ㅣㅠㅁㄴ이ㅏ럼ㄴ이ㅏ러모니아러몬이ㅏ러ㅚㅏㅓㅗ ㅗㅗㅗㅗㅗ
+            } // vstck
+            
+            VStack(spacing: 0){
+                    Spacer()
+                    
+                    DetailTagView(cImage: $cImage) // tag view
+                        .background(Color.background)
+                    
+                    
+                    Color(red: 0.958, green: 0.958, blue: 0.958)
+                        .frame(maxWidth: .infinity, maxHeight: 44)
+                        .overlay(
+                            TextField("메모를 입력하세요", text: $cImage.memo)//, onEditingChanged: { if $0 { self.kGuardian.showField = 0 } })
+                                .frame(maxWidth: .infinity, maxHeight: 44)
+                                .padding(.horizontal, 16)
+//                                                        .background(GeometryGetter(rect: $kGuardian.rects[0]))
+                            
+                            ///
+                            ///
+                            ///
+                            ///
+                            ///
+                            ///
+                            //                            .edgesIgnoringSafeArea(.horizontal)
+                                                        
+                        )
+//                        .readSize {
+//                            print($0)
+//                        }
+//                        .onChange(of: keyboardResponder.currentHeight, perform: { newValue in
+//                            print("height: ", newValue)
+//                        })
+                        .onReceive(keyboardHeightPublisher) { newValue in
+                            withAnimation(.easeOut(duration: 0.3)) {
+                                keyboardHeight = newValue
+                            }
+                        }
+                        .padding(.bottom, keyboardHeight>0 ? 0 : 48)
+//                        .onReceive(keyboardPublisher) { newValue in
+//                            print(newValue)
+//
+////                            bottomPadding = 100
+//                        }
+//                }
+//                VStack(){
+//                    DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
+//                }
+//                .ignoresSafeArea(.keyboard)
+            } // vstack 1
+//                        .offset(y: kGuardian.slide)//.animation(.easeInOut(duration: 0.7))
+//                        .onChange(of: kGuardian.slide) { newValue in
+//                            print(newValue)
+//                        }
+                        VStack{
+                            Spacer()
+                            DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
+                        } // vstack2
+                        .padding(.top, UIApplication.shared.windows[0].safeAreaInsets.top)
+                        .ignoresSafeArea(.keyboard)
+            
         } // zstack
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.top)
-//        .ignoresSafeArea(.keyboard)
+        //        .ignoresSafeArea(.keyboard)
         .customBottomSheet(isPresented: $infoSheet, title: "파일정보") {
             AnyView(
                 VStack(spacing: 10){
@@ -122,7 +157,9 @@ struct ImageDetailView: View {
                     
                 }
             )
-        }
+        } // zstack custombottom
+//        .onAppear { self.kGuardian.addObserver() }
+//        .onDisappear { self.kGuardian.removeObserver() }
     } // body
 } // View
 
@@ -193,7 +230,7 @@ struct DetailTagView: View {
                                 .padding(.horizontal, 8)
                         }
                         .frame(height: 24)
-//                        .frame(maxWidth: 71, maxHeight: 24)
+                        //                        .frame(maxWidth: 71, maxHeight: 24)
                         .background(Color(red: 0.604, green: 0.604, blue: 0.604))
                         .cornerRadius(4)
                     }else {
@@ -201,13 +238,13 @@ struct DetailTagView: View {
                             TagCell(tagName: cImage.tags[0])
                         }
                     }
-//                    TagCell(tagName: "1234")
-//                    TagCell(tagName: "2345")
-//                    TagCell(tagName: "3456")
-//                    TagCell(tagName: "4567")
-//                    TagCell(tagName: "4567")
-//                    TagCell(tagName: "4567")
-//                    TagCell(tagName: "4567")
+                    //                    TagCell(tagName: "1234")
+                    //                    TagCell(tagName: "2345")
+                    //                    TagCell(tagName: "3456")
+                    //                    TagCell(tagName: "4567")
+                    //                    TagCell(tagName: "4567")
+                    //                    TagCell(tagName: "4567")
+                    //                    TagCell(tagName: "4567")
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: 44)
@@ -225,8 +262,8 @@ struct TagCell: View {
         } label: {
             HStack(spacing: 0) {
                 CustomText(text: tagName, size: 13, color: Color.white, weight: .semibold)
-                    
-
+                
+                
                 Image("close_icon_sm")
                 //                .resizable()
                     .renderingMode(.template)
@@ -236,7 +273,7 @@ struct TagCell: View {
         }
         .frame(height: 24)
         .padding(.horizontal, 8)
-//        .frame(maxWidth: 77, maxHeight: 24)
+        //        .frame(maxWidth: 77, maxHeight: 24)
         .background(Color(red: 0.384, green: 0.38, blue: 0.4))
         .cornerRadius(4)
     } // body
@@ -246,3 +283,24 @@ struct TagCell: View {
 
 
 ///////////////////////////////////
+///
+//struct SizePreferenceKey: PreferenceKey {
+////  static var defaultValue: CGSize = .zero
+//    static var defaultValue: CGFloat = .zero
+//  static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {}
+//}
+//
+//extension View {
+//  func readSize(onChange: @escaping (CGFloat) -> Void) -> some View {
+//    background(
+//      GeometryReader { geometryProxy in
+//          let frame = geometryProxy.frame(in: CoordinateSpace.local)
+////          frame.origin.y
+////          return Text("\(frame.origin.x), \(frame.origin.y), \(frame.size.width), \(frame.size.height)")
+//        Color.clear
+//              .preference(key: SizePreferenceKey.self, value: frame.origin.y)//geometryProxy.size)
+//      }
+//    )
+//    .onPreferenceChange(SizePreferenceKey.self, perform: onChange)
+//  }
+//}
