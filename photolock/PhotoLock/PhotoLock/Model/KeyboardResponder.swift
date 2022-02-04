@@ -44,6 +44,7 @@ class KeyboardResponder: ObservableObject {
     }
 }
 
+// https://swiftuirecipes.com/blog/prevent-keyboard-from-covering-up-your-text-fields
 protocol KeyboardAwareModifier {
     var keyboardHeightPublisher: AnyPublisher<CGFloat, Never> { get }
 }

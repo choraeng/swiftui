@@ -23,6 +23,8 @@ struct ImageDetailView: View, KeyboardAwareModifier{
     
     @State var memoHeight: CGFloat = 44
     
+    @State var isOnlyView: Bool = false
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             //            Color.black
@@ -35,80 +37,100 @@ struct ImageDetailView: View, KeyboardAwareModifier{
             //                .scaledToFit()
             //                .edgesIgnoringSafeArea(.all)
             //                .offset(x: -8)
-            MyScrollView(content:
+            MyScrollView(isOnlyView: $isOnlyView, content:
                             Image(uiImage: UIImage(data: cImage.data!)!)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
+                            .onTapGesture {
+                withAnimation {
+                    isOnlyView.toggle()
+                }
+            }
             )
+                .edgesIgnoringSafeArea(.all)
+            //                .onTapGesture {
+            //                    withAnimation {
+            //                        isOnlyView.toggle()
+            //                    }
+            //                }
             //                .offset(y: -keyboardResponder.currentHeight*0.3) // 이거 왜 했지?
             //                .ignoresSafeArea(.keyboard)
             
-            //            ScrollViwe
-            VStack(spacing: 0) {
-                Rectangle() // status bar
-                    .frame(maxWidth: .infinity, maxHeight: statusBarHeight)
-                    .foregroundColor(.background)
-                
-                DetatilNavigation(title: cImage.name) // navigation bar
-                    .background(Color.background)
-                
-                Spacer()
-            } // vstck
             
-            VStack(spacing: 0){
-                Spacer()
+            if !isOnlyView {
+                VStack(spacing: 0) {
+                    Rectangle() // status bar
+                        .frame(maxWidth: .infinity, maxHeight: statusBarHeight)
+                        .foregroundColor(.background)
+                    
+                    DetatilNavigation(title: cImage.name) // navigation bar
+                        .background(Color.background)
+                    
+                    Spacer()
+                } // vstck
+                //                .opacity(isOnlyView ? 0 : 100)
                 
-                DetailTagView(cImage: $cImage) // tag view
-                    .background(Color.background)
-                
-                
-                Color(red: 0.958, green: 0.958, blue: 0.958)
-                    .frame(maxWidth: .infinity, maxHeight: memoHeight)
-                    .overlay(
-                        TextField("메모를 입력하세요", text: $cImage.memo)
-                            .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
-                            .padding(.horizontal, 16)
-                    )
-                    .padding(.bottom, keyboardHeight>0 ? 0 : 48)
-                    .gesture(DragGesture(minimumDistance: 2, coordinateSpace: .local)
-                                            .onEnded({ value in
-                        if value.translation.width < 0 {
-                            // left
-//                            print("left")
-                        }
-                        if value.translation.width > 0 {
-                            // right
-//                            print("right")
-                        }
-                        if value.translation.height < 0 {
-                            // up
-//                            print("up")
-                            if cImage.memo.count > 0 {
-                                withAnimation {
-                                    memoHeight = 96
+                VStack(spacing: 0){
+                    Spacer()
+                    
+                    DetailTagView(cImage: $cImage) // tag view
+                        .background(Color.background)
+                    
+                    
+                    Color(red: 0.958, green: 0.958, blue: 0.958)
+                        .frame(maxWidth: .infinity, maxHeight: memoHeight)
+                        .overlay(
+                            TextField("메모를 입력하세요", text: $cImage.memo)
+                                .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
+                                .padding(.horizontal, 16)
+                        )
+                        .padding(.bottom, keyboardHeight>0 ? 0 : 48)
+                        .gesture(DragGesture(minimumDistance: 2, coordinateSpace: .local)
+                                    .onEnded({ value in
+                            if value.translation.width < 0 {
+                                // left
+                                //                            print("left")
+                            }
+                            if value.translation.width > 0 {
+                                // right
+                                //                            print("right")
+                            }
+                            if value.translation.height < 0 {
+                                // up
+                                //                            print("up")
+                                if cImage.memo.count > 0 {
+                                    withAnimation {
+                                        memoHeight = 96
+                                    }
                                 }
                             }
-                        }
-                        if value.translation.height > 0 {
-                            // down
-//                            print("down")
-                            withAnimation {
-                                memoHeight = 44
+                            if value.translation.height > 0 {
+                                // down
+                                //                            print("down")
+                                withAnimation {
+                                    memoHeight = 44
+                                }
                             }
-                        }
-                    }))
-            } // vstack 1
-            .onReceive(keyboardHeightPublisher) { newValue in
-                withAnimation(.easeOut(duration: 0.3)) {
-                    keyboardHeight = newValue
+                        }))
+                } // vstack 1
+                //                .opacity(isOnlyView ? 0 : 100)
+                .onReceive(keyboardHeightPublisher) { newValue in
+                    withAnimation(.easeOut(duration: 0.3)) {
+                        keyboardHeight = newValue
+                    }
                 }
-            }
-            VStack{
-                Spacer()
-                DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
-            } // vstack2
-            .padding(.top, UIApplication.shared.windows[0].safeAreaInsets.top)
-            .ignoresSafeArea(.keyboard)
+                VStack(spacing: 0){
+                    Spacer()
+                    DetailBottomTabBar(infoSheet: $infoSheet, cImage: $cImage) // bottom tab bar
+                    
+                    Color.white
+                        .frame(maxWidth: UIScreen.main.bounds.size.width, maxHeight: UIApplication.shared.windows[0].safeAreaInsets.bottom)
+                } // vstack2
+                //                .opacity(isOnlyView ? 0 : 100)
+                .padding(.top, UIApplication.shared.windows[0].safeAreaInsets.top)
+                .ignoresSafeArea(.keyboard)
+                .edgesIgnoringSafeArea(.bottom)
+            } // isonlyview
             
         } // zstack
         .navigationBarHidden(true)

@@ -9,10 +9,11 @@ import SwiftUI
 import UIKit
 
 struct MyScrollView<Content: View>: UIViewControllerRepresentable {
+    @Binding var isOnlyView: Bool
     let content: Content
 
     func makeUIViewController(context: Context) -> ViewController {
-        return ViewController(coordinator: context.coordinator)
+        return ViewController(coordinator: context.coordinator, isOnlyView: $isOnlyView)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -25,6 +26,7 @@ struct MyScrollView<Content: View>: UIViewControllerRepresentable {
     
     class ViewController: UIViewController, UIScrollViewDelegate {
         let coordinator: Coordinator
+        @Binding var isOnlyView: Bool
         let scrollView = UIScrollView()
         
         private var hostedView: UIView { coordinator.hostingController.view! }
@@ -34,8 +36,9 @@ struct MyScrollView<Content: View>: UIViewControllerRepresentable {
               didSet { NSLayoutConstraint.activate(contentSizeConstraints) }
         }
         
-        init(coordinator: Coordinator) {
+        init(coordinator: Coordinator, isOnlyView: Binding<Bool>) {
             self.coordinator = coordinator
+            _isOnlyView = isOnlyView
             super.init(nibName: nil, bundle: nil)
             self.view = scrollView
 
@@ -95,6 +98,15 @@ struct MyScrollView<Content: View>: UIViewControllerRepresentable {
         
         func scrollViewDidZoom(_ scrollView: UIScrollView) {
             recenter()
+            if scrollView.zoomScale == 0.8{
+                withAnimation {
+                    isOnlyView = false
+                }
+            }else {
+                withAnimation {
+                    isOnlyView = true
+                }
+            }
         }
     }
     
