@@ -43,3 +43,32 @@ func fileSizeToStr(bytes: Int64) -> String {
     
     return "\(String(format: "%.2f", ret)) \(sizes[Int(i)])"
 }
+
+
+extension View {
+    @ViewBuilder func `if`<Content: View>(_ condition: Bool, transform: (Self) -> Content) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+}
+
+func setColor(color: Color) -> Data{
+    do {
+        return try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: false)
+    } catch {
+        return Data()
+    }
+}
+
+func getColor(data: Data) -> Color {
+    do {
+        return try Color(NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data)!)
+    } catch {
+        print(error)
+    }
+
+    return Color.clear
+}

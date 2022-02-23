@@ -60,15 +60,16 @@ struct floatingButton: View {
                             if viewContext.hasChanges {
                                 do {
                                     try viewContext.save()
+                                    print("save")
                                 } catch {
                                     let nserror = error as NSError
                                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                                 }
                             }
                         }else if type == 1{ //video
-                            let a = 1
+                            
                         }else if type == 2{ // memo
-                            let a = 1
+                            
                         }
                     }
                 }

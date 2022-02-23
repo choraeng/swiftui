@@ -12,6 +12,7 @@
 		DA30C63F27A69A7B00BEE1D3 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA30C63E27A69A7B00BEE1D3 /* PhotoPicker.swift */; };
 		DA442B2F27ABBFAC00C6473B /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA442B2E27ABBFAC00C6473B /* KeyboardResponder.swift */; };
 		DA442B3227AD70DC00C6473B /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA442B3127AD70DC00C6473B /* PageView.swift */; };
+		DA442B3727B1496500C6473B /* ImageItemStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA442B3627B1496500C6473B /* ImageItemStorage.swift */; };
 		DA58459327A54E9A00104409 /* PhotoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58459227A54E9A00104409 /* PhotoLockApp.swift */; };
 		DA58459527A54E9A00104409 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA58459427A54E9A00104409 /* ContentView.swift */; };
 		DA58459727A54E9B00104409 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA58459627A54E9B00104409 /* Assets.xcassets */; };
@@ -50,9 +51,11 @@
 		DA5845F127A5551800104409 /* Palette.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845CD27A5551800104409 /* Palette.swift */; };
 		DA5845F227A5551800104409 /* PasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845CE27A5551800104409 /* PasswordModel.swift */; };
 		DA5845F327A5551800104409 /* AppStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845CF27A5551800104409 /* AppStateModel.swift */; };
-		DA5845F427A5551800104409 /* CKCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845D027A5551800104409 /* CKCRUD.swift */; };
 		DA5845F527A5551800104409 /* ViewStateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845D127A5551800104409 /* ViewStateModel.swift */; };
-		DA5845F627A5551800104409 /* ImageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5845D227A5551800104409 /* ImageDataModel.swift */; };
+		DA72E1A127BE226000CE893A /* pinchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA72E1A027BE226000CE893A /* pinchView.swift */; };
+		DA72E1A327C36E7100CE893A /* ImageFSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA72E1A227C36E7100CE893A /* ImageFSV.swift */; };
+		DA72E1A527C492E400CE893A /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA72E1A427C492E400CE893A /* KeyboardAdaptive.swift */; };
+		DA72E1A727C5E7CC00CE893A /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA72E1A627C5E7CC00CE893A /* TagView.swift */; };
 		DAC15BD627A5925A008D4D32 /* PhotoLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DAC15BD427A5925A008D4D32 /* PhotoLock.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +65,7 @@
 		DA30C63E27A69A7B00BEE1D3 /* PhotoPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
 		DA442B2E27ABBFAC00C6473B /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
 		DA442B3127AD70DC00C6473B /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		DA442B3627B1496500C6473B /* ImageItemStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItemStorage.swift; sourceTree = "<group>"; };
 		DA58458F27A54E9A00104409 /* PhotoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA58459227A54E9A00104409 /* PhotoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLockApp.swift; sourceTree = "<group>"; };
 		DA58459427A54E9A00104409 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,9 +106,11 @@
 		DA5845CD27A5551800104409 /* Palette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Palette.swift; sourceTree = "<group>"; };
 		DA5845CE27A5551800104409 /* PasswordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordModel.swift; sourceTree = "<group>"; };
 		DA5845CF27A5551800104409 /* AppStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStateModel.swift; sourceTree = "<group>"; };
-		DA5845D027A5551800104409 /* CKCRUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CKCRUD.swift; sourceTree = "<group>"; };
 		DA5845D127A5551800104409 /* ViewStateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStateModel.swift; sourceTree = "<group>"; };
-		DA5845D227A5551800104409 /* ImageDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDataModel.swift; sourceTree = "<group>"; };
+		DA72E1A027BE226000CE893A /* pinchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pinchView.swift; sourceTree = "<group>"; };
+		DA72E1A227C36E7100CE893A /* ImageFSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFSV.swift; sourceTree = "<group>"; };
+		DA72E1A427C492E400CE893A /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = KeyboardAdaptive.swift; path = help/KeyboardAdaptive.swift; sourceTree = "<group>"; };
+		DA72E1A627C5E7CC00CE893A /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		DAC15BD527A5925A008D4D32 /* PhotoLock.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoLock.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,18 +220,22 @@
 		DA5845B427A5551800104409 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				DA5845B527A5551800104409 /* SearchView.swift */,
-				DA5845B627A5551800104409 /* MainTabBar.swift */,
-				DA5845B727A5551800104409 /* MainGridView.swift */,
-				DA5845B827A5551800104409 /* ImageDetailView.swift */,
 				DA5845B927A5551800104409 /* DetailBottomTabBar.swift */,
-				DA5845BA27A5551800104409 /* MainListView.swift */,
-				DA5845BB27A5551800104409 /* Model */,
-				DA5845BE27A5551800104409 /* MainView.swift */,
-				DA5845BF27A5551800104409 /* SettingView.swift */,
 				DA5845C027A5551800104409 /* help */,
+				DA5845B827A5551800104409 /* ImageDetailView.swift */,
+				DA72E1A227C36E7100CE893A /* ImageFSV.swift */,
+				DA72E1A427C492E400CE893A /* KeyboardAdaptive.swift */,
+				DA5845B727A5551800104409 /* MainGridView.swift */,
+				DA5845BA27A5551800104409 /* MainListView.swift */,
 				DA5845C527A5551800104409 /* MainNavigationView.swift */,
+				DA5845B627A5551800104409 /* MainTabBar.swift */,
+				DA5845BE27A5551800104409 /* MainView.swift */,
+				DA5845BB27A5551800104409 /* Model */,
 				DA1026DD27A947C600C97A6F /* MyScrollView.swift */,
+				DA72E1A027BE226000CE893A /* pinchView.swift */,
+				DA5845B527A5551800104409 /* SearchView.swift */,
+				DA5845BF27A5551800104409 /* SettingView.swift */,
+				DA72E1A627C5E7CC00CE893A /* TagView.swift */,
 			);
 			path = main;
 			sourceTree = "<group>";
@@ -270,10 +280,9 @@
 				DA5845CD27A5551800104409 /* Palette.swift */,
 				DA5845CE27A5551800104409 /* PasswordModel.swift */,
 				DA5845CF27A5551800104409 /* AppStateModel.swift */,
-				DA5845D027A5551800104409 /* CKCRUD.swift */,
 				DA5845D127A5551800104409 /* ViewStateModel.swift */,
-				DA5845D227A5551800104409 /* ImageDataModel.swift */,
 				DA442B2E27ABBFAC00C6473B /* KeyboardResponder.swift */,
+				DA442B3627B1496500C6473B /* ImageItemStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,19 +375,21 @@
 				DA58459527A54E9A00104409 /* ContentView.swift in Sources */,
 				DA5845E327A5551800104409 /* contents.swift in Sources */,
 				DA5845E827A5551800104409 /* albumCell.swift in Sources */,
+				DA442B3727B1496500C6473B /* ImageItemStorage.swift in Sources */,
 				DAC15BD627A5925A008D4D32 /* PhotoLock.xcdatamodeld in Sources */,
 				DA5845D927A5551800104409 /* PincodeKeyboard.swift in Sources */,
 				DA5845D427A5551800104409 /* ResetPasswordView.swift in Sources */,
 				DA30C63F27A69A7B00BEE1D3 /* PhotoPicker.swift in Sources */,
 				DA5845DD27A5551800104409 /* SearchView.swift in Sources */,
-				DA5845F627A5551800104409 /* ImageDataModel.swift in Sources */,
-				DA5845F427A5551800104409 /* CKCRUD.swift in Sources */,
+				DA72E1A327C36E7100CE893A /* ImageFSV.swift in Sources */,
 				DA442B3227AD70DC00C6473B /* PageView.swift in Sources */,
 				DA442B2F27ABBFAC00C6473B /* KeyboardResponder.swift in Sources */,
 				DA5845D327A5551800104409 /* tempPasswordView.swift in Sources */,
 				DA5845DE27A5551800104409 /* MainTabBar.swift in Sources */,
 				DA5845EA27A5551800104409 /* floatingButton.swift in Sources */,
 				DA5845F527A5551800104409 /* ViewStateModel.swift in Sources */,
+				DA72E1A527C492E400CE893A /* KeyboardAdaptive.swift in Sources */,
+				DA72E1A127BE226000CE893A /* pinchView.swift in Sources */,
 				DA5845E927A5551800104409 /* contentCell.swift in Sources */,
 				DA5845D727A5551800104409 /* passwordView.swift in Sources */,
 				DA5845E527A5551800104409 /* MainView.swift in Sources */,
@@ -391,6 +402,7 @@
 				DA5845E627A5551800104409 /* SettingView.swift in Sources */,
 				DA5845DA27A5551800104409 /* AlphanumericKeyboard.swift in Sources */,
 				DA5845E027A5551800104409 /* ImageDetailView.swift in Sources */,
+				DA72E1A727C5E7CC00CE893A /* TagView.swift in Sources */,
 				DA5845EF27A5551800104409 /* filterSheetView.swift in Sources */,
 				DA5845E727A5551800104409 /* addViewOnBottomSheet.swift in Sources */,
 			);

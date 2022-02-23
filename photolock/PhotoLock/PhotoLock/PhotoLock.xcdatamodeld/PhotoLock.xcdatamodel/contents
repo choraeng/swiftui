@@ -11,15 +11,22 @@
         <attribute name="memo" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="width" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TagEntity" inverseName="images" inverseEntity="TagEntity"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="color" optional="YES" attributeType="Binary" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[UIColor]"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ImageEntity" inverseName="tags" inverseEntity="ImageEntity"/>
+    </entity>
     <elements>
-        <element name="AlbumEntity" positionX="-36" positionY="9" width="128" height="44"/>
-        <element name="ImageEntity" positionX="-54" positionY="-9" width="128" height="164"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="AlbumEntity" positionX="-28.63671875" positionY="-22.43359375" width="128" height="44"/>
+        <element name="ImageEntity" positionX="-155.3828125" positionY="95.875" width="128" height="178"/>
+        <element name="Item" positionX="25.34375" positionY="-152.45703125" width="128" height="44"/>
+        <element name="TagEntity" positionX="231.26953125" positionY="199.2265625" width="128" height="103"/>
     </elements>
 </model>

@@ -23,16 +23,27 @@ import SwiftUI
 struct PhotoLockApp: App {
     @StateObject var appLockVM = AppLockModel()
     @Environment(\.scenePhase) var scenePhase
+//    @Environment(\.managedObjectContext) var managedObjectContext
     @State var blurRadius: CGFloat = 0
     
     
     let persistenceController = PersistenceController.shared
+    
+//    let persistenceManager: PersistenceController.
 
+    @StateObject var ImageStorage: ImageItemStorage
+    
+    init() {
+        let persistence = persistenceController
+        
+        _ImageStorage = StateObject(wrappedValue: ImageItemStorage(_managedObjectContext: persistence.container.viewContext))
+    }
+    
     var body: some Scene {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            ContentView()
+            ContentView(ImageStorage: ImageStorage)
                 .preferredColorScheme(.light)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appLockVM)

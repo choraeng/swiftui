@@ -16,17 +16,29 @@ struct DetailBottomTabBar: View {
     
     @Binding var infoSheet: Bool
     
-    @Binding var cImage: ContentImage
+//    @Binding var cImage: ContentImage
+    
+    // 22.02.08 ->
+    @ObservedObject var ImageStorage: ImageItemStorage
+    @Binding var index: Int?
+//    @Binding var imageItem: ImageEntity
+    // 22.02.08 <-
+    
     var body: some View {
-        
+        if index != nil {
         HStack(spacing: 0) {
-            if cImage.isFavorite {
+            if ImageStorage.imageItems[index!].image.isFavorite {
                 bottomTabBarCell(img_name: "favorite", text: "즐겨찾기"){
-                    cImage.isFavorite.toggle()
+//                    ImageStorage.imageItems[index].objectWillChange.send()
+//                    ImageStorage.objectWillChange.send()
+                    ImageStorage.imageItems[index!].image.isFavorite.toggle()
+                    ImageStorage.save()
                 }
             }else {
                 bottomTabBarCell(img_name: "favorite_icon", text: "즐겨찾기"){
-                    cImage.isFavorite.toggle()
+//                    ImageStorage.imageItems[index].objectWillChange.send()
+                    ImageStorage.imageItems[index!].image.isFavorite.toggle()
+                    ImageStorage.save()
                 }
             }
             
@@ -40,10 +52,11 @@ struct DetailBottomTabBar: View {
             bottomTabBarCell(img_name: "delete_icon", text: "휴지통"){
                 
             }
-        }
+        } // hstack
         
         //            .frame(width: geometry.size.width, height: 48, alignment: .bottom)
         .background(Color.background)
+        }
     }
 }
 

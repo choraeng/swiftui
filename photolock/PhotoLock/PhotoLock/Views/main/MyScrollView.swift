@@ -73,7 +73,7 @@ struct MyScrollView<Content: View>: UIViewControllerRepresentable {
             scrollView.setNeedsUpdateConstraints()
         }
         
-        func alignment() {
+        func alignment() { 
             NSLayoutConstraint.activate([
                 hostedView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
                 hostedView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),

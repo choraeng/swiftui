@@ -61,7 +61,7 @@ extension KeyboardAwareModifier {
                 .map { $0.cgRectValue.height },
             NotificationCenter.default
                 .publisher(for: UIResponder.keyboardWillHideNotification)
-                .map { _ in CGFloat(0)} //CGFloat(0) }
+                .map { _ in CGFloat.zero} //CGFloat(0) }
         ).eraseToAnyPublisher()
     }
 }
