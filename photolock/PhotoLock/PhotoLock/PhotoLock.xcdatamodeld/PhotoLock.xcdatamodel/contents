@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21C52" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AlbumEntity" representedClassName="AlbumEntity" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="isLock" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="albums" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumEntity" inverseName="albums" inverseEntity="AlbumEntity"/>
-        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Item" inverseName="album" inverseEntity="Item"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="childs" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="AlbumEntity" inverseName="childs" inverseEntity="AlbumEntity"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ItemEntity" inverseName="album" inverseEntity="ItemEntity"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumEntity" inverseName="parent" inverseEntity="AlbumEntity"/>
     </entity>
     <entity name="ImageEntity" representedClassName="ImageEntity" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="data" optional="YES" attributeType="Binary"/>
-        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="memo" optional="YES" attributeType="String"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <attribute name="width" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="images" inverseEntity="Item"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TagEntity" inverseName="images" inverseEntity="TagEntity"/>
+        <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="image" inverseEntity="ItemEntity"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    <entity name="ItemEntity" representedClassName="ItemEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="album" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AlbumEntity" inverseName="items" inverseEntity="AlbumEntity"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ImageEntity" inverseName="item" inverseEntity="ImageEntity"/>
-        <relationship name="memos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MemoEntity" inverseName="item" inverseEntity="MemoEntity"/>
-        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="VideoEntity" inverseName="item" inverseEntity="VideoEntity"/>
+        <relationship name="image" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageEntity" inverseName="item" inverseEntity="ImageEntity"/>
+        <relationship name="memo" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="MemoEntity" inverseName="item" inverseEntity="MemoEntity"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TagEntity" inverseName="items" inverseEntity="TagEntity"/>
+        <relationship name="video" optional="YES" maxCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="VideoEntity" inverseName="item" inverseEntity="VideoEntity"/>
     </entity>
     <entity name="MemoEntity" representedClassName="MemoEntity" syncable="YES" codeGenerationType="class">
-        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="memos" inverseEntity="Item"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="memos" inverseEntity="TagEntity"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="memo" inverseEntity="ItemEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="Binary" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[UIColor]"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="images" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ImageEntity" inverseName="tags" inverseEntity="ImageEntity"/>
-        <relationship name="memos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MemoEntity" inverseName="tags" inverseEntity="MemoEntity"/>
-        <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="VideoEntity" inverseName="tags" inverseEntity="VideoEntity"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ItemEntity" inverseName="tags" inverseEntity="ItemEntity"/>
     </entity>
     <entity name="VideoEntity" representedClassName="VideoEntity" syncable="YES" codeGenerationType="class">
-        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="videos" inverseEntity="Item"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TagEntity" inverseName="videos" inverseEntity="TagEntity"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ItemEntity" inverseName="video" inverseEntity="ItemEntity"/>
     </entity>
     <elements>
-        <element name="AlbumEntity" positionX="126.69140625" positionY="-438.98828125" width="128" height="118"/>
-        <element name="ImageEntity" positionX="-173.25390625" positionY="29.97265625" width="128" height="193"/>
-        <element name="Item" positionX="82.0546875" positionY="-176.25390625" width="128" height="133"/>
-        <element name="TagEntity" positionX="89.625" positionY="319.3515625" width="128" height="133"/>
-        <element name="VideoEntity" positionX="79.40234375" positionY="217.36328125" width="128" height="73"/>
-        <element name="MemoEntity" positionX="369.46484375" positionY="194.05859375" width="128" height="73"/>
+        <element name="AlbumEntity" positionX="165.82421875" positionY="-553.1328125" width="128" height="134"/>
+        <element name="ImageEntity" positionX="-141.36328125" positionY="32.81640625" width="128" height="133"/>
+        <element name="ItemEntity" positionX="167.7734375" positionY="-291.83203125" width="158.21484375" height="208"/>
+        <element name="MemoEntity" positionX="396.4375" positionY="76.61328125" width="128" height="58"/>
+        <element name="TagEntity" positionX="-94.53125" positionY="-445.48046875" width="128" height="118"/>
+        <element name="VideoEntity" positionX="122.1015625" positionY="200.13671875" width="128" height="58"/>
     </elements>
 </model>

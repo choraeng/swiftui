@@ -29,6 +29,7 @@ struct PersistenceController {
 //    }()
 
     let container: NSPersistentCloudKitContainer
+    let context: NSManagedObjectContext
 
     init(inMemory: Bool = false) {
         container = NSPersistentCloudKitContainer(name: "PhotoLock")
@@ -52,5 +53,15 @@ struct PersistenceController {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        context = container.viewContext
+    }
+    
+    func save() {
+        do {
+            try context.save()
+            print("Successfully save.")
+        } catch let error {
+            print("Error saving. \(error)")
+        }
     }
 }

@@ -9,37 +9,34 @@ import SwiftUI
 
 struct DetailBottomTabBar: View {
     static let dateformat: DateFormatter = {
-          let formatter = DateFormatter()
-           formatter.dateFormat = "YYYY년 M월 d일 "
-           return formatter
-       }()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY년 M월 d일 "
+        return formatter
+    }()
     
     @Binding var infoSheet: Bool
+    // 삭제 공유 이거 다 바인딩해서 하자 위에 시트처럼
     
-//    @Binding var cImage: ContentImage
+//    var isFavorite: Bool
+    var index: Int?
+//    var currentItem: ItemEntity?
+    @EnvironmentObject var CoredataModel: CoreDataViewModel
     
-    // 22.02.08 ->
-    @ObservedObject var ImageStorage: ImageItemStorage
-    @Binding var index: Int?
-//    @Binding var imageItem: ImageEntity
-    // 22.02.08 <-
+    var currentItem: ItemEntity? {
+        if let index = index {
+            return CoredataModel.currentItems[index]
+        } else {
+            return nil
+        }
+    }
     
     var body: some View {
-        if index != nil {
+        //        if let idx = index! {
         HStack(spacing: 0) {
-            if ImageStorage.imageItems[index!].image.isFavorite {
-                bottomTabBarCell(img_name: "favorite", text: "즐겨찾기"){
-//                    ImageStorage.imageItems[index].objectWillChange.send()
-//                    ImageStorage.objectWillChange.send()
-                    ImageStorage.imageItems[index!].image.isFavorite.toggle()
-                    ImageStorage.save()
-                }
-            }else {
-                bottomTabBarCell(img_name: "favorite_icon", text: "즐겨찾기"){
-//                    ImageStorage.imageItems[index].objectWillChange.send()
-                    ImageStorage.imageItems[index!].image.isFavorite.toggle()
-                    ImageStorage.save()
-                }
+            bottomTabBarCell(img_name: currentItem?.isFavorite ?? false ? "favorite" : "favorite_icon", text: "즐겨찾기"){
+                CoredataModel.updateFavorite(item: currentItem!, newValue: !(currentItem!.isFavorite))
+//                self.ItemStorage.items[idx].image?.isFavorite.toggle()
+//                self.ItemStorage.save()
             }
             
             bottomTabBarCell(img_name: "share_icon", text: "공유하기"){
@@ -56,7 +53,7 @@ struct DetailBottomTabBar: View {
         
         //            .frame(width: geometry.size.width, height: 48, alignment: .bottom)
         .background(Color.background)
-        }
+        //        }
     }
 }
 
@@ -80,7 +77,7 @@ struct bottomTabBarCell: View {
                     .scaledToFit()
                 //                .accentColor((viewtype == contentViewType.grid) ? .primary : .gray)
                     .frame(width: 24.0, height: 24.0)
-//                    .foregroundColor(.black)
+                //                    .foregroundColor(.black)
                 
                 CustomText(text: text, size: 12, weight: .regular)
                 Spacer()

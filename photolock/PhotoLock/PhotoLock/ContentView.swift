@@ -22,8 +22,6 @@ struct ContentView: View {
     
     @State var _img: [Image] = []
     
-    @ObservedObject var ImageStorage: ImageItemStorage
-    
     var DEBUG = false
     
     var body: some View {
@@ -33,7 +31,7 @@ struct ContentView: View {
                 UnlockAppView()
             }else { // if 화면 잠금
                 if mainviewFortest {
-                    MainView(ImageStorage: ImageStorage)
+                    MainView()
                 } else {
                     NavigationView {
                         VStack {

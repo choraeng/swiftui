@@ -16,7 +16,12 @@ struct SeperatorBar: View {
 }
 
 struct TagView: View {
+    @Environment(\.presentationMode) var presentationMode
     @State var tagName: String = ""
+    @Binding var index: Int?
+
+    @EnvironmentObject var CoreDataModel: CoreDataViewModel
+
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             HStack(alignment: .center) {
@@ -25,16 +30,19 @@ struct TagView: View {
                     CustomText(text: "완료", size: 16, color: Color.textNormal ,weight: .bold)
                 }
                 .opacity(0)
-                
+
                 Spacer()
-                
+
                 CustomText(text: "태그", size: 18, color: Color.textNormal ,weight: .bold)
-                
+
                 Spacer()
-                
-                
+
+
                 Button {
-                    
+                    if tagName.count > 0 {
+//                        let result = TagStoage.add(color: Color.red, name: tagName)
+                    }
+                    presentationMode.wrappedValue.dismiss()
                 } label: {
                     CustomText(text: "완료", size: 16, color: Color.textNormal ,weight: .bold)
                 }
@@ -42,76 +50,54 @@ struct TagView: View {
             .padding(.horizontal, 16)
             .frame(height: 40)
             .background(Color.background)
-            
+
 //            SeperatorBar()
             Divider()
                 .padding(0)
-            
+
             Color.white
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .overlay(
-                    TextField("태그 이름을 입력하세요.", text: $tagName)
+                    TextField("태그 이름을 입력하세요.", text: $tagName, onCommit: {
+                        CoreDataModel.addTag(color: Color.gray, name: tagName)
+                        tagName = ""
+                    })
                         .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
                         .padding(.horizontal, 16)
                 )
-            
+
 //            SeperatorBar()
             Divider()
                 .padding(0)
-            
+
             CustomText(text: "옵션 선택 또는 생성", size: 13, color: Color.textNormal, weight: .semibold)
                 .padding(.top, 30)
                 .padding(.leading, 16)
                 .padding(.bottom, 10)
-            
+
             ScrollView{
                 LazyVStack(spacing:0){
-                    ForEach(0...5, id: \.self){ _ in
-                        TagRow()
-//                        Text("Asdf")
-//                            .frame(width: 100, height: 100)
+                    if let tagItems = CoreDataModel.tags {
+                        ForEach(0..<tagItems.count, id: \.self){ i in
+                            Button {
+                                CoreDataModel.addTagIntoItem(item: CoreDataModel.currentItems[index!], tag: tagItems[i])
+                                
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                TagRow(tagName: tagItems[i].name ?? "")
+                            }
+    //                        Text("Asdf")
+    //                            .frame(width: 100, height: 100)
+                        }
                     }
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
+
         }
         .background(Color(red: 0.958, green: 0.958, blue: 0.958))
         .edgesIgnoringSafeArea(.bottom)
-        
+
     }
 }
 
-struct TagRow: View {
-    var body: some View {
-        GeometryReader { geo in
-//            Text("Asdfasdf")
-            VStack(spacing:0){
-                Color.background
-                    .frame(width: geo.size.width, height: 48)
-                    .overlay(
-                        HStack(alignment: .center){
-                            TagCell(tagName: "tag")
-                            Spacer()
-                            Button{
-
-                            } label: {
-                                Image("more_icon")
-                                    .resizable()
-                                    .renderingMode(.template)
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 24, height: 24)
-                                    .opacity(0.4)
-                            }
-                        }
-                            .padding(.horizontal, 16)
-                    )
-//                SeperatorBar()
-                Divider()
-                    .padding(0)
-            }
-        }
-        .frame(height: 48.5)
-        .padding(0)
-    }
-}

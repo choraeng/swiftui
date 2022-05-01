@@ -30,23 +30,27 @@ struct PhotoLockApp: App {
     let persistenceController = PersistenceController.shared
     
 //    let persistenceManager: PersistenceController.
+    
+//    @StateObject var TagStorage: TagEntityStorage
+//    @StateObject var AlbumStoage: AlbumEntityStorage
+//    @StateObject var ItemStorage: ItemEntityStorage
 
-    @StateObject var ImageStorage: ImageItemStorage
+    @StateObject var CoreDataModel: CoreDataViewModel = CoreDataViewModel()
+//    @State var currentAlbum: AlbumEntity
     
     init() {
-        let persistence = persistenceController
         
-        _ImageStorage = StateObject(wrappedValue: ImageItemStorage(_managedObjectContext: persistence.container.viewContext))
     }
     
     var body: some Scene {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            ContentView(ImageStorage: ImageStorage)
+            ContentView()
                 .preferredColorScheme(.light)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appLockVM)
+                .environmentObject(CoreDataModel)
                 .blur(radius: blurRadius)
                 .onChange(of: scenePhase, perform: { value in
                     switch value {

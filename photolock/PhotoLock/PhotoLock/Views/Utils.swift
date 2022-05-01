@@ -72,3 +72,7 @@ func getColor(data: Data) -> Color {
 
     return Color.clear
 }
+
+enum MediaType: Int, Codable {
+    case memo, image, video
+}

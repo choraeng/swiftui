@@ -20,7 +20,7 @@ enum mainViewMode: Int {
 }
 
 struct MainView: View {
-    @State var contents: [MainContent] = [] // selectedImg: [Image] = []
+//    @State var contents: [MainContent] = [] // selectedImg: [Image] = []
     @State var viewType: contentViewType = .grid
     
     @State var isFilterSheet = false // 필터 시트를 위한
@@ -28,7 +28,6 @@ struct MainView: View {
     @State var isSearchMode = false // 검색 모드
     
     @ObservedObject var sheetStates = ViewStateModel()
-    @ObservedObject var ImageStorage: ImageItemStorage
     
     // 22.02.16 ->
     @State var isView = false
@@ -65,9 +64,9 @@ struct MainView: View {
                                 .padding(.vertical, 6)
                             
                             if viewType == .grid {
-                                MainGridView(isSelectMode: $isSelectMode, currentIndex: $currentIndex, ImageStorage: ImageStorage, isView: $isView, ns: isviewnamespace, pickId: $pickId)
+                                MainGridView(isSelectMode: $isSelectMode, currentIndex: $currentIndex, isView: $isView, ns: isviewnamespace, pickId: $pickId)
                             }else {
-                                MainListView(contents: $contents)
+//                                MainListView(contents: $contents)
                             }
                             //                        }
                         }
@@ -90,9 +89,6 @@ struct MainView: View {
                 } // album add
             } // naviagation
             
-            
-            //                                } // if isview
-//            if isView {
             ImageFSV(
                 selectedImageOffset: selectedImageOffset,
                 didFinishClosingImage: $didFinishClosingImage,
@@ -101,17 +97,10 @@ struct MainView: View {
                 selectedImageScale: $selectedImageScale,
                 isSwiping: $isSwiping,
                 isSelecting: $isSelecting,
-                ImageStorage: ImageStorage,
                 geoWidth: geoWidth,
                 geoHeight: geoHeight,
                 namespace: isviewnamespace
             )
-                
-//            }
-            //            } // zstack
-            
-            
-            //        } // navigationview
         }
     } // body
 } // mainview

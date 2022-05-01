@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct addViewOnBottomSheet: View {
+    internal init(addType: String) {
+        self.addType = addType
+    }
+    
     var addType: String
     
     @State var inputText: String = ""

@@ -11,15 +11,16 @@ import PhotosUI
 import CloudKit
 
 struct floatingButton: View {
-    // for coredata
-    @Environment(\.managedObjectContext) private var viewContext // 무조건 추가만 있으니깐
-    
     @EnvironmentObject var sheetStates: ViewStateModel
     
     @State private var isPresentPicker: Bool = false // phpicker를 열기위한 변수
     @State private var isUploadSheeet = false // 추가를 위한 sheet 변수
     
     @State var memoAddSheetShowing: Bool = false
+    
+    
+    @EnvironmentObject var CoreDataModel: CoreDataViewModel
+    @EnvironmentObject var currentAlbum: AlbumEntity
     
     var body: some View {
         VStack(spacing: 0) {
@@ -44,34 +45,24 @@ struct floatingButton: View {
                     }
                 }
                 .sheet(isPresented: $isPresentPicker) {
-                    PhotoPicker(isPresentPicker: $isPresentPicker, isUploadSheet: $isUploadSheeet) { type, cImage, cVideo, cMemo in
-                        if type == 0{ // image
-                            let newImage = ImageEntity(context: viewContext)
-                            newImage.name = cImage!.name
-                            newImage.size = cImage!.size
-                            newImage.height = Int16(cImage!.height)
-                            newImage.width = Int16(cImage!.width)
-                            newImage.isFavorite = false
-                            newImage.data = cImage!.data!//(contents[0].img! as! UIImage).jpegData(compressionQuality: 1.0)
-                            newImage.tags = []
-                            newImage.memo = ""
-                            newImage.createdAt = cImage!.createdAt
-                            
-                            if viewContext.hasChanges {
-                                do {
-                                    try viewContext.save()
-                                    print("save")
-                                } catch {
-                                    let nserror = error as NSError
-                                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                                }
-                            }
-                        }else if type == 1{ //video
-                            
-                        }else if type == 2{ // memo
-                            
-                        }
-                    }
+                    PhotoPicker(isPresentPicker: $isPresentPicker, isUploadSheet: $isUploadSheeet)
+//                    {item in
+//                        print(item)
+//                        CoreDataModel.addItem(item: item)
+//                        CoreDataModel.save()
+                        
+//                    }
+//                    { type, cImage, cVideo, cMemo in
+//                        if type == 0{ // image
+//                            CoreDataModel.addItem(type: 1,
+//                                                  image: CoreDataModel.genImage(name: cImage!.name, size: cImage!.size, createdAt: cImage!.createdAt, width: Int16(cImage!.width), height: Int16(cImage!.height), memo: "", isFavorite: false, data: cImage!.data!),
+//                                                  album: currentAlbum)
+//                        }else if type == 1{ //video
+//
+//                        }else if type == 2{ // memo
+//
+//                        }
+//                    }
                 }
             }
         }
