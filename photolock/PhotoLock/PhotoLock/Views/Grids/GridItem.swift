@@ -43,11 +43,11 @@ struct contentCell: View {
                         .clipped()
                         
                     // favorite
-//                    if let favor = item.image?.isFavorite{
-//                        if favor{
-//                            GridItemFavorite()
-//                        }
-//                    }
+                    if let favor = item.isFavorite{
+                        if favor{
+                            GridItemFavorite()
+                        }
+                    }
 //
 //                    // check
 //                    if isSelectMode {
