@@ -60,7 +60,7 @@ struct DetailTagView: View {
                                 }
                                 .frame(height: 24)
                                 //                        .frame(maxWidth: 71, maxHeight: 24)
-                                .background(Color(red: 0.384, green: 0.38, blue: 0.4))
+                                .background(Color(red: item.r, green: item.g, blue: item.b, opacity: item.a))
                                 .cornerRadius(4)
                             }
                         }

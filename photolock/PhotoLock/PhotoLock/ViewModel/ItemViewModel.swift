@@ -137,7 +137,12 @@ extension CoreDataViewModel{
         newItem.id = UUID()
         newItem.name = name
         newItem.timestamp = Date()
-        newItem.color = setColor(color: color)
+//        newItem.color = setColor(color: color)
+        
+        newItem.r = color.components.red
+        newItem.g = color.components.green
+        newItem.b = color.components.blue
+        newItem.a = color.components.opacity
         
         save()
     }
@@ -167,6 +172,9 @@ extension CoreDataViewModel{
     }
     
     // MARK: - delete
+    func deleteTag(id: UUID) {
+        
+    }
     
     // MARK: - save
     func save() {

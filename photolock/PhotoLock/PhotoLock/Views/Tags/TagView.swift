@@ -15,6 +15,16 @@ struct SeperatorBar: View {
     }
 }
 
+func randomColor() -> Color{
+//    var retColor: Color = Color.gray
+    
+    let colorSet: [Color] = [
+        Color.gray, Color.red, Color.blue, Color.yellow, Color.green]
+    
+//    return colorSet[Int.random(in: 0..<colorSet.count)]
+    return colorSet.randomElement() ?? Color.gray
+}
+
 struct TagView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var tagName: String = ""
@@ -59,7 +69,7 @@ struct TagView: View {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .overlay(
                     TextField("태그 이름을 입력하세요.", text: $tagName, onCommit: {
-                        CoreDataModel.addTag(color: Color.gray, name: tagName)
+                        CoreDataModel.addTag(color: randomColor(), name: tagName)
                         tagName = ""
                     })
                         .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
@@ -84,7 +94,7 @@ struct TagView: View {
                                 
                                 presentationMode.wrappedValue.dismiss()
                             } label: {
-                                TagRow(tagName: tagItems[i].name ?? "")
+                                TagRow(tagName: tagItems[i].name ?? "", r: tagItems[i].r, g: tagItems[i].g, b: tagItems[i].b, a: tagItems[i].a)
                             }
     //                        Text("Asdf")
     //                            .frame(width: 100, height: 100)

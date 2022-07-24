@@ -9,6 +9,11 @@ import SwiftUI
 
 struct TagRow: View {
     var tagName: String
+    var r: Double
+    var g: Double
+    var b: Double
+    var a: Double
+    
     var body: some View {
         GeometryReader { geo in
 //            Text("Asdfasdf")
@@ -17,7 +22,7 @@ struct TagRow: View {
                     .frame(width: geo.size.width, height: 48)
                     .overlay(
                         HStack(alignment: .center){
-                            TagItem(tagName: tagName)
+                            TagItem(tagName: tagName, r: r, g: g, b: b, a: a)
                             Spacer()
                             Button{
 

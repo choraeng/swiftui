@@ -9,6 +9,10 @@ import SwiftUI
 
 struct TagItem: View {
     var tagName: String
+    var r: Double
+    var g: Double
+    var b: Double
+    var a: Double
     
     var body: some View {
         Button{
@@ -29,7 +33,8 @@ struct TagItem: View {
         .frame(height: 24)
         .padding(.leading, 8)
         //        .frame(maxWidth: 77, maxHeight: 24)
-        .background(Color(red: 0.384, green: 0.38, blue: 0.4))
+//        .background(Color(red: 0.384, green: 0.38, blue: 0.4))
+        .background(Color(red: r, green: g, blue: b, opacity: a))
         .cornerRadius(4)
     } // body
 }
