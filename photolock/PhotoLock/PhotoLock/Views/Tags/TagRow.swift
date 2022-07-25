@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct TagRow: View {
-    var tagName: String
-    var r: Double
-    var g: Double
-    var b: Double
-    var a: Double
+//    var tagName: String
+//    var r: Double
+//    var g: Double
+//    var b: Double
+//    var a: Double
+    
+    var tag: TagEntity
+    
+    @EnvironmentObject var CoreDataModel: CoreDataViewModel
     
     var body: some View {
         GeometryReader { geo in
@@ -22,10 +26,11 @@ struct TagRow: View {
                     .frame(width: geo.size.width, height: 48)
                     .overlay(
                         HStack(alignment: .center){
-                            TagItem(tagName: tagName, r: r, g: g, b: b, a: a)
+//                            TagItem(tagName: tagName, r: r, g: g, b: b, a: a)
+                            TagItem(tag: tag)
                             Spacer()
                             Button{
-
+                                CoreDataModel.deleteTag(tag: tag)
                             } label: {
                                 Image("more_icon")
                                     .resizable()

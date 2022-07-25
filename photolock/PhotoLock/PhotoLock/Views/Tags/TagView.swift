@@ -90,11 +90,12 @@ struct TagView: View {
                     if let tagItems = CoreDataModel.tags {
                         ForEach(0..<tagItems.count, id: \.self){ i in
                             Button {
-                                CoreDataModel.addTagIntoItem(item: CoreDataModel.currentItems[index!], tag: tagItems[i])
-                                
+//                                CoreDataModel.addTagIntoItem(item: CoreDataModel.currentItems[index!], tag: tagItems[i])
+                                CoreDataModel.deleteTag(tag: tagItems[i])
                                 presentationMode.wrappedValue.dismiss()
                             } label: {
-                                TagRow(tagName: tagItems[i].name ?? "", r: tagItems[i].r, g: tagItems[i].g, b: tagItems[i].b, a: tagItems[i].a)
+//                                TagRow(tagName: tagItems[i].name ?? "", r: tagItems[i].r, g: tagItems[i].g, b: tagItems[i].b, a: tagItems[i].a)
+                                TagRow(tag: tagItems[i])
                             }
     //                        Text("Asdf")
     //                            .frame(width: 100, height: 100)

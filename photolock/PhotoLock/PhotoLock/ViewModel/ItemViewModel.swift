@@ -172,8 +172,10 @@ extension CoreDataViewModel{
     }
     
     // MARK: - delete
-    func deleteTag(id: UUID) {
+    func deleteTag(tag: TagEntity) {
+        manager.context.delete(tag)
         
+        save()
     }
     
     // MARK: - save
