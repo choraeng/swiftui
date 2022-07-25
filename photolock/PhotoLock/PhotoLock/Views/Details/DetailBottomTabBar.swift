@@ -19,6 +19,11 @@ struct DetailBottomTabBar: View {
     
 //    var isFavorite: Bool
     var index: Int?
+    
+    @Binding var didFinishClosingImage: Bool
+    @Binding var showFSV: Bool
+    @Binding var selectedImageIndex: Int?
+    @Binding var isSelecting: Bool // 현재 디테일상태인지
 //    var currentItem: ItemEntity?
     @EnvironmentObject var CoredataModel: CoreDataViewModel
     
@@ -47,7 +52,15 @@ struct DetailBottomTabBar: View {
             }
             
             bottomTabBarCell(img_name: "delete_icon", text: "휴지통"){
+                isSelecting = true
+                withAnimation(.interactiveSpring()) {
+                    didFinishClosingImage = false
+                    showFSV = false
+                    selectedImageIndex = nil
+                    isSelecting = false
+                }
                 
+                CoredataModel.deleteItem(item: currentItem!)
             }
         } // hstack
         

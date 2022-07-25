@@ -69,7 +69,7 @@ struct TagView: View {
                 .frame(maxWidth: .infinity, maxHeight: 48)
                 .overlay(
                     TextField("태그 이름을 입력하세요.", text: $tagName, onCommit: {
-                        CoreDataModel.addTag(color: randomColor(), name: tagName)
+                        CoreDataModel.addTag(color: randomColor(), name: tagName, isIntoItem: true, item: CoreDataModel.currentItems[index!])
                         tagName = ""
                     })
                         .frame(maxWidth: .infinity)//, maxHeight: memoHeight)
@@ -89,14 +89,14 @@ struct TagView: View {
                 LazyVStack(spacing:0){
                     if let tagItems = CoreDataModel.tags {
                         ForEach(0..<tagItems.count, id: \.self){ i in
-                            Button {
+//                            Button {
 //                                CoreDataModel.addTagIntoItem(item: CoreDataModel.currentItems[index!], tag: tagItems[i])
-                                CoreDataModel.deleteTag(tag: tagItems[i])
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
+//                                CoreDataModel.deleteTag(tag: tagItems[i])
+//                                presentationMode.wrappedValue.dismiss()
+//                            } label: {
 //                                TagRow(tagName: tagItems[i].name ?? "", r: tagItems[i].r, g: tagItems[i].g, b: tagItems[i].b, a: tagItems[i].a)
-                                TagRow(tag: tagItems[i])
-                            }
+                                TagRow(item: CoreDataModel.currentItems[index!], tag: tagItems[i])
+//                            }
     //                        Text("Asdf")
     //                            .frame(width: 100, height: 100)
                         }

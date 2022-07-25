@@ -151,43 +151,14 @@ struct ImageFSV: View {
                                         })
                                 )
                         } // vstack 1
-                        
-                        //                    .gesture(DragGesture(minimumDistance: 2, coordinateSpace: .local)
-                        //                                .onEnded({ value in
-                        //                        if value.translation.width < 0 {
-                        //                            // left
-                        //                            //                            print("left")
-                        //                        }
-                        //                        if value.translation.width > 0 {
-                        //                            // right
-                        //                            //                            print("right")
-                        //                        }
-                        //                        if value.translation.height < 0 {
-                        //                            // up
-                        //                            //                            print("up")
-                        //                            if inputMemo.count > 0 {
-                        //                                withAnimation(.easeInOut(duration: 0.1)) {
-                        //                                    memoHeight = 96
-                        //                                    imageY = -100
-                        //                                }
-                        //                            }
-                        //                        }
-                        //                        if value.translation.height > 0 {
-                        //                            // down
-                        //                            //                            print("down")
-                        //                            withAnimation(.easeInOut(duration: 0.1)) {
-                        //                                memoHeight = 44
-                        //                                imageY = 0
-                        //                            }
-                        //                        }
-                        //                    }))
                         .keyboardAdaptive(bottomInset: UIApplication.shared.windows[0].safeAreaInsets.bottom)
                         
                         // bottom tab bar
                         DetailBottomTabBar(infoSheet: $infoSheet,
                                            //                                           isFavorite: $(currentItem!.isFavorite)
                                            //                                           currentItem: currentItem
-                                           index: selectedImageIndex
+                                           index: selectedImageIndex,
+                                           didFinishClosingImage: $didFinishClosingImage, showFSV: $showFSV, selectedImageIndex: $selectedImageIndex, isSelecting: $isSelecting
                         )
                         
                         Color.white

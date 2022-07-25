@@ -46,13 +46,16 @@ struct DetailTagView: View {
                         } else {
 //                            ForEach(0..<CoreDataModel.currentItems[index!].tags!.count, id: \.self) { idx in
                             ForEach(CoreDataModel.getTagList(idx: index!), id: \.self) { item in
-                                Button {
-                                    isTagView.toggle()
-                                } label: {
-                                    HStack(spacing: 0) {
+                                HStack(spacing: 0) {
+                                    Button {
+                                        isTagView.toggle()
+                                    } label: {
                                         CustomText(text: "\(item.name ?? "")", size: 13, color: Color.white, weight: .semibold)
-                                        .padding(.leading, 8)
-                                        
+                                    }
+                                    .padding(.leading, 8)
+                                    Button {
+                                        CoreDataModel.deleteTag(tag: item)
+                                    } label: {
                                         Image("close_icon_sm")
                                             .resizable()
                                             .frame(width: 24, height: 24)

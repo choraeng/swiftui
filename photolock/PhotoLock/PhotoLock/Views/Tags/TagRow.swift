@@ -14,9 +14,12 @@ struct TagRow: View {
 //    var b: Double
 //    var a: Double
     
+    var item: ItemEntity
     var tag: TagEntity
     
+    
     @EnvironmentObject var CoreDataModel: CoreDataViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         GeometryReader { geo in
@@ -27,10 +30,17 @@ struct TagRow: View {
                     .overlay(
                         HStack(alignment: .center){
 //                            TagItem(tagName: tagName, r: r, g: g, b: b, a: a)
-                            TagItem(tag: tag)
+                            Button{
+                                CoreDataModel.addTagIntoItem(item: item, tag: tag)
+                                
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                TagItem(tag: tag)
+                            }
                             Spacer()
                             Button{
                                 CoreDataModel.deleteTag(tag: tag)
+//                                presentationMode.wrappedValue.dismiss()
                             } label: {
                                 Image("more_icon")
                                     .resizable()

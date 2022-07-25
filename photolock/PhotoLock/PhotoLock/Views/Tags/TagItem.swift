@@ -16,21 +16,21 @@ struct TagItem: View {
     var tag: TagEntity
     
     var body: some View {
-        Button{
+//        Button{
+//
+//        } label: {
+        HStack(spacing: 0) {
+            CustomText(text: tag.name!, size: 13, color: Color.white, weight: .semibold)
             
-        } label: {
-            HStack(spacing: 0) {
-                CustomText(text: tag.name!, size: 13, color: Color.white, weight: .semibold)
-                
-                
-                Image("close_icon_sm")
-                    .resizable()
-                    .renderingMode(.template)
-                    .scaledToFit()
-                    .foregroundColor(Color.white)
-                    .frame(width: 24, height: 24)
-            }
+            
+            Image("close_icon_sm")
+                .resizable()
+                .renderingMode(.template)
+                .scaledToFit()
+                .foregroundColor(Color.white)
+                .frame(width: 24, height: 24)
         }
+//        }
         .frame(height: 24)
         .padding(.leading, 8)
         //        .frame(maxWidth: 77, maxHeight: 24)

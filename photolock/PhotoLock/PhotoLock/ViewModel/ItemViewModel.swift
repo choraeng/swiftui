@@ -132,7 +132,11 @@ extension CoreDataViewModel{
         save()
     }
     
-    func addTag(color: Color, name: String) {
+    func addTag(color: Color, name: String, isIntoItem: Bool = false, item: ItemEntity?) {
+        if name == "" {
+            return
+        }
+        
         let newItem = TagEntity(context: manager.context)
         newItem.id = UUID()
         newItem.name = name
@@ -144,7 +148,7 @@ extension CoreDataViewModel{
         newItem.b = color.components.blue
         newItem.a = color.components.opacity
         
-        save()
+        save(completion: {self.addTagIntoItem(item: item!, tag: newItem)})
     }
     
     func addTagIntoItem(item: ItemEntity, tag: TagEntity) {
@@ -178,12 +182,20 @@ extension CoreDataViewModel{
         save()
     }
     
+    func deleteItem(item: ItemEntity) {
+        manager.context.delete(item)
+        
+        save()
+    }
+    
     // MARK: - save
-    func save() {
+    func save(completion: @escaping () -> Void = {}) {
         manager.save()
         DispatchQueue.main.async {
             self.getItems(album: self.currentAlbum!)
             self.getAllTags()
+            
+            completion()
         }
         
 //        getAlbums()
