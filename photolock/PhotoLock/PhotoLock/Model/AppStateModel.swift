@@ -29,7 +29,7 @@ struct AppStateModel: Identifiable, Codable {
     }
 }
 
-class AppLockModel: ObservableObject {
+final class AppLockModel: ObservableObject {
     @Published var isLock: Bool = false // 앱 잡금 유무
     @Published var isBio: Bool = false // 앱 잠금 시 페이스 아이디 유무
     @Published var password: String = "" // 앱 패스워드

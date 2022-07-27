@@ -81,7 +81,7 @@ struct PhotoPicker: UIViewControllerRepresentable {
 }
 
 extension PhotoPicker {
-    class Coordinator: NSObject, PHPickerViewControllerDelegate {
+    final class Coordinator: NSObject, PHPickerViewControllerDelegate {
         // for savinf core data
         @Environment(\.managedObjectContext) private var viewContext
         

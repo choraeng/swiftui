@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PasswordModel: ObservableObject {
+final class PasswordModel: ObservableObject {
     @Published var title: String // 맨 위 텍스트
     @Published var subtitle: String // 부연 설명 텍스트
     @Published var failtext: String // 실패시 실패 문구, 넘기자

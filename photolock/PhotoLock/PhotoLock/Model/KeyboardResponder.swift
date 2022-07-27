@@ -11,7 +11,7 @@ import Combine
 import UIKit
 
 
-class KeyboardResponder: ObservableObject {
+final class KeyboardResponder: ObservableObject {
     @Published var currentHeight: CGFloat = 0
     @Published var currentKeyboard: Bool = false
     

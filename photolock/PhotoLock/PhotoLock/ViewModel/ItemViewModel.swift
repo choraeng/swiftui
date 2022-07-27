@@ -8,7 +8,7 @@
 import CoreData
 import SwiftUI
 
-class CoreDataViewModel: ObservableObject {
+final class CoreDataViewModel: ObservableObject {
     let manager = PersistenceController.shared
 //    @Published var items: [ItemEntity] = []
 //    @Published

@@ -69,7 +69,7 @@ struct AlphanumericKeyboard: View {
 
 struct CustomStringTextField: UIViewRepresentable {
     
-    class Coordinator: NSObject, UITextFieldDelegate {
+    final class Coordinator: NSObject, UITextFieldDelegate {
         
         @Binding var text: String
         @Binding var commit: Bool
@@ -116,7 +116,7 @@ struct CustomStringTextField: UIViewRepresentable {
         }
     }
     
-    class CustomUITextField: UITextField {
+    final class CustomUITextField: UITextField {
         override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
             switch action {
             case #selector(UIResponderStandardEditActions.paste(_:)),

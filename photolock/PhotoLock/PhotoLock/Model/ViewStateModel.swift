@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class ViewStateModel: ObservableObject {
+final class ViewStateModel: ObservableObject {
     @Published var albumAddSheetShowing = false
     @Published var memoAddSheetShowing = false
     

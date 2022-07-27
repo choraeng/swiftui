@@ -14,7 +14,7 @@ func clamp(_ value: CGFloat, _ minValue: CGFloat, _ maxValue: CGFloat) -> CGFloa
 }
 
 // UIView that relies on UIPinchGestureRecognizer to detect scale, anchor point and offset
-class ZoomableView: UIView {
+final class ZoomableView: UIView {
   let minScale: CGFloat
   let maxScale: CGFloat
   let scaleChange: (CGFloat) -> Void
