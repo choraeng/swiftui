@@ -55,8 +55,8 @@ struct ImageHStack: View {
                             .offset(x: (CGFloat(index) * -geoWidth))
                             .offset(selectedImageOffset)
                             .opacity(idx != selectedImageIndex && selectedImageOffset.height > 10 ? 0 : 1)
-                }
-            }
+                } // foreach
+            } // lazyhstack
             .ignoresSafeArea()
             .background(
                 Color.background
@@ -76,14 +76,14 @@ struct ImageHStack: View {
                                 self.isSelecting = true
                             }
                         }
-                    })
+                    }) // change -> 제스처 state 정의
                     .updating(self.$selectedImageOffset, body: { value, state, _ in
                         if self.isSwiping {
                             state = CGSize(width: value.translation.width, height: 0)
                         } else if self.isSelecting {
                             state = CGSize(width: value.translation.width, height: value.translation.height)
                         }
-                    })
+                    }) // update
                     .onEnded({ value in
                         DispatchQueue.main.async {
                             self.isSwiping = false
@@ -104,7 +104,7 @@ struct ImageHStack: View {
                                 }
                             }
                         }
-                    })
+                    }) // end
             )
             .onChange(of: selectedImageOffset) { imageOffset in
                 DispatchQueue.main.async {

@@ -16,6 +16,9 @@
 		DA909740289AA4F600BFB340 /* imageVstack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90973F289AA4F600BFB340 /* imageVstack.swift */; };
 		DA909743289AA56700BFB340 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DA909742289AA56700BFB340 /* Kingfisher */; };
 		DA909750289AAE1500BFB340 /* GridStack in Frameworks */ = {isa = PBXBuildFile; productRef = DA90974F289AAE1500BFB340 /* GridStack */; };
+		DA909753289FA02400BFB340 /* ImageViewer in Frameworks */ = {isa = PBXBuildFile; productRef = DA909752289FA02400BFB340 /* ImageViewer */; };
+		DA909755289FA02400BFB340 /* ImageViewerRemote in Frameworks */ = {isa = PBXBuildFile; productRef = DA909754289FA02400BFB340 /* ImageViewerRemote */; };
+		DA909757289FA03600BFB340 /* imageViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA909756289FA03600BFB340 /* imageViewer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,7 @@
 		DA90973D28994CC800BFB340 /* imageSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageSlider.swift; sourceTree = "<group>"; };
 		DA90973F289AA4F600BFB340 /* imageVstack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageVstack.swift; sourceTree = "<group>"; };
 		DA90974D289AADE200BFB340 /* GridStack-master */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = "GridStack-master"; path = "../../../../Downloads/GridStack-master"; sourceTree = "<group>"; };
+		DA909756289FA03600BFB340 /* imageViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageViewer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +40,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA909743289AA56700BFB340 /* Kingfisher in Frameworks */,
+				DA909753289FA02400BFB340 /* ImageViewer in Frameworks */,
+				DA909755289FA02400BFB340 /* ImageViewerRemote in Frameworks */,
 				DA909750289AAE1500BFB340 /* GridStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,6 +70,7 @@
 		DA90972C28992A0500BFB340 /* modules_test */ = {
 			isa = PBXGroup;
 			children = (
+				DA909756289FA03600BFB340 /* imageViewer.swift */,
 				DA90972D28992A0500BFB340 /* modules_testApp.swift */,
 				DA90972F28992A0500BFB340 /* ContentView.swift */,
 				DA90973F289AA4F600BFB340 /* imageVstack.swift */,
@@ -117,6 +124,8 @@
 			packageProductDependencies = (
 				DA909742289AA56700BFB340 /* Kingfisher */,
 				DA90974F289AAE1500BFB340 /* GridStack */,
+				DA909752289FA02400BFB340 /* ImageViewer */,
+				DA909754289FA02400BFB340 /* ImageViewerRemote */,
 			);
 			productName = modules_test;
 			productReference = DA90972A28992A0500BFB340 /* modules_test.app */;
@@ -148,6 +157,7 @@
 			mainGroup = DA90972128992A0500BFB340;
 			packageReferences = (
 				DA909741289AA56700BFB340 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				DA909751289FA02400BFB340 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */,
 			);
 			productRefGroup = DA90972B28992A0500BFB340 /* Products */;
 			projectDirPath = "";
@@ -178,6 +188,7 @@
 				DA90973028992A0500BFB340 /* ContentView.swift in Sources */,
 				DA909740289AA4F600BFB340 /* imageVstack.swift in Sources */,
 				DA90973C28992A1C00BFB340 /* navigationBar.swift in Sources */,
+				DA909757289FA03600BFB340 /* imageViewer.swift in Sources */,
 				DA90973E28994CC800BFB340 /* imageSlider.swift in Sources */,
 				DA90972E28992A0500BFB340 /* modules_testApp.swift in Sources */,
 			);
@@ -392,6 +403,14 @@
 				minimumVersion = 7.0.0;
 			};
 		};
+		DA909751289FA02400BFB340 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Jake-Short/swiftui-image-viewer.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -403,6 +422,16 @@
 		DA90974F289AAE1500BFB340 /* GridStack */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GridStack;
+		};
+		DA909752289FA02400BFB340 /* ImageViewer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA909751289FA02400BFB340 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */;
+			productName = ImageViewer;
+		};
+		DA909754289FA02400BFB340 /* ImageViewerRemote */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA909751289FA02400BFB340 /* XCRemoteSwiftPackageReference "swiftui-image-viewer" */;
+			productName = ImageViewerRemote;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        imageVstack().environmentObject(ImageData())
+//        imageVstack().environmentObject(ImageData())
+        imageViewer()
     }
 }
 
