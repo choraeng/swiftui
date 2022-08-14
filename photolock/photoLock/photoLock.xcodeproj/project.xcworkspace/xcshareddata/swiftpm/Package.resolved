@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Camera-SwiftUI",
+        "repositoryURL": "https://github.com/rorodriguez116/Camera-SwiftUI.git",
+        "state": {
+          "branch": "main",
+          "revision": "2b72809327bfee39606bf942a844ab7f3845ce9d",
+          "version": null
+        }
+      },
+      {
+        "package": "SlideOverCard",
+        "repositoryURL": "https://github.com/joogps/SlideOverCard",
+        "state": {
+          "branch": "main",
+          "revision": "f58d646d7666c00cf4c4835a3b674a3d905b3fa9",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
