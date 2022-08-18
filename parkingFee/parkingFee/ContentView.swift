@@ -32,9 +32,16 @@ import SwiftUI
 // 확인
 // $('.btn-btm a')[0].click()
 
+// 주차권 남은거 확인
+// $('.discount input')[1].value
+// ~~-~~
+//-> S.components(separatedBy: "-")[0]
 // 주차권 선택
 // $('.discount input')[idx].click()
 // idx 0 -> 무료(3시간), 1 -> 무료 1시간, 2 -> 1시간, 3 -> 4시간
+// 적용
+// $('.btn-btm a')[0].click()
+
 
 struct ContentView: View {
     // 관찰 가능한 개체에 구독하고 관찰 가능한 개체가 변경될 때마다 뷰를 무효화하는 속성 래퍼 유형입니다.
