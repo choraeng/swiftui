@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA51148628B1211200B326AC /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA51148228B1211200B326AC /* CameraViewModel.swift */; };
+		DA51148728B1211200B326AC /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA51148328B1211200B326AC /* CameraPreview.swift */; };
+		DA51148828B1211200B326AC /* CameraContentPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA51148428B1211200B326AC /* CameraContentPreview.swift */; };
+		DA51148928B1211200B326AC /* CameraXPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA51148528B1211200B326AC /* CameraXPN.swift */; };
 		DA90979328A9435500BFB340 /* photoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90979228A9435500BFB340 /* photoLockApp.swift */; };
 		DA90979728A9435600BFB340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979628A9435600BFB340 /* Assets.xcassets */; };
 		DA90979A28A9435600BFB340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979928A9435600BFB340 /* Preview Assets.xcassets */; };
@@ -15,11 +19,15 @@
 		DA9097AF28A9440100BFB340 /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097AA28A9440100BFB340 /* mainView.swift */; };
 		DA9097B028A9440100BFB340 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097AB28A9440100BFB340 /* ContentView.swift */; };
 		DA9097B728A9484F00BFB340 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = DA9097B628A9484F00BFB340 /* SlideOverCard */; };
-		DA9097BA28A9485E00BFB340 /* Camera-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = DA9097B928A9485E00BFB340 /* Camera-SwiftUI */; };
 		DA9097BC28A9493000BFB340 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097BB28A9493000BFB340 /* FloatingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA51148228B1211200B326AC /* CameraViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		DA51148328B1211200B326AC /* CameraPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		DA51148428B1211200B326AC /* CameraContentPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraContentPreview.swift; sourceTree = "<group>"; };
+		DA51148528B1211200B326AC /* CameraXPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraXPN.swift; sourceTree = "<group>"; };
+		DA604FD228BBAECF00C2DF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA90978F28A9435500BFB340 /* photoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA90979228A9435500BFB340 /* photoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoLockApp.swift; sourceTree = "<group>"; };
 		DA90979628A9435600BFB340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,13 +45,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA9097B728A9484F00BFB340 /* SlideOverCard in Frameworks */,
-				DA9097BA28A9485E00BFB340 /* Camera-SwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA51148028B120C400B326AC /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				DA51148128B1211200B326AC /* CameraXPN */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		DA51148128B1211200B326AC /* CameraXPN */ = {
+			isa = PBXGroup;
+			children = (
+				DA51148228B1211200B326AC /* CameraViewModel.swift */,
+				DA51148328B1211200B326AC /* CameraPreview.swift */,
+				DA51148428B1211200B326AC /* CameraContentPreview.swift */,
+				DA51148528B1211200B326AC /* CameraXPN.swift */,
+			);
+			path = CameraXPN;
+			sourceTree = "<group>";
+		};
 		DA90978628A9435500BFB340 = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +89,8 @@
 		DA90979128A9435500BFB340 /* photoLock */ = {
 			isa = PBXGroup;
 			children = (
+				DA604FD228BBAECF00C2DF13 /* Info.plist */,
+				DA51148028B120C400B326AC /* modules */,
 				DA9097B328A9448200BFB340 /* AppDelegate */,
 				DA9097B228A9447600BFB340 /* Resources */,
 				DA9097B128A9445300BFB340 /* Models */,
@@ -181,7 +209,6 @@
 			name = photoLock;
 			packageProductDependencies = (
 				DA9097B628A9484F00BFB340 /* SlideOverCard */,
-				DA9097B928A9485E00BFB340 /* Camera-SwiftUI */,
 			);
 			productName = photoLock;
 			productReference = DA90978F28A9435500BFB340 /* photoLock.app */;
@@ -213,7 +240,6 @@
 			mainGroup = DA90978628A9435500BFB340;
 			packageReferences = (
 				DA9097B528A9484F00BFB340 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
-				DA9097B828A9485E00BFB340 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */,
 			);
 			productRefGroup = DA90979028A9435500BFB340 /* Products */;
 			projectDirPath = "";
@@ -242,9 +268,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA90979C28A9435600BFB340 /* Persistence.swift in Sources */,
+				DA51148728B1211200B326AC /* CameraPreview.swift in Sources */,
 				DA90979F28A9435600BFB340 /* photoLock.xcdatamodeld in Sources */,
 				DA9097B028A9440100BFB340 /* ContentView.swift in Sources */,
+				DA51148828B1211200B326AC /* CameraContentPreview.swift in Sources */,
 				DA9097AF28A9440100BFB340 /* mainView.swift in Sources */,
+				DA51148628B1211200B326AC /* CameraViewModel.swift in Sources */,
+				DA51148928B1211200B326AC /* CameraXPN.swift in Sources */,
 				DA90979328A9435500BFB340 /* photoLockApp.swift in Sources */,
 				DA9097BC28A9493000BFB340 /* FloatingButton.swift in Sources */,
 			);
@@ -380,6 +410,10 @@
 				DEVELOPMENT_TEAM = 8SLPVCR4L7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = photoLock/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = camera;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mic;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = photo;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -409,6 +443,10 @@
 				DEVELOPMENT_TEAM = 8SLPVCR4L7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = photoLock/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = camera;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mic;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = photo;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -459,14 +497,6 @@
 				kind = branch;
 			};
 		};
-		DA9097B828A9485E00BFB340 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/rorodriguez116/Camera-SwiftUI.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -474,11 +504,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA9097B528A9484F00BFB340 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
 			productName = SlideOverCard;
-		};
-		DA9097B928A9485E00BFB340 /* Camera-SwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DA9097B828A9485E00BFB340 /* XCRemoteSwiftPackageReference "Camera-SwiftUI" */;
-			productName = "Camera-SwiftUI";
 		};
 /* End XCSwiftPackageProductDependency section */
 

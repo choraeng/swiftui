@@ -8,9 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    @State var camera: Bool = false
     var body: some View {
-        Text("sdf")
+        VStack {
+            Button {
+                camera.toggle()
+            } label: {
+                Text("카메라")
+            }
+            .fullScreenCover(isPresented: $camera) {
+                
+            } content: {
+                CameraXPN(action: { url, data in
+                    print(url)
+                    print(data.count)
+                })
+            }
+
+        }
     }
 }
 
