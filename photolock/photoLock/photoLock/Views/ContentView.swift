@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var camera: Bool = false
+    @State private var image: UIImage?
     var body: some View {
         VStack {
             Button {
@@ -19,10 +20,7 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $camera) {
                 
             } content: {
-                CameraXPN(action: { url, data in
-                    print(url)
-                    print(data.count)
-                })
+                MediaPicker(image: $image)
             }
 
         }
