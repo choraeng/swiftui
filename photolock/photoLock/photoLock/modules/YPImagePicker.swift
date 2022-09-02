@@ -79,6 +79,16 @@ struct MediaPicker: UIViewControllerRepresentable {
         
         let picker = YPImagePicker(configuration: config)
         picker.didFinishPicking { [unowned picker] items, _ in
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    print(photo)
+                case .video(let video):
+                    print(video)
+                }
+            }
+            
+            
             if let photo = items.singlePhoto {
                 self.image = photo.image
             }
