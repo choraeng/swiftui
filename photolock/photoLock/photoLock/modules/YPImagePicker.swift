@@ -7,6 +7,7 @@
 
 import SwiftUI
 import YPImagePicker
+import Photos
 
 struct MediaPicker: UIViewControllerRepresentable {
   
@@ -83,8 +84,18 @@ struct MediaPicker: UIViewControllerRepresentable {
                 switch item {
                 case .photo(let photo):
                     print(photo)
+                    print(photo.asset)
+                    let asset = PHAssetResource.assetResources(for: photo.asset!)
+                    print(asset)
+//                    print(photo.asset?.value(forKey: "fileSize"))
+//                    let unsignedInt64 = photo.asset?.value(forKey: "fileSize") as? CLong
+//                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
+//                    print(size)
+                    // exifMeta에 정보를 가져옴
+                    // exif 안에 크기,
                 case .video(let video):
                     print(video)
+//                    video.asset.c
                 }
             }
             
