@@ -1,30 +1,21 @@
 //
 //  FloatingButton.swift
-//  photoLock
+//  FloatingButton
 //
-//  Created by 조영훈 on 2022/08/15.
+//  Created by 조영훈 on 2022/09/04.
 //
 
 import SwiftUI
 
-
-struct FloatingButton: View {
-    @State var isClick: Bool = false
+public struct FloatingButton: View {
+    @Binding public var isClick: Bool
     
-    var body: some View {
-        floatingButton
-            .slideOverCard(isPresented: $isClick) {
-                // dismissed
-            } content: {
-//                CameraView()
-             // 여기서 시트 뷰
-                Text("as")
-            }
+    public init(_ isClick: Binding<Bool>){
+        _isClick = isClick
     }
-}
-
-extension FloatingButton {
-    var floatingButton: some View {
+    
+    public var body: some View {
+        //        GeometryReader { g in
         VStack(spacing: 0){
             Spacer()
             HStack(spacing: 0){
@@ -48,11 +39,12 @@ extension FloatingButton {
             }
         }
         .padding(16)
+        //        }
     }
 }
 
-struct FloatingButton_Previews: PreviewProvider {
-    static var previews: some View {
-        FloatingButton()
-    }
-}
+//struct FloatingButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FloatingButton()
+//    }
+//}

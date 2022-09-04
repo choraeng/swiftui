@@ -8,18 +8,58 @@
 import SwiftUI
 
 #if DEV
-import test
+//import test
+import SwiftUIBottomSheet
+import FloatingButton
 #endif
 
 struct ContentView: View {
     @State var camera: Bool = false
     @State private var image: UIImage?
+    
+#if DEV
+    @State var modal = false
+    @State var isclick = false
+#endif
+    
     var body: some View {
-        #if DEV
-        VStack {
-            test()
+#if DEV
+        ZStack{
+            VStack {
+                Button {
+                    modal.toggle()
+                } label: {
+                    Text("asdfasdfa")
+                }
+                .bottomSheet(isPresented: $modal) {
+                    VStack {
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                    }
+                }
+            }
+            
+            
+            FloatingButton($isclick)
+                .bottomSheet(isPresented: $isclick) {
+                    VStack {
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                        Text("text")
+                    }
+                }
+                .onChange(of: modal) { newValue in
+                    print(newValue)
+                }
         }
-        #else
+#else
         VStack {
             Button {
                 camera.toggle()
@@ -27,15 +67,18 @@ struct ContentView: View {
                 Text("카메라")
             }
             .fullScreenCover(isPresented: $camera) {
-
+                
             } content: {
                 MediaPicker(image: $image)
             }
         }
-        #endif
+#endif
         
     }
 }
+
+#if DEV
+#endif
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

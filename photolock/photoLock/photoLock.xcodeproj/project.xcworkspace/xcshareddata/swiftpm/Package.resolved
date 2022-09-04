@@ -11,21 +11,21 @@
         }
       },
       {
-        "package": "SlideOverCard",
-        "repositoryURL": "https://github.com/joogps/SlideOverCard",
-        "state": {
-          "branch": "main",
-          "revision": "f58d646d7666c00cf4c4835a3b674a3d905b3fa9",
-          "version": null
-        }
-      },
-      {
         "package": "Stevia",
         "repositoryURL": "https://github.com/freshOS/Stevia",
         "state": {
           "branch": null,
           "revision": "87dd17a86240f16788239a78dd8be11c4b013150",
           "version": "4.8.0"
+        }
+      },
+      {
+        "package": "SwiftUIBottomSheet",
+        "repositoryURL": "https://github.com/SyrupMG/SwiftUIBottomSheet",
+        "state": {
+          "branch": null,
+          "revision": "c7f8c9cb7c41487d4756c66667d22f6dc7cfcd71",
+          "version": "1.1.2"
         }
       },
       {
