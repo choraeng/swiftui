@@ -7,8 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CE09363198672D938F5D8EB7 /* Pods_photoLock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C973296DE42DBA688A589 /* Pods_photoLock.framework */; };
 		DA5D6C6E28C2526800126C14 /* YPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D6C6D28C2526800126C14 /* YPImagePicker.swift */; };
+		DA5D6CBE28C4A8D300126C14 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA5D6CBD28C4A8D300126C14 /* YPImagePicker */; };
+		DA5D6D4728C4B88800126C14 /* test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6D4428C4B84200126C14 /* test.framework */; platformFilter = ios; };
+		DA5D6D4828C4B88800126C14 /* test.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6D4428C4B84200126C14 /* test.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DA5D6D5028C4B94A00126C14 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90979B28A9435600BFB340 /* Persistence.swift */; };
+		DA5D6D5128C4B94A00126C14 /* photoLock.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DA90979D28A9435600BFB340 /* photoLock.xcdatamodeld */; };
+		DA5D6D5228C4B94A00126C14 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097AB28A9440100BFB340 /* ContentView.swift */; };
+		DA5D6D5328C4B94A00126C14 /* YPImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D6C6D28C2526800126C14 /* YPImagePicker.swift */; };
+		DA5D6D5428C4B94A00126C14 /* mainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097AA28A9440100BFB340 /* mainView.swift */; };
+		DA5D6D5528C4B94A00126C14 /* photoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90979228A9435500BFB340 /* photoLockApp.swift */; };
+		DA5D6D5628C4B94A00126C14 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097BB28A9493000BFB340 /* FloatingButton.swift */; };
+		DA5D6D5828C4B94A00126C14 /* SlideOverCard in Frameworks */ = {isa = PBXBuildFile; productRef = DA5D6D4B28C4B94A00126C14 /* SlideOverCard */; };
+		DA5D6D5928C4B94A00126C14 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA5D6D4D28C4B94A00126C14 /* YPImagePicker */; };
+		DA5D6D5A28C4B94A00126C14 /* test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6D4428C4B84200126C14 /* test.framework */; platformFilter = ios; };
+		DA5D6D5C28C4B94A00126C14 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979928A9435600BFB340 /* Preview Assets.xcassets */; };
+		DA5D6D5D28C4B94A00126C14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979628A9435600BFB340 /* Assets.xcassets */; };
+		DA5D6D5F28C4B94A00126C14 /* test.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6D4428C4B84200126C14 /* test.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DA90979328A9435500BFB340 /* photoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90979228A9435500BFB340 /* photoLockApp.swift */; };
 		DA90979728A9435600BFB340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979628A9435600BFB340 /* Assets.xcassets */; };
 		DA90979A28A9435600BFB340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979928A9435600BFB340 /* Preview Assets.xcassets */; };
@@ -20,11 +35,53 @@
 		DA9097BC28A9493000BFB340 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA9097BB28A9493000BFB340 /* FloatingButton.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DA5D6D4328C4B84200126C14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA5D6D3E28C4B84200126C14 /* test.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5D6D2128C4B75F00126C14;
+			remoteInfo = test;
+		};
+		DA5D6D4528C4B84200126C14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DA5D6D3E28C4B84200126C14 /* test.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = DA5D6D2B28C4B75F00126C14;
+			remoteInfo = testTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DA5D6D4928C4B88800126C14 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DA5D6D4828C4B88800126C14 /* test.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DA5D6D5E28C4B94A00126C14 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DA5D6D5F28C4B94A00126C14 /* test.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		3928240255DFBE32FF75A3B6 /* Pods-photoLock.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoLock.debug.xcconfig"; path = "Target Support Files/Pods-photoLock/Pods-photoLock.debug.xcconfig"; sourceTree = "<group>"; };
-		609DDFD9FDDAB564A48D016E /* Pods-photoLock.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-photoLock.release.xcconfig"; path = "Target Support Files/Pods-photoLock/Pods-photoLock.release.xcconfig"; sourceTree = "<group>"; };
-		D49C973296DE42DBA688A589 /* Pods_photoLock.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_photoLock.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA5D6C6D28C2526800126C14 /* YPImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YPImagePicker.swift; sourceTree = "<group>"; };
+		DA5D6D3E28C4B84200126C14 /* test.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = test.xcodeproj; path = frameworks_test/test/test.xcodeproj; sourceTree = SOURCE_ROOT; };
+		DA5D6D6328C4B94A00126C14 /* photoLock-dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "photoLock-dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA5D6D6428C4B94B00126C14 /* photoLock-dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "photoLock-dev.plist"; path = "/Users/cho/Desktop/swiftui/photolock/photoLock/photoLock-dev.plist"; sourceTree = "<absolute>"; };
 		DA604FD228BBAECF00C2DF13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		DA90978F28A9435500BFB340 /* photoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA90979228A9435500BFB340 /* photoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoLockApp.swift; sourceTree = "<group>"; };
@@ -38,35 +95,29 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DA5D6D5728C4B94A00126C14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5D6D5828C4B94A00126C14 /* SlideOverCard in Frameworks */,
+				DA5D6D5928C4B94A00126C14 /* YPImagePicker in Frameworks */,
+				DA5D6D5A28C4B94A00126C14 /* test.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA90978C28A9435500BFB340 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				DA9097B728A9484F00BFB340 /* SlideOverCard in Frameworks */,
-				CE09363198672D938F5D8EB7 /* Pods_photoLock.framework in Frameworks */,
+				DA5D6CBE28C4A8D300126C14 /* YPImagePicker in Frameworks */,
+				DA5D6D4728C4B88800126C14 /* test.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		39C4D98EF9110996D1A7254C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D49C973296DE42DBA688A589 /* Pods_photoLock.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B41E7654EC27B67AFF49AC49 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3928240255DFBE32FF75A3B6 /* Pods-photoLock.debug.xcconfig */,
-				609DDFD9FDDAB564A48D016E /* Pods-photoLock.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		DA51148028B120C400B326AC /* modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -75,13 +126,30 @@
 			path = modules;
 			sourceTree = "<group>";
 		};
+		DA5D6D3D28C4B81300126C14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D6D3E28C4B84200126C14 /* test.xcodeproj */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA5D6D3F28C4B84200126C14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DA5D6D4428C4B84200126C14 /* test.framework */,
+				DA5D6D4628C4B84200126C14 /* testTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		DA90978628A9435500BFB340 = {
 			isa = PBXGroup;
 			children = (
+				DA5D6D3D28C4B81300126C14 /* Frameworks */,
 				DA90979128A9435500BFB340 /* photoLock */,
 				DA90979028A9435500BFB340 /* Products */,
-				B41E7654EC27B67AFF49AC49 /* Pods */,
-				39C4D98EF9110996D1A7254C /* Frameworks */,
+				DA5D6D6428C4B94B00126C14 /* photoLock-dev.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				DA90978F28A9435500BFB340 /* photoLock.app */,
+				DA5D6D6328C4B94A00126C14 /* photoLock-dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,15 +270,36 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DA5D6D4A28C4B94A00126C14 /* photoLock-dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DA5D6D6028C4B94A00126C14 /* Build configuration list for PBXNativeTarget "photoLock-dev" */;
+			buildPhases = (
+				DA5D6D4F28C4B94A00126C14 /* Sources */,
+				DA5D6D5728C4B94A00126C14 /* Frameworks */,
+				DA5D6D5B28C4B94A00126C14 /* Resources */,
+				DA5D6D5E28C4B94A00126C14 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "photoLock-dev";
+			packageProductDependencies = (
+				DA5D6D4B28C4B94A00126C14 /* SlideOverCard */,
+				DA5D6D4D28C4B94A00126C14 /* YPImagePicker */,
+			);
+			productName = photoLock;
+			productReference = DA5D6D6328C4B94A00126C14 /* photoLock-dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DA90978E28A9435500BFB340 /* photoLock */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA9097A228A9435600BFB340 /* Build configuration list for PBXNativeTarget "photoLock" */;
 			buildPhases = (
-				862F4F83DB91FD7995B7C526 /* [CP] Check Pods Manifest.lock */,
 				DA90978B28A9435500BFB340 /* Sources */,
 				DA90978C28A9435500BFB340 /* Frameworks */,
 				DA90978D28A9435500BFB340 /* Resources */,
-				5AA6742E28B99361BD3128F3 /* [CP] Embed Pods Frameworks */,
+				DA5D6D4928C4B88800126C14 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,6 +308,7 @@
 			name = photoLock;
 			packageProductDependencies = (
 				DA9097B628A9484F00BFB340 /* SlideOverCard */,
+				DA5D6CBD28C4A8D300126C14 /* YPImagePicker */,
 			);
 			productName = photoLock;
 			productReference = DA90978F28A9435500BFB340 /* photoLock.app */;
@@ -249,17 +340,51 @@
 			mainGroup = DA90978628A9435500BFB340;
 			packageReferences = (
 				DA9097B528A9484F00BFB340 /* XCRemoteSwiftPackageReference "SlideOverCard" */,
+				DA5D6CBC28C4A8D300126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 			);
 			productRefGroup = DA90979028A9435500BFB340 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = DA5D6D3F28C4B84200126C14 /* Products */;
+					ProjectRef = DA5D6D3E28C4B84200126C14 /* test.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				DA90978E28A9435500BFB340 /* photoLock */,
+				DA5D6D4A28C4B94A00126C14 /* photoLock-dev */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		DA5D6D4428C4B84200126C14 /* test.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = test.framework;
+			remoteRef = DA5D6D4328C4B84200126C14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		DA5D6D4628C4B84200126C14 /* testTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = testTests.xctest;
+			remoteRef = DA5D6D4528C4B84200126C14 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		DA5D6D5B28C4B94A00126C14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5D6D5C28C4B94A00126C14 /* Preview Assets.xcassets in Resources */,
+				DA5D6D5D28C4B94A00126C14 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA90978D28A9435500BFB340 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,49 +396,21 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		5AA6742E28B99361BD3128F3 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-photoLock/Pods-photoLock-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-photoLock/Pods-photoLock-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-photoLock/Pods-photoLock-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		862F4F83DB91FD7995B7C526 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-photoLock-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
+		DA5D6D4F28C4B94A00126C14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DA5D6D5028C4B94A00126C14 /* Persistence.swift in Sources */,
+				DA5D6D5128C4B94A00126C14 /* photoLock.xcdatamodeld in Sources */,
+				DA5D6D5228C4B94A00126C14 /* ContentView.swift in Sources */,
+				DA5D6D5328C4B94A00126C14 /* YPImagePicker.swift in Sources */,
+				DA5D6D5428C4B94A00126C14 /* mainView.swift in Sources */,
+				DA5D6D5528C4B94A00126C14 /* photoLockApp.swift in Sources */,
+				DA5D6D5628C4B94A00126C14 /* FloatingButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DA90978B28A9435500BFB340 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -331,6 +428,73 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		DA5D6D6128C4B94A00126C14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"photoLock/Preview Content\"";
+				DEVELOPMENT_TEAM = 8SLPVCR4L7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "photoLock-dev.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = camera;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mic;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = photo;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEV";
+				PRODUCT_BUNDLE_IDENTIFIER = choraeng.photoLock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DA5D6D6228C4B94A00126C14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"photoLock/Preview Content\"";
+				DEVELOPMENT_TEAM = 8SLPVCR4L7;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "photoLock-dev.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = camera;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = mic;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = photo;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = choraeng.photoLock;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		DA9097A028A9435600BFB340 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -449,7 +613,6 @@
 		};
 		DA9097A328A9435600BFB340 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3928240255DFBE32FF75A3B6 /* Pods-photoLock.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -483,7 +646,6 @@
 		};
 		DA9097A428A9435600BFB340 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 609DDFD9FDDAB564A48D016E /* Pods-photoLock.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -518,6 +680,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DA5D6D6028C4B94A00126C14 /* Build configuration list for PBXNativeTarget "photoLock-dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DA5D6D6128C4B94A00126C14 /* Debug */,
+				DA5D6D6228C4B94A00126C14 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DA90978A28A9435500BFB340 /* Build configuration list for PBXProject "photoLock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -539,6 +710,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DA5D6CBC28C4A8D300126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		DA5D6D4C28C4B94A00126C14 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/joogps/SlideOverCard";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		DA5D6D4E28C4B94A00126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		DA9097B528A9484F00BFB340 /* XCRemoteSwiftPackageReference "SlideOverCard" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/joogps/SlideOverCard";
@@ -550,6 +745,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DA5D6CBD28C4A8D300126C14 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA5D6CBC28C4A8D300126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
+		DA5D6D4B28C4B94A00126C14 /* SlideOverCard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA5D6D4C28C4B94A00126C14 /* XCRemoteSwiftPackageReference "SlideOverCard" */;
+			productName = SlideOverCard;
+		};
+		DA5D6D4D28C4B94A00126C14 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DA5D6D4E28C4B94A00126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
+			productName = YPImagePicker;
+		};
 		DA9097B628A9484F00BFB340 /* SlideOverCard */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA9097B528A9484F00BFB340 /* XCRemoteSwiftPackageReference "SlideOverCard" */;

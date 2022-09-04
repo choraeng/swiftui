@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+#if DEV
+import test
+#endif
+
 struct ContentView: View {
     @State var camera: Bool = false
     @State private var image: UIImage?
     var body: some View {
+        #if DEV
+        VStack {
+            test()
+        }
+        #else
         VStack {
             Button {
                 camera.toggle()
@@ -18,12 +27,13 @@ struct ContentView: View {
                 Text("카메라")
             }
             .fullScreenCover(isPresented: $camera) {
-                
+
             } content: {
                 MediaPicker(image: $image)
             }
-
         }
+        #endif
+        
     }
 }
 
