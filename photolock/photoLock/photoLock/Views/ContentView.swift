@@ -20,6 +20,10 @@ struct ContentView: View {
 #if DEV
     @State var modal = false
     @State var isclick = false
+    
+    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
 #endif
     
     var body: some View {
@@ -58,6 +62,8 @@ struct ContentView: View {
                 .onChange(of: modal) { newValue in
                     print(newValue)
                 }
+            
+            subView(vm: CoreDataViewModel(_managedObjectContext: managedObjectContext))
         }
 #else
         VStack {
@@ -78,6 +84,14 @@ struct ContentView: View {
 }
 
 #if DEV
+
+struct subView: View {
+    @StateObject var vm: CoreDataViewModel
+    
+    var body: some View {
+        Text("Asdf")
+    }
+}
 #endif
 
 struct ContentView_Previews: PreviewProvider {
