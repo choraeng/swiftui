@@ -6,10 +6,11 @@
 //
 
 import CoreData
-import PredicateKit
+import SwiftUI
 
 class CoreDataViewModel: ObservableObject {
-    let managedObjectContext: NSManagedObjectContext
+//    let managedObjectContext: NSManagedObjectContext
+    let managedObjectContext =  PersistenceController.shared
     let container: NSPersistentContainer
     
     @Published var itemEntities = [ItemEntity]()
@@ -17,9 +18,7 @@ class CoreDataViewModel: ObservableObject {
     
     var currentAlbum = [AlbumEntity]()
     
-    init (_managedObjectContext: NSManagedObjectContext) {
-        managedObjectContext = _managedObjectContext
-        
+    init() {
         container = NSPersistentCloudKitContainer(name: "photoLock")
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -29,47 +28,21 @@ class CoreDataViewModel: ObservableObject {
                 print("SUCCESSFULLY LOAD CORE DATA")
             }
         }
-        
-//        print(currentAlbum)
-        
+                
         InitAlbum()
-        
-//        print(currentAlbum)
-        
-//        NSManagedObjectContext.fetch
-        
-        
-//        fetchAllTags()
-//
-//        fetchAlbums()
-//        if albums.isEmpty {
-//            addAlbum(isLock: false, name: "__main__", parent: nil)
-//            getAlbums()
-//        }
-//
-//        currentAlbum = albums[0]
-//        getItems(album: currentAlbum!)
+        getItems()
     }
     
     
     func InitAlbum(){
-        let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(AlbumEntity.name), "__MAIN__")
-        do {
-            currentAlbum = try container.viewContext.fetch(request)
-        } catch {
-            print("ERROR FETCHING CORE DATA")
-            print(error.localizedDescription)
-        }
-        
-        print(currentAlbum)
-        
+        getAlbums()
         if currentAlbum == [] {
             addAlbum(isLock: false, name: "__MAIN__", parent: nil)
         }
     }
     
     
+    // MARK: - add
     func addAlbum(isLock: Bool, name: String, parent: AlbumEntity?) {
         let newItem = AlbumEntity(context: container.viewContext)
         newItem.timestamp = Date()
@@ -83,7 +56,56 @@ class CoreDataViewModel: ObservableObject {
         
         save()
     }
+
+    // MARK: - get
+    func getAlbums() {
+        let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(AlbumEntity.name), "__MAIN__")
+        do {
+            currentAlbum = try container.viewContext.fetch(request)
+        } catch {
+            print("ERROR FETCHING CORE DATA")
+            print(error.localizedDescription)
+        }
+    }
     
+    
+    func getItems() {
+        let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(ItemEntity.album), currentAlbum[0])
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        
+        DispatchQueue.main.async {
+            do {
+                self.itemEntities = try self.container.viewContext.fetch(request)
+            } catch let error {
+                print("Error fetching. \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func getTags() {
+        let request = NSFetchRequest<TagEntity>(entityName: "TagEntity")
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        
+        DispatchQueue.main.async {
+            do {
+                self.tagEntities = try self.container.viewContext.fetch(request)
+            } catch let error {
+                print("Error fetching. \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    // MARK: - delete
+    func deleteAlbums() {
+        for item in currentAlbum {
+            container.viewContext.delete(item)
+        }
+        save()
+    }
+    
+    // MARK: - save
     func save() {
         if container.viewContext.hasChanges {
             do {
@@ -95,87 +117,5 @@ class CoreDataViewModel: ObservableObject {
             }
         }
     }
-    
-//    // MARK: - fetch
-//    func fetchItems(album: AlbumEntity){ //) -> [ItemEntity]{
-////        var ret: [ItemEntity] = []
-//        let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
-//        request.predicate = NSPredicate(format: "%K == %@", #keyPath(ItemEntity.album), album)
-//        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
-//
-//        DispatchQueue.main.async {
-//            do {
-//                self.currentItems = try self.manager.context.fetch(request)
-//            } catch let error {
-//                print("Error fetching. \(error.localizedDescription)")
-//            }
-//        }
-////        return ret
-//    }
-//
-//    func fetchAlbum() {
-//        let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
-//        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
-//
-//        do {
-//            albums = try manager.context.fetch(request)
-//        } catch let error {
-//            print("Error fetching. \(error.localizedDescription)")
-//        }
-//    }
-//
-//    func fetchAllTags() {
-//        let request = NSFetchRequest<TagEntity>(entityName: "TagEntity")
-//        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
-//
-//        do {
-//            tags = try manager.context.fetch(request)
-//        } catch let error {
-//            print("Error fetching. \(error.localizedDescription)")
-//        }
-//    }
-//
-//
-//
-//
-//
-//
-//    func fetchFruits() {
-//        let request = NSFetchRequest<FruitEntity>(entityName: "FruitEntity")
-//        do {
-//            savedEntities = try container.viewContext.fetch(request)
-//        } catch {
-//            print("ERROR FETCHING CORE DATA")
-//            print(error.localizedDescription)
-//        }
-//    }
-//
-//    func addFruit(name: String) {
-//        let fruit = FruitEntity(context: container.viewContext)
-//        fruit.name = name
-//        saveData()
-//    }
-//
-//    func deleteFruit(indexSet: IndexSet) {
-//        guard let index = indexSet.first else { return }
-//        let entity = savedEntities[index]
-//        container.viewContext.delete(entity)
-//        saveData()
-//    }
-//
-//    func saveData() {
-//        do {
-//            try container.viewContext.save()
-//            fetchFruits()
-//        } catch {
-//            print("ERROR SAVING CORE DATA")
-//            print(error.localizedDescription)
-//        }
-//    }
-//
-//    func updateFruit(entity: FruitEntity, name: String) {
-//        entity.name = name
-//        saveData()
-//    }
 }
 
