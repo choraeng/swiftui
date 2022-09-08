@@ -8,6 +8,12 @@
 import CoreData
 import SwiftUI
 
+enum itemType: Int {
+    case memo
+    case image
+    case video
+}
+
 class CoreDataViewModel: ObservableObject {
 //    let managedObjectContext: NSManagedObjectContext
     let managedObjectContext =  PersistenceController.shared
@@ -16,7 +22,7 @@ class CoreDataViewModel: ObservableObject {
     @Published var itemEntities = [ItemEntity]()
     @Published var tagEntities = [TagEntity]()
     
-    var currentAlbum = [AlbumEntity]()
+    var currentAlbum: AlbumEntity? = nil
     
     init() {
         container = NSPersistentCloudKitContainer(name: "photoLock")
@@ -36,23 +42,60 @@ class CoreDataViewModel: ObservableObject {
     
     func InitAlbum(){
         getAlbums()
-        if currentAlbum == [] {
-            addAlbum(isLock: false, name: "__MAIN__", parent: nil)
+        if currentAlbum != nil {
+            addAlbum(isLock: false, name: "__MAIN__") // , parent: nil)
         }
     }
     
     
     // MARK: - add
-    func addAlbum(isLock: Bool, name: String, parent: AlbumEntity?) {
+    func addAlbum(isLock: Bool, name: String) { //}, parent: AlbumEntity?) {
         let newItem = AlbumEntity(context: container.viewContext)
         newItem.timestamp = Date()
         newItem.name = name
         newItem.isLock = isLock
-        newItem.parent = parent
+        newItem.parent = currentAlbum
         newItem.id = UUID()
         
         newItem.childs = nil
         newItem.items = nil
+        
+        save()
+    }
+    
+    func addImage(width: Int, height: Int, size: Int, data: Data) -> ImageEntity {
+        let newImage = ImageEntity(context: container.viewContext)
+        newImage.createdAt = Date()
+        newImage.size = Int64(size)
+        newImage.width = Int16(width)
+        newImage.height = Int16(height)
+        newImage.data = data
+        
+        save()
+        
+        return newImage
+    }
+    
+    
+    
+    func addItem(type: itemType, item: Any) {
+        let newItem = ItemEntity(context: container.viewContext)
+        newItem.id = UUID()
+        newItem.isFavorite = false
+        newItem.timestamp = Date()
+        newItem.type = Int16(type.rawValue)
+        
+        switch(type) {
+        case .memo:
+            newItem.memo = item as? MemoEntity
+            break
+        case .image:
+            newItem.image = item as? ImageEntity
+            break
+        case .video:
+            newItem.video = item as? VideoEntity
+            break
+        }
         
         save()
     }
@@ -62,7 +105,10 @@ class CoreDataViewModel: ObservableObject {
         let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
         request.predicate = NSPredicate(format: "%K == %@", #keyPath(AlbumEntity.name), "__MAIN__")
         do {
-            currentAlbum = try container.viewContext.fetch(request)
+            let albums = try container.viewContext.fetch(request)
+            if albums != [] {
+                currentAlbum = albums[0]
+            }
         } catch {
             print("ERROR FETCHING CORE DATA")
             print(error.localizedDescription)
@@ -72,7 +118,7 @@ class CoreDataViewModel: ObservableObject {
     
     func getItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(ItemEntity.album), currentAlbum[0])
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(ItemEntity.album), currentAlbum!)
         request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
         
         DispatchQueue.main.async {
@@ -98,12 +144,12 @@ class CoreDataViewModel: ObservableObject {
     }
     
     // MARK: - delete
-    func deleteAlbums() {
-        for item in currentAlbum {
-            container.viewContext.delete(item)
-        }
-        save()
-    }
+//    func deleteAlbums() {
+//        for item in currentAlbum {
+//            container.viewContext.delete(item)
+//        }
+//        save()
+//    }
     
     // MARK: - save
     func save() {
@@ -119,3 +165,10 @@ class CoreDataViewModel: ObservableObject {
     }
 }
 
+
+// general use
+extension CoreDataViewModel {
+    
+}
+
+// TODO: - 우선 아이템 추가하는거 만들고,
