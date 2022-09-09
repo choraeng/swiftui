@@ -6,16 +6,22 @@
 //
 
 import SwiftUI
+import FloatingButton
+import SwiftUIBottomSheet
 
+import ComposableArchitecture
 #if DEV
 //import test
-import SwiftUIBottomSheet
-import FloatingButton
+
+
+
 #endif
 
 struct ContentView: View {
     @State var camera: Bool = false
     @State private var image: UIImage?
+    
+    let store: Store<AppState, AppAction>
     
 #if DEV
     @State var modal = false
@@ -26,40 +32,45 @@ struct ContentView: View {
     
     var body: some View {
 #if DEV
-        ZStack{
-            VStack {
-                Button {
-                    modal.toggle()
-                } label: {
-                    Text("asdfasdfa")
-                }
-                .bottomSheet(isPresented: $modal) {
-                    VStack {
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
+        WithViewStore(self.store) { viewStore in
+            ZStack{
+                VStack {
+                    Button {
+                        viewStore.send(.addItemButtonTapped)
+                    } label: {
+                        Text("asdfasdfa")
                     }
+                    .bottomSheet(isPresented: viewStore.binding(
+                        get: \.isItemAddSheetPresented,
+                        send: .addItemButtonTapped
+                    )) {
+                        VStack {
+                            Text("text")
+                            Text("text")
+                            Text("text")
+                            Text("text")
+                            Text("text")
+                            Text("text")
+                        }
+                    }
+                    
                 }
+                
+                
+                FloatingButton(viewStore.binding(
+                    get: \.isMediaSheetPresented,
+                    send: .addMediaButtonTapped
+                ))
+                    .fullScreenCover(isPresented: viewStore.binding(
+                        get: \.isMediaSheetPresented,
+                        send: .addMediaButtonTapped
+                    )) {
+                        
+                    } content: {
+                        MediaPicker(image: $image)
+                    }
+
             }
-            
-            
-            FloatingButton($isclick)
-                .bottomSheet(isPresented: $isclick) {
-                    VStack {
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                        Text("text")
-                    }
-                }
-                .onChange(of: modal) { newValue in
-                    print(newValue)
-                }
         }
 #else
         VStack {
@@ -82,9 +93,9 @@ struct ContentView: View {
 #if DEV
 
 #endif
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
