@@ -5,6 +5,9 @@
 //  Created by 조영훈 on 2022/09/05.
 //
 
+// 참고 링크
+// https://velog.io/@j_aion/SwiftUI-CoreData-MVVM
+
 import CoreData
 import SwiftUI
 
@@ -16,8 +19,8 @@ enum itemType: Int {
 
 class CoreDataViewModel: ObservableObject {
 //    let managedObjectContext: NSManagedObjectContext
-    let managedObjectContext =  PersistenceController.shared
-    let container: NSPersistentContainer
+//    let managedObjectContext =  PersistenceController.shared
+    let container: NSPersistentContainer = PersistenceController.shared.container
     
     @Published var itemEntities = [ItemEntity]()
     @Published var tagEntities = [TagEntity]()
@@ -25,25 +28,21 @@ class CoreDataViewModel: ObservableObject {
     var currentAlbum: AlbumEntity? = nil
     
     init() {
-        container = NSPersistentCloudKitContainer(name: "photoLock")
-        container.loadPersistentStores { description, error in
-            if let error = error {
-                print("ERROR LOADING CORE DATA")
-                print(error.localizedDescription)
-            } else {
-                print("SUCCESSFULLY LOAD CORE DATA")
-            }
-        }
-                
+//        deleteAlbums()
+        
+        // set currentalbum as main album
         InitAlbum()
+        
+        // get items on currentalbum
         getItems()
     }
     
     
     func InitAlbum(){
-        getAlbums()
-        if currentAlbum != nil {
+        currentAlbum = getAlbum(name: "__MAIN__")
+        if (currentAlbum == nil) {
             addAlbum(isLock: false, name: "__MAIN__") // , parent: nil)
+            currentAlbum = getAlbum(name: "__MAIN__")
         }
     }
     
@@ -101,18 +100,34 @@ class CoreDataViewModel: ObservableObject {
     }
 
     // MARK: - get
-    func getAlbums() {
+    func getAlbum(name: String) -> AlbumEntity? {
         let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
-        request.predicate = NSPredicate(format: "%K == %@", #keyPath(AlbumEntity.name), "__MAIN__")
+        request.predicate = NSPredicate(format: "%K == %@", #keyPath(AlbumEntity.name), name)
         do {
             let albums = try container.viewContext.fetch(request)
             if albums != [] {
-                currentAlbum = albums[0]
+//                currentAlbum = albums[0]
+                return albums[0]
             }
         } catch {
             print("ERROR FETCHING CORE DATA")
             print(error.localizedDescription)
         }
+        
+        return nil
+    }
+    
+    func getAllAlbum() -> [AlbumEntity] {
+        let request = NSFetchRequest<AlbumEntity>(entityName: "AlbumEntity")
+        
+        do {
+            return try container.viewContext.fetch(request)
+        } catch {
+            print("ERROR FETCHING CORE DATA")
+            print(error.localizedDescription)
+        }
+        
+        return []
     }
     
     
@@ -144,12 +159,15 @@ class CoreDataViewModel: ObservableObject {
     }
     
     // MARK: - delete
-//    func deleteAlbums() {
-//        for item in currentAlbum {
-//            container.viewContext.delete(item)
-//        }
-//        save()
-//    }
+    func deleteAlbums() {
+        for item in getAllAlbum() {
+            #if DEV
+            print("del " + item.description)
+            #endif
+            container.viewContext.delete(item)
+        }
+        save()
+    }
     
     // MARK: - save
     func save() {

@@ -32,7 +32,24 @@ struct PersistenceController {
                 Check the error message to determine what the actual problem was.
                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
+            } else {
+                #if DEV
+                print("SUCCESSFULLY LOAD CORE DATA")
+                #endif
             }
         })
     }
+//    private static var persistentContainer: NSPersistentContainer = {
+//        let container = NSPersistentCloudKitContainer(name: "CDOriEPS")
+//        container.loadPersistentStores { description, error in
+//            if let error = error {
+//                 fatalError("Unable to load persistent stores: \(error)")
+//            }
+//        }
+//        return container
+//    }()
+//
+//    var context: NSManagedObjectContext {
+//        return Self.persistentContainer.viewContext
+//    }
 }
