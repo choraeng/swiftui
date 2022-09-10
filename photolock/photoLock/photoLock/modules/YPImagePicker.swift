@@ -20,7 +20,11 @@ struct MediaPicker: UIViewControllerRepresentable {
     }
 
     typealias UIViewControllerType = YPImagePicker
-    @Binding var image: UIImage?
+    
+    @EnvironmentObject var viewModel: CoreDataViewModel
+    
+    init(){
+    }
     
     func makeUIViewController(context: Context) -> YPImagePicker {
         var config = YPImagePickerConfiguration()
@@ -77,32 +81,36 @@ struct MediaPicker: UIViewControllerRepresentable {
         
         config.gallery.hidesRemoveButton = false
         
-        
         let picker = YPImagePicker(configuration: config)
         picker.didFinishPicking { [unowned picker] items, _ in
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    print(photo)
-                    print(photo.asset)
-                    let asset = PHAssetResource.assetResources(for: photo.asset!)
-                    print(asset)
-//                    print(photo.asset?.value(forKey: "fileSize"))
-//                    let unsignedInt64 = photo.asset?.value(forKey: "fileSize") as? CLong
-//                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
-//                    print(size)
-                    // exifMeta에 정보를 가져옴
-                    // exif 안에 크기,
+                    let height = photo.asset?.pixelHeight
+                    let width = photo.asset?.pixelWidth
+                    let date = photo.asset?.creationDate
+                    
+                    
+                    let asset = PHAssetResource.assetResources(for: photo.asset!)[0]
+                    let unsignedInt64 = asset.value(forKey: "fileSize") as? CLong
+                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
+                    let name = asset.originalFilename
+                    
+                    let data = photo.image.pngData()
+
+                    let newItem = viewModel.addImage(
+                        name: name,
+                        width: width ?? 0,
+                        height: height ?? 0,
+                        size: size,
+                        date: date ?? Date(),
+                        data: data ?? nil)
+                    viewModel.addItem(type: .image, item: newItem)
                 case .video(let video):
                     print(video)
-//                    video.asset.c
                 }
             }
             
-            
-            if let photo = items.singlePhoto {
-                self.image = photo.image
-            }
             picker.dismiss(animated: true, completion: nil)
         }
         picker.delegate = context.coordinator

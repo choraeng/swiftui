@@ -67,7 +67,7 @@ struct ContentView: View {
                     )) {
                         
                     } content: {
-                        MediaPicker(image: $image)
+                        MediaPicker()
                     }
 
             }
@@ -82,7 +82,7 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $camera) {
                 
             } content: {
-                MediaPicker(image: $image)
+                MediaPicker()
             }
         }
 #endif

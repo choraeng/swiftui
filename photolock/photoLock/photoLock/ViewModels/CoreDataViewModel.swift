@@ -28,8 +28,11 @@ class CoreDataViewModel: ObservableObject {
     var currentAlbum: AlbumEntity? = nil
     
     init() {
+        #if DEV
 //        deleteAlbums()
+//        deleteAllItems()
         
+        #endif
         // set currentalbum as main album
         InitAlbum()
         
@@ -62,7 +65,7 @@ class CoreDataViewModel: ObservableObject {
         save()
     }
     
-    func addImage(width: Int, height: Int, size: Int, data: Data) -> ImageEntity {
+    func addImage(name: String, width: Int, height: Int, size: Int64, date: Date, data: Data?) -> ImageEntity {
         let newImage = ImageEntity(context: container.viewContext)
         newImage.createdAt = Date()
         newImage.size = Int64(size)
@@ -83,6 +86,7 @@ class CoreDataViewModel: ObservableObject {
         newItem.isFavorite = false
         newItem.timestamp = Date()
         newItem.type = Int16(type.rawValue)
+        newItem.album = currentAlbum
         
         switch(type) {
         case .memo:
@@ -130,6 +134,18 @@ class CoreDataViewModel: ObservableObject {
         return []
     }
     
+    func getAllItems() -> [ItemEntity]{
+        let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
+        request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: true)]
+        
+        do {
+            return try self.container.viewContext.fetch(request)
+        } catch let error {
+            print("Error fetching. \(error.localizedDescription)")
+        }
+        return []
+    }
+    
     
     func getItems() {
         let request = NSFetchRequest<ItemEntity>(entityName: "ItemEntity")
@@ -139,6 +155,7 @@ class CoreDataViewModel: ObservableObject {
         DispatchQueue.main.async {
             do {
                 self.itemEntities = try self.container.viewContext.fetch(request)
+                print(self.itemEntities)
             } catch let error {
                 print("Error fetching. \(error.localizedDescription)")
             }
@@ -159,7 +176,7 @@ class CoreDataViewModel: ObservableObject {
     }
     
     // MARK: - delete
-    func deleteAlbums() {
+    func deleteAllAlbums() {
         for item in getAllAlbum() {
             #if DEV
             print("del " + item.description)
@@ -169,9 +186,40 @@ class CoreDataViewModel: ObservableObject {
         save()
     }
     
+    func deleteAllItems() {
+        for item in getAllItems() {
+            #if DEV
+            print("del " + item.description)
+            #endif
+            container.viewContext.delete(item)
+            
+            let type = itemType(rawValue: Int(item.type))
+            
+            switch (type) {
+            case .memo:
+                container.viewContext.delete(item.memo!)
+                break
+            case .video:
+                container.viewContext.delete(item.video!)
+                break
+            case .image:
+                container.viewContext.delete(item.image!)
+                break
+            case .none:
+                break
+            }
+            
+            container.viewContext.delete(item)
+        }
+        save()
+    }
+    
     // MARK: - save
     func save() {
         if container.viewContext.hasChanges {
+            #if DEV
+            print("SAVE")
+            #endif
             do {
                 try container.viewContext.save()
     //            fetchFruits()

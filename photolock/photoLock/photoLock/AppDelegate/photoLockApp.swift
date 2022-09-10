@@ -12,7 +12,7 @@ import SwiftUI
 @main
 struct photoLockApp: App {
     let persistenceController = PersistenceController.shared
-    @StateObject var items: CoreDataViewModel = CoreDataViewModel()
+    @StateObject var viewModel: CoreDataViewModel = CoreDataViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -23,7 +23,7 @@ struct photoLockApp: App {
                           environment: AppEnvironment())
             )
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environmentObject(items)
+                .environmentObject(viewModel)
         }
     }
 }
