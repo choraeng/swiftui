@@ -30,7 +30,7 @@ class CoreDataViewModel: ObservableObject {
     init() {
         #if DEV
 //        deleteAlbums()
-//        deleteAllItems()
+        deleteAllItems()
         
         #endif
         // set currentalbum as main album
@@ -65,13 +65,15 @@ class CoreDataViewModel: ObservableObject {
         save()
     }
     
-    func addImage(name: String, width: Int, height: Int, size: Int64, date: Date, data: Data?) -> ImageEntity {
+    func addImage(name: String, width: Int, height: Int, size: Int64, date: Date, data: Data?, asset: String, exifMeta: [String: Any]) -> ImageEntity {
         let newImage = ImageEntity(context: container.viewContext)
         newImage.createdAt = Date()
         newImage.size = Int64(size)
         newImage.width = Int16(width)
         newImage.height = Int16(height)
         newImage.data = data
+        newImage.asset = asset
+        newImage.exifMeta = exifMeta
         
         save()
         

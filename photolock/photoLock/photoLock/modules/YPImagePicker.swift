@@ -27,6 +27,61 @@ struct MediaPicker: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> YPImagePicker {
+        let config = setConfig()
+        
+        let picker = YPImagePicker(configuration: config)
+        picker.didFinishPicking { [unowned picker] items, _ in
+            for item in items {
+                switch item {
+                case .photo(let photo):
+                    let height = photo.asset?.pixelHeight
+                    let width = photo.asset?.pixelWidth
+                    let date = photo.asset?.creationDate
+                    
+                    
+                    let asset = PHAssetResource.assetResources(for: photo.asset!)[0]
+                    let unsignedInt64 = asset.value(forKey: "fileSize") as? CLong
+                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
+                    let name = asset.originalFilename
+                    
+                    let data = photo.image.pngData()
+                    
+                    
+//                    let _a = asset.assetLocalIdentifier
+//                    print(_a)
+//                    let _b = PHAsset.fetchAssets(withLocalIdentifiers: [_a], options: nil)
+//                    print(_b[0])
+                    
+                    let newItem = viewModel.addImage(
+                        name: name,
+                        width: width ?? 0,
+                        height: height ?? 0,
+                        size: size,
+                        date: date ?? Date(),
+                        data: data ?? nil,
+                        asset: asset.assetLocalIdentifier,
+                        exifMeta: photo.exifMeta ?? [:]
+                    )
+                    viewModel.addItem(type: .image, item: newItem)
+                case .video(let video):
+                    print(video)
+                }
+            }
+            
+            picker.dismiss(animated: true, completion: nil)
+        }
+        picker.delegate = context.coordinator
+        return picker
+    }
+    
+    func updateUIViewController(_ uiViewController: YPImagePicker, context: Context) {
+    }
+    
+    func makeCoordinator() -> Coordinator {
+        Coordinator(self)
+    }
+    
+    func setConfig() -> YPImagePickerConfiguration {
         var config = YPImagePickerConfiguration()
        
         //Common
@@ -81,47 +136,7 @@ struct MediaPicker: UIViewControllerRepresentable {
         
         config.gallery.hidesRemoveButton = false
         
-        let picker = YPImagePicker(configuration: config)
-        picker.didFinishPicking { [unowned picker] items, _ in
-            for item in items {
-                switch item {
-                case .photo(let photo):
-                    let height = photo.asset?.pixelHeight
-                    let width = photo.asset?.pixelWidth
-                    let date = photo.asset?.creationDate
-                    
-                    
-                    let asset = PHAssetResource.assetResources(for: photo.asset!)[0]
-                    let unsignedInt64 = asset.value(forKey: "fileSize") as? CLong
-                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
-                    let name = asset.originalFilename
-                    
-                    let data = photo.image.pngData()
-
-                    let newItem = viewModel.addImage(
-                        name: name,
-                        width: width ?? 0,
-                        height: height ?? 0,
-                        size: size,
-                        date: date ?? Date(),
-                        data: data ?? nil)
-                    viewModel.addItem(type: .image, item: newItem)
-                case .video(let video):
-                    print(video)
-                }
-            }
-            
-            picker.dismiss(animated: true, completion: nil)
-        }
-        picker.delegate = context.coordinator
-        return picker
-    }
-    
-    func updateUIViewController(_ uiViewController: YPImagePicker, context: Context) {
-    }
-    
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
+        return config
     }
     
 }
