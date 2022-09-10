@@ -20,10 +20,10 @@ public struct MediaPicker: UIViewControllerRepresentable {
     }
 
     typealias UIViewControllerType = YPImagePicker
-    @Binding var image: UIImage?
     
-    init(_ image: Binding<UIImage>){
-        _image = image
+    @EnvironmentObject var items: CoreDataViewModel
+    
+    init(){
     }
     
     func makeUIViewController(context: Context) -> YPImagePicker {
@@ -87,26 +87,30 @@ public struct MediaPicker: UIViewControllerRepresentable {
             for item in items {
                 switch item {
                 case .photo(let photo):
-                    print(photo)
-                    print(photo.asset)
-                    let asset = PHAssetResource.assetResources(for: photo.asset!)
-                    print(asset)
-//                    print(photo.asset?.value(forKey: "fileSize"))
-//                    let unsignedInt64 = photo.asset?.value(forKey: "fileSize") as? CLong
-//                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
-//                    print(size)
-                    // exifMeta에 정보를 가져옴
-                    // exif 안에 크기,
+//                    let asset = PHAssetResource.assetResources(for: photo.asset!)
+                    let asset = photo.asset
+//                    print(asset)
+                    print(asset?.value(forKey: "fileSize"))
+                    let unsignedInt64 = asset?.value(forKey: "fileSize") as? CLong
+                    
+                    
+                    let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
+                    let created = asset?.creationDate ?? as nil
+                    let width = asset?.pixelWidth
+                    let height = asset?.pixelHeight
+                    
+                    let newItem = items.addImage(width: width, height: height, size: size, data: created)
+                    items.addItem(type: .image, item: newItem)
+                    
                 case .video(let video):
                     print(video)
-//                    video.asset.c
                 }
             }
             
             
-            if let photo = items.singlePhoto {
-                self.image = photo.image
-            }
+//            if let photo = items.singlePhoto {
+//                self.image = photo.image
+//            }
             picker.dismiss(animated: true, completion: nil)
         }
         picker.delegate = context.coordinator
