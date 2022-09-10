@@ -11,7 +11,7 @@ import SwiftUI
 
 @main
 struct photoLockApp: App {
-    let persistenceController = PersistenceController.shared
+//    let persistenceController = PersistenceController.shared
     @StateObject var viewModel: CoreDataViewModel = CoreDataViewModel()
     
     var body: some Scene {

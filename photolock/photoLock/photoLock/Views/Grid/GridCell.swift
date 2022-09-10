@@ -14,7 +14,6 @@ struct GridCell: View {
     let width: CGFloat
     
     private var image: Image {
-//        Image(uiImage: UIImage(data: item.image?.data ?? Data()) ?? UIImage())
         let image = UIImage(data: item.image!.data!)!
                     .resize(width: width)
         return Image(uiImage: image)
@@ -28,7 +27,6 @@ struct GridCell: View {
                 .aspectRatio(1, contentMode: .fit)
                 .background(
                     image
-//                    Image(systemName: "star")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 )

@@ -44,7 +44,8 @@ struct MediaPicker: UIViewControllerRepresentable {
                     let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
                     let name = asset.originalFilename
                     
-                    let data = photo.image.pngData()
+//                    let data = photo.image.pngData()
+                    let data = photo.image.jpegData(compressionQuality: 1)
                     
                     
 //                    let _a = asset.assetLocalIdentifier
