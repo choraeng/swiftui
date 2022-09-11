@@ -8,41 +8,33 @@
 import SwiftUI
 
 struct GridCell: View {
-    let item: ItemEntity
-    @Binding var isView: Bool
-    
+    let uiimage: UIImage
     let width: CGFloat
     
     private var image: Image {
-        let image = UIImage(data: item.image!.data!)!
+        let image = uiimage
                     .resize(width: width)
         return Image(uiImage: image)
     }
     
     var body: some View {
-        Button {
-            isView.toggle()
-        } label: {
-            Color.clear
-                .aspectRatio(1, contentMode: .fit)
-                .background(
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                )
-                .clipped()
-        }
-        
+        Color.clear
+            .aspectRatio(1, contentMode: .fit)
+            .background(
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            )
+            .clipped()
     }
 }
 
 public extension UIImage {
-    
     /// Resizes the image by keeping the aspect ratio
     func resize(width: CGFloat) -> UIImage {
         let scale = width / self.size.width
         let height = self.size.height * scale
-//        let width = self.size.width * scale
+        //        let width = self.size.width * scale
         let newSize = CGSize(width: width, height: height)
         let renderer = UIGraphicsImageRenderer(size: newSize)
         

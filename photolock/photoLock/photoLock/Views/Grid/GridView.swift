@@ -10,15 +10,23 @@ import SwiftUI
 import ASCollectionView
 
 struct ItemGridView: View {
-    //    @EnvironmentObject var viewModel: CoreDataViewModel
-    @Binding var isView: Bool
     var items: [ItemEntity]
+    
+    @Binding var selectedImage: UUID?
+    var ns: Namespace.ID
     
     var body: some View {
         GeometryReader { geo in
             ASCollectionView(data: items, dataID: \.self)
-            { item, _ in
-                GridCell(item: item, isView: $isView, width: geo.size.width / 3)
+            { item, cell in
+                GridCell(uiimage: UIImage(data: item.image!.data!)!,
+                         width: geo.size.width / 3)
+//                    .matchedGeometryEffect(id: item.id!, in: ns, isSource: true)
+                    .onTapGesture {
+                        withAnimation {
+                            selectedImage = item.id
+                        }
+                    }
             }
             .layout
             {

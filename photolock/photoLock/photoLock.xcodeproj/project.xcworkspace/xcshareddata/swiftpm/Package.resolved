@@ -2,12 +2,30 @@
   "object": {
     "pins": [
       {
+        "package": "ASCollectionView",
+        "repositoryURL": "https://github.com/apptekstudios/ASCollectionView",
+        "state": {
+          "branch": null,
+          "revision": "4288744ba484c1062c109c0f28d72b629d321d55",
+          "version": "2.1.1"
+        }
+      },
+      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
           "revision": "11973960af9c5426f22d337628cec4342c5e660d",
           "version": "0.7.4"
+        }
+      },
+      {
+        "package": "DifferenceKit",
+        "repositoryURL": "https://github.com/ra1028/DifferenceKit",
+        "state": {
+          "branch": null,
+          "revision": "073b9671ce2b9b5b96398611427a1f929927e428",
+          "version": "1.3.0"
         }
       },
       {

@@ -30,7 +30,7 @@ class CoreDataViewModel: ObservableObject {
     init() {
         #if DEV
 //        deleteAlbums()
-        deleteAllItems()
+//        deleteAllItems()
         
         #endif
         // set currentalbum as main album
@@ -38,6 +38,10 @@ class CoreDataViewModel: ObservableObject {
         
         // get items on currentalbum
         getItems()
+        
+        #if DEV
+//        print(itemEntities)
+        #endif
     }
     
     
@@ -72,8 +76,8 @@ class CoreDataViewModel: ObservableObject {
         newImage.width = Int16(width)
         newImage.height = Int16(height)
         newImage.data = data
-        newImage.asset = asset
-        newImage.exifMeta = exifMeta
+//        newImage.asset = asset
+//        newImage.exifMeta = exifMeta
         
         save()
         
@@ -103,6 +107,7 @@ class CoreDataViewModel: ObservableObject {
         }
         
         save()
+        getItems()
     }
 
     // MARK: - get
@@ -157,7 +162,6 @@ class CoreDataViewModel: ObservableObject {
         DispatchQueue.main.async {
             do {
                 self.itemEntities = try self.container.viewContext.fetch(request)
-                print(self.itemEntities)
             } catch let error {
                 print("Error fetching. \(error.localizedDescription)")
             }
