@@ -22,8 +22,6 @@
 		DA5D6DA428C4E74900126C14 /* FloatingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6DA028C4E73800126C14 /* FloatingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DA5D6DA528C4E75200126C14 /* FloatingButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6DA028C4E73800126C14 /* FloatingButton.framework */; };
 		DA5D6DA628C4E75200126C14 /* FloatingButton.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DA5D6DA028C4E73800126C14 /* FloatingButton.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		DA5D6DE928C4F39700126C14 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA5D6DE828C4F39700126C14 /* YPImagePicker */; };
-		DA5D6DEB28C4F3B900126C14 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA5D6DEA28C4F3B900126C14 /* YPImagePicker */; };
 		DA5D6DF428C6389900126C14 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D6DF328C6389900126C14 /* CoreDataViewModel.swift */; };
 		DA5D6DF528C6389900126C14 /* CoreDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D6DF328C6389900126C14 /* CoreDataViewModel.swift */; };
 		DA621C7428CA2DCF0060BCE9 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = DA621C7328CA2DCF0060BCE9 /* ComposableArchitecture */; };
@@ -42,6 +40,10 @@
 		DA621C8D28CCBF090060BCE9 /* DetailHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA621C8B28CCBF090060BCE9 /* DetailHStack.swift */; };
 		DA621C9028CCC4790060BCE9 /* ASCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = DA621C8F28CCC4790060BCE9 /* ASCollectionView */; };
 		DA621C9228CCC4DE0060BCE9 /* ASCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = DA621C9128CCC4DE0060BCE9 /* ASCollectionView */; };
+		DA621CA828CE19730060BCE9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA621CA728CE19730060BCE9 /* Extension.swift */; };
+		DA621CA928CE19730060BCE9 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA621CA728CE19730060BCE9 /* Extension.swift */; };
+		DA621CAD28CF8E8E0060BCE9 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA621CAC28CF8E8E0060BCE9 /* YPImagePicker */; };
+		DA621CAF28CF8E930060BCE9 /* YPImagePicker in Frameworks */ = {isa = PBXBuildFile; productRef = DA621CAE28CF8E930060BCE9 /* YPImagePicker */; };
 		DA90979328A9435500BFB340 /* photoLockApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA90979228A9435500BFB340 /* photoLockApp.swift */; };
 		DA90979728A9435600BFB340 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979628A9435600BFB340 /* Assets.xcassets */; };
 		DA90979A28A9435600BFB340 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA90979928A9435600BFB340 /* Preview Assets.xcassets */; };
@@ -106,6 +108,8 @@
 		DA621C8528CC9D5C0060BCE9 /* GridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 		DA621C8828CCB98C0060BCE9 /* PhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		DA621C8B28CCBF090060BCE9 /* DetailHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHStack.swift; sourceTree = "<group>"; };
+		DA621CA728CE19730060BCE9 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DA621CAB28CF8E7D0060BCE9 /* YPImagePicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = YPImagePicker; path = Frameworks/YPImagePicker; sourceTree = "<group>"; };
 		DA90978F28A9435500BFB340 /* photoLock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = photoLock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA90979228A9435500BFB340 /* photoLockApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoLockApp.swift; sourceTree = "<group>"; };
 		DA90979628A9435600BFB340 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -122,8 +126,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA621C9228CCC4DE0060BCE9 /* ASCollectionView in Frameworks */,
+				DA621CAF28CF8E930060BCE9 /* YPImagePicker in Frameworks */,
 				DA5D6D7328C4C44E00126C14 /* SwiftUIBottomSheet in Frameworks */,
-				DA5D6DEB28C4F3B900126C14 /* YPImagePicker in Frameworks */,
 				DA621C7828CA2DDB0060BCE9 /* ComposableArchitecture in Frameworks */,
 				DA5D6DA528C4E75200126C14 /* FloatingButton.framework in Frameworks */,
 			);
@@ -134,8 +138,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA621C9028CCC4790060BCE9 /* ASCollectionView in Frameworks */,
+				DA621CAD28CF8E8E0060BCE9 /* YPImagePicker in Frameworks */,
 				DA5D6D7128C4C42600126C14 /* SwiftUIBottomSheet in Frameworks */,
-				DA5D6DE928C4F39700126C14 /* YPImagePicker in Frameworks */,
 				DA621C7428CA2DCF0060BCE9 /* ComposableArchitecture in Frameworks */,
 				DA5D6DA328C4E74900126C14 /* FloatingButton.framework in Frameworks */,
 			);
@@ -178,9 +182,26 @@
 			path = Grid;
 			sourceTree = "<group>";
 		};
+		DA621C9328CDCB1A0060BCE9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DA621CA728CE19730060BCE9 /* Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DA621CAA28CF8E7D0060BCE9 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				DA621CAB28CF8E7D0060BCE9 /* YPImagePicker */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		DA90978628A9435500BFB340 = {
 			isa = PBXGroup;
 			children = (
+				DA621CAA28CF8E7D0060BCE9 /* Packages */,
 				DA5D6D3D28C4B81300126C14 /* Frameworks */,
 				DA90979128A9435500BFB340 /* photoLock */,
 				DA90979028A9435500BFB340 /* Products */,
@@ -200,6 +221,7 @@
 		DA90979128A9435500BFB340 /* photoLock */ = {
 			isa = PBXGroup;
 			children = (
+				DA621C9328CDCB1A0060BCE9 /* Extensions */,
 				DA604FD228BBAECF00C2DF13 /* Info.plist */,
 				DA51148028B120C400B326AC /* modules */,
 				DA9097B328A9448200BFB340 /* AppDelegate */,
@@ -318,9 +340,9 @@
 			name = "photoLock-dev";
 			packageProductDependencies = (
 				DA5D6D7228C4C44E00126C14 /* SwiftUIBottomSheet */,
-				DA5D6DEA28C4F3B900126C14 /* YPImagePicker */,
 				DA621C7728CA2DDB0060BCE9 /* ComposableArchitecture */,
 				DA621C9128CCC4DE0060BCE9 /* ASCollectionView */,
+				DA621CAE28CF8E930060BCE9 /* YPImagePicker */,
 			);
 			productName = photoLock;
 			productReference = DA5D6D6328C4B94A00126C14 /* photoLock-dev.app */;
@@ -342,9 +364,9 @@
 			name = photoLock;
 			packageProductDependencies = (
 				DA5D6D7028C4C42600126C14 /* SwiftUIBottomSheet */,
-				DA5D6DE828C4F39700126C14 /* YPImagePicker */,
 				DA621C7328CA2DCF0060BCE9 /* ComposableArchitecture */,
 				DA621C8F28CCC4790060BCE9 /* ASCollectionView */,
+				DA621CAC28CF8E8E0060BCE9 /* YPImagePicker */,
 			);
 			productName = photoLock;
 			productReference = DA90978F28A9435500BFB340 /* photoLock.app */;
@@ -376,7 +398,6 @@
 			mainGroup = DA90978628A9435500BFB340;
 			packageReferences = (
 				DA5D6D6F28C4C42600126C14 /* XCRemoteSwiftPackageReference "SwiftUIBottomSheet" */,
-				DA5D6DE728C4F39700126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */,
 				DA621C7228CA2DCF0060BCE9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				DA621C8E28CCC4790060BCE9 /* XCRemoteSwiftPackageReference "ASCollectionView" */,
 			);
@@ -450,6 +471,7 @@
 				DA5D6D5328C4B94A00126C14 /* YPImagePicker.swift in Sources */,
 				DA5D6D5428C4B94A00126C14 /* mainView.swift in Sources */,
 				DA621C8D28CCBF090060BCE9 /* DetailHStack.swift in Sources */,
+				DA621CA928CE19730060BCE9 /* Extension.swift in Sources */,
 				DA621C8028CC97930060BCE9 /* GridView.swift in Sources */,
 				DA5D6D5528C4B94A00126C14 /* photoLockApp.swift in Sources */,
 			);
@@ -470,6 +492,7 @@
 				DA5D6C6E28C2526800126C14 /* YPImagePicker.swift in Sources */,
 				DA9097AF28A9440100BFB340 /* mainView.swift in Sources */,
 				DA621C8C28CCBF090060BCE9 /* DetailHStack.swift in Sources */,
+				DA621CA828CE19730060BCE9 /* Extension.swift in Sources */,
 				DA621C7F28CC97930060BCE9 /* GridView.swift in Sources */,
 				DA90979328A9435500BFB340 /* photoLockApp.swift in Sources */,
 			);
@@ -768,14 +791,6 @@
 				minimumVersion = 1.0.0;
 			};
 		};
-		DA5D6DE728C4F39700126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Yummypets/YPImagePicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
-			};
-		};
 		DA621C7228CA2DCF0060BCE9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -805,16 +820,6 @@
 			package = DA5D6D6F28C4C42600126C14 /* XCRemoteSwiftPackageReference "SwiftUIBottomSheet" */;
 			productName = SwiftUIBottomSheet;
 		};
-		DA5D6DE828C4F39700126C14 /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DA5D6DE728C4F39700126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
-			productName = YPImagePicker;
-		};
-		DA5D6DEA28C4F3B900126C14 /* YPImagePicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DA5D6DE728C4F39700126C14 /* XCRemoteSwiftPackageReference "YPImagePicker" */;
-			productName = YPImagePicker;
-		};
 		DA621C7328CA2DCF0060BCE9 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DA621C7228CA2DCF0060BCE9 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
@@ -834,6 +839,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DA621C8E28CCC4790060BCE9 /* XCRemoteSwiftPackageReference "ASCollectionView" */;
 			productName = ASCollectionView;
+		};
+		DA621CAC28CF8E8E0060BCE9 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YPImagePicker;
+		};
+		DA621CAE28CF8E930060BCE9 /* YPImagePicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YPImagePicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 
