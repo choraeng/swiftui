@@ -9,99 +9,99 @@
 
 import SwiftUI
 
-struct DetailHStack: View {
-    @EnvironmentObject var viewModel: CoreDataViewModel
 
-    var images: [Image] {
-        viewModel.itemEntities.map({ item in
-            Image(uiImage: UIImage(data: item.image!.data!)!)})
-    }
+struct DetailHStack: View {
+    var images: [Image]
+    var ids: [UUID]
+    let width: CGFloat
+    let height: CGFloat
     
-//    let width: CGFloat
-//    let height: CGFloat
-    
-    @Binding var selectedImage: UUID?
+    @Binding var selectedImage: Int?
     var ns: Namespace.ID
-        
-    init(selectedImage: Binding<UUID?>, ns: Namespace.ID) {
-        self._selectedImage = selectedImage
-        self.ns = ns
-        // initialize selctedTab to selectedImage
-        self._selectedTab = State(initialValue: selectedImage.wrappedValue ?? UUID())
-    }
+    @GestureState var selectedImageOffset: CGSize
     
-    @State var selectedTab: UUID
+    @EnvironmentObject var viewModel: CoreDataViewModel
+    
+    //    init(images: [Image], ids: [UUID],
+    //         width: CGFloat, height: CGFloat,
+    //         selectedImage: Binding<Int?>, ns: Namespace.ID, blur: Binding<Bool>) {
+    //        self.images = images
+    //        self.ids = ids
+    //        self.width = width
+    //        self.height = height
+    //        //        self.items = items
+    //        self._selectedImage = selectedImage
+    //        self.ns = ns
+    //        self._blur = blur
+    //        // initialize selctedTab to selectedImage
+    ////        self._selectedTab = State(initialValue: selectedImage.wrappedValue ?? UUID())
+    //    }
+    
+    //    @State var selectedTab: UUID
     
     var body: some View {
         //MARK: - Tabview
-        TabView(selection: $selectedTab) {
-            ForEach(0..<viewModel.itemEntities.count) { idx in
-                let item = viewModel.itemEntities[idx]
-                let image = Image(uiImage: UIImage(data: item.image!.data!)!)
-                
-                image
-                    .resizable()
-                    .scaledToFit()
-//                    .matchedGeometryEffect(id: item.id! == selectedTab ? selectedTab : UUID(),
-//                                           in: ns, isSource: true)
-                    .tag(item.id!)
-                    .onTapGesture {
-                        withAnimation {
-                            selectedImage = nil
-                        }
-                    }
-            }
-        }
-        .tabViewStyle(.page(indexDisplayMode: .never))
-        .background(Color.black)
-        //MARK: - hstack
-        //        LazyHStack(spacing: 0) {
+        //        TabView(selection: $selectedTab) {
         //            ForEach(0..<images.count) { idx in
-        //                images[idx]//Image(uiImage: UIImage(data: images[idx].image!.data!)!)
-        //                    .resizable()
-        //                    .aspectRatio(contentMode: .fit)
-        //                    .frame(width: width, height: height, alignment: .center)
-        //                    .offset(x: (CGFloat(index) * -width))
-        //                    .offset(selectedImageOffset)
-        ////                Color.blue
-        //            }
-        //        }
-        //        .ignoresSafeArea()
-        //        .background(
-        //            Color.black
-        //                .opacity(1.0)//backgroundOpacity)
-        //        )
-        //                .highPriorityGesture(
-        //                    DragGesture()
-        //                        .onChanged({ value in
-        //        //                    DispatchQueue.main.async {
-        //        //                        if (value.translation.width > 5 || value.translation.width < -5) {
-        //        //                            withAnimation(.easeInOut(duration: 0.2)) {
-        //        //                                self.isSwiping = true
-        //        //                            }
-        //        //                        }
-        //        //                        if !self.isSwiping && (value.translation.height > 5 || value.translation.height < -5) {
-        //        //                            self.isSelecting = true
-        //        //                        }
-        //        //                    }
-        //                        })
-        //                        .updating(self.$selectedImageOffset, body: { value, state, _ in
-        //        //                    if self.isSwiping {
-        //                                state = CGSize(width: value.translation.width, height: 0)
-        //        //                    } else if self.isSelecting {
-        //        //                        state = CGSize(width: value.translation.width, height: value.translation.height)
-        //        //                    }
-        //                        })
-        //                        .onEnded({ value in
-        //                            DispatchQueue.main.async {
-        //                                let offset = value.translation.width / width*6
-        //                                if offset > 0.5 && self.index > 0 {
-        //                                    self.index -= 1
-        //                                } else if offset < -0.5 && self.index < (images.count - 1) {
-        //                                    self.index += 1
-        //                                }
+        ////        let idx = 5
+        //                ZStack{
+        //                    images[idx]
+        //                        .resizable()
+        ////                        .matchedGeometryEffect(id: ids[idx] == selectedTab ? selectedTab : UUID(), in: ns)
+        //                        .matchedGeometryEffect(id: ids[idx] == selectedTab ? selectedTab : UUID(),
+        //                                                                   in: ns, isSource: true)
+        //                        .aspectRatio(contentMode: .fit)
+        //                        .onAppear {
+        //                            print("full", idx, selectedTab, ids[idx] == selectedTab)
+        ////                            selectedImage = selectedTab
+        //                        }
+        //                        .onTapGesture {
+        //                            withAnimation(.interpolatingSpring(stiffness: 300, damping: 20)) {
+        //                                selectedImage = nil
         //                            }
-        //                        })
-        //                )
+        //                        }
+        //                }
+        //                .tag(ids[idx])
+        ////                .if(ids[idx] == selectedTab) { content in
+        ////                    content.matchedGeometryEffect(id: selectedTab, in: ns)
+        ////                }
+        //            }
+        //
+        //        }
+        //        .tabViewStyle(.page(indexDisplayMode: .never))
+        //MARK: - hstack
+        //        ScrollView(.horizontal){
+        if let index = self.selectedImage {
+            LazyHStack(spacing: 0) {
+                ForEach(0..<images.count) { idx in
+                    
+                    images[idx]
+                        .resizable()
+                        .if(idx == index, content: { content in
+                            content
+                                .matchedGeometryEffect(id: ids[idx], in: ns)
+                        })
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: width, alignment: .center)
+                            .offset(x: (CGFloat(index) * -width))
+                            .offset(selectedImageOffset)
+                    //                        .statusBar(hidden: true)
+                }
+            }
+            .ignoresSafeArea()
+            .onTapGesture {
+                withAnimation(.interpolatingSpring(stiffness: 300, damping: 20)) {
+                    selectedImage = nil
+                }
+            }
+            
+            //        }
+            .highPriorityGesture(
+                DragGesture()
+                    .updating(self.$selectedImageOffset, body: { value, state, _ in
+                        state = CGSize(width: value.translation.width, height: value.translation.height)
+                    })
+            )
+        }
     }
 }

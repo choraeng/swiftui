@@ -26,14 +26,18 @@ struct ContentView: View {
     @State var isView = false
     
     @Namespace var ns
-    @State var selectedImage: UUID?
+    @State var selectedImage: Int?
+    
+    @GestureState private var selectedImageOffset: CGSize = .zero
 #endif
     
     var body: some View {
 #if DEV
         WithViewStore(self.store) { viewStore in
             GeometryReader { geo in
-                ZStack{
+                let width = geo.size.width // + geo.safeAreaInsets.leading + geo.safeAreaInsets.trailing
+                let height = geo.size.height // + geo.safeAreaInsets.top + geo.safeAreaInsets.bottom
+//                ZStack{
                     //                VStack {
                     //                    Button {
                     //                        viewStore.send(.addItemButtonTapped)
@@ -55,32 +59,56 @@ struct ContentView: View {
                     //                    }
                     //
                     //                }
-                    if (selectedImage == nil){
+                    
+                    VStack {
+                        
                         ItemGridView(items: viewModel.itemEntities,
                                      selectedImage: $selectedImage,
-                                     ns: ns)
-                    }else {
-                        //                    PhotoView(image: UIImage(data: viewModel.itemEntities[0].image?.data ?? Data()) ?? UIImage())
-                        DetailHStack(selectedImage: $selectedImage,
-                                     ns: ns)
-//                                     width: geo.size.width, height: geo.size.height
+                                     ns: ns,
+                                     width: width,
+                                     height: height
+                        )
+                            .zIndex(0)
+                    }
+                    
+                    //                    if blur {
+                    //                        VisualEffectView(uiVisualEffect: UIBlurEffect(style: config.darkMode ? .dark : .light))
+                    //                            .edgesIgnoringSafeArea(.all)
+                    ////                            .onTapGesture(perform: tapBackdrop)
+                    //                            .transition(.opacity)
+                    //                            .zIndex(2)
+                    //                    }
+                    if (selectedImage != nil && viewModel.itemEntities.count > 0) {
+                        DetailHStack(images: viewModel.itemEntities.map {Image(uiImage: UIImage(data: $0.image!.data!)!.resize(width: width))},
+                                     ids: viewModel.itemEntities.map { $0.id! },
+                                     width: width,
+                                     height: height,
+                                     selectedImage: $selectedImage,
+                                     ns: ns,
+                                     selectedImageOffset: selectedImageOffset
+                        )
+                            .zIndex(2)
                     }
                     
                     
-                    FloatingButton(viewStore.binding(
-                        get: \.isMediaSheetPresented,
-                        send: .addMediaButtonTapped
-                    ))
-                        .fullScreenCover(isPresented: viewStore.binding(
-                            get: \.isMediaSheetPresented,
-                            send: .addMediaButtonTapped
-                        )) {
-                            
-                        } content: {
-                            MediaPicker()
-                        }
+                    //                    if (selectedImage == nil) {
+                    //                        FloatingButton(viewStore.binding(
+                    //                            get: \.isMediaSheetPresented,
+                    //                            send: .addMediaButtonTapped
+                    //                        ))
+                    //                            .zIndex(4)
+                    //                            .fullScreenCover(isPresented: viewStore.binding(
+                    //                                get: \.isMediaSheetPresented,
+                    //                                send: .addMediaButtonTapped
+                    //                            )) {
+                    //
+                    //                            } content: {
+                    //                                MediaPicker()
+                    //                            }
+                    //                    }
+                    
                 }
-            }
+            // }
         }
 #else
         VStack {

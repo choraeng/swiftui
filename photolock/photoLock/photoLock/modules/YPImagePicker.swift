@@ -34,18 +34,20 @@ struct MediaPicker: UIViewControllerRepresentable {
             for item in items {
                 switch item {
                 case .photo(let photo):
+//                    photo.
+                    
                     let height = photo.asset?.pixelHeight
                     let width = photo.asset?.pixelWidth
                     let date = photo.asset?.creationDate
-                    
+                    print(photo.originalImage.size)
                     
                     let asset = PHAssetResource.assetResources(for: photo.asset!)[0]
                     let unsignedInt64 = asset.value(forKey: "fileSize") as? CLong
                     let size = Int64(bitPattern: UInt64(unsignedInt64!)) // byte
                     let name = asset.originalFilename
                     
-//                    let data = photo.image.pngData()
-                    let data = photo.image.jpegData(compressionQuality: 1)
+                    let data = photo.image.pngData()
+//                    let data = photo.image.jpegData(compressionQuality: 1)
                     
                     
 //                    let _a = asset.assetLocalIdentifier
@@ -96,7 +98,7 @@ struct MediaPicker: UIViewControllerRepresentable {
         config.startOnScreen = YPPickerScreen.library
         config.screens = [.library, .photo, .video]
         config.showsCrop = .none // 사진 찍고 자르는거
-        config.targetImageSize = YPImageSize.original
+        config.targetImageSize = .original
 //        config.overlayView = UIView()
         config.hidesStatusBar = false
         config.hidesBottomBar = false

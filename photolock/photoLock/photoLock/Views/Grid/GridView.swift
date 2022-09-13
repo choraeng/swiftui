@@ -12,30 +12,31 @@ import ASCollectionView
 struct ItemGridView: View {
     var items: [ItemEntity]
     
-    @Binding var selectedImage: UUID?
+    @Binding var selectedImage: Int?
     var ns: Namespace.ID
     
+    let width: CGFloat
+    let height: CGFloat
+    
+    var columns = Array(repeating: GridItem(.flexible(), spacing: 3), count: 3)
+    
+    
+    @GestureState private var selectedImageOffset: CGSize = .zero
+    
     var body: some View {
-        GeometryReader { geo in
-            ASCollectionView(data: items, dataID: \.self)
-            { item, cell in
-                GridCell(uiimage: UIImage(data: item.image!.data!)!,
-                         width: geo.size.width / 3)
-//                    .matchedGeometryEffect(id: item.id!, in: ns, isSource: true)
-                    .onTapGesture {
-                        withAnimation {
-                            selectedImage = item.id
+        ScrollView(.vertical, showsIndicators: false) {
+            LazyVGrid(columns: columns, spacing: 3) {
+                ForEach(0..<items.count, id: \.self) { idx in
+                    let item = items[idx]
+                    GridCell(uiimage: UIImage(data: item.image!.data!)!, width: width / 3,
+                             id: item.id!, ns: ns)
+                        .onTapGesture {
+                            print("grid cell", item.id!)
+                            withAnimation(.interpolatingSpring(stiffness: 200, damping: 20)) {
+                                selectedImage = idx
+                            }
                         }
-                    }
-            }
-            .layout
-            {
-                .grid(
-                    layoutMode: .fixedNumberOfColumns(3),
-                    itemSpacing: 3,
-                    lineSpacing: 3,
-                    sectionInsets: .init(top: 0, leading: 3, bottom: 0, trailing: 3)
-                )
+                }
             }
         }
     }

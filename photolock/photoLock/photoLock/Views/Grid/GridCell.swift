@@ -11,6 +11,9 @@ struct GridCell: View {
     let uiimage: UIImage
     let width: CGFloat
     
+    var id: UUID
+    var ns: Namespace.ID
+    
     private var image: Image {
         let image = uiimage
                     .resize(width: width)
@@ -18,35 +21,35 @@ struct GridCell: View {
     }
     
     var body: some View {
-        Color.clear
-            .aspectRatio(1, contentMode: .fit)
-            .background(
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-            )
-            .clipped()
-    }
-}
-
-public extension UIImage {
-    /// Resizes the image by keeping the aspect ratio
-    func resize(width: CGFloat) -> UIImage {
-        let scale = width / self.size.width
-        let height = self.size.height * scale
-        //        let width = self.size.width * scale
-        let newSize = CGSize(width: width, height: height)
-        let renderer = UIGraphicsImageRenderer(size: newSize)
+//        Color.clear
+//            .aspectRatio(1, contentMode: .fit)
+//            .overlay(
+//                image
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//            )
+//            .matchedGeometryEffect(id: id, in: ns)
+//            .clipped()
+        Color.clear.overlay(
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: width)
+        )
+            .clipShape(Rectangle())
+            .contentShape(Rectangle())
+            .matchedGeometryEffect(id: id, in: ns)
+            .frame(height: width)
         
-        return renderer.image { _ in
-            self.draw(in: CGRect(origin: .zero, size: newSize))
-        }
+        
+        
+//        Color.clear
+//            .aspectRatio(1, contentMode: .fit)
+//            .background(
+//                image
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//            )
+//            .clipped()
     }
 }
-
-
-//struct GridCell_Previews: PreviewProvider {
-//    static var previews: some View {
-//        GridCell()
-//    }
-//}

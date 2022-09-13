@@ -30,7 +30,7 @@ class CoreDataViewModel: ObservableObject {
     init() {
         #if DEV
 //        deleteAlbums()
-//        deleteAllItems()
+//        deleteAllItems ()
         
         #endif
         // set currentalbum as main album
